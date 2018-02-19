@@ -3,10 +3,7 @@ declare(strict_types = 1);
 
 use Faker\Generator as Faker;
 
-/**
- *
- */
-$factory->define(App\User::class, function (Faker $faker) {
+$factory->define(App\Mentor::class, function (Faker $faker) {
     return [
         'first_name' => $faker->firstName,
         'last_name' => $faker->lastName,
