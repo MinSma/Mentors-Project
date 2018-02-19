@@ -1,9 +1,13 @@
 <?php
+declare(strict_types = 1);
 
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
+/**
+ * Class CreateMentorsTable
+ */
 class CreateMentorsTable extends Migration
 {
     /**
@@ -11,9 +15,9 @@ class CreateMentorsTable extends Migration
      *
      * @return void
      */
-    public function up()
+    public function up(): void
     {
-        Schema::create('mentors', function (Blueprint $table) {
+        Schema::create('mentors', function (Blueprint $table): void {
             $table->increments('id');
             $table->string('email',60)->unique();
             $table->string('password');
@@ -35,7 +39,7 @@ class CreateMentorsTable extends Migration
      *
      * @return void
      */
-    public function down()
+    public function down(): void
     {
         Schema::dropIfExists('mentors');
     }
