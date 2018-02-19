@@ -21,7 +21,6 @@ class Student extends Model
         'gender',
         'age',
         'city',
-        'topic',
     ];
 
     /**

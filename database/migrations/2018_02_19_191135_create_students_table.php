@@ -26,7 +26,6 @@ class CreateStudentsTable extends Migration
             $table->string('gender');
             $table->integer('age');
             $table->string('city');
-            $table->string('topic');
             $table->rememberToken();
             $table->timestamps();
         });
