@@ -9,10 +9,10 @@ use App\Models\Mentor;
 use Illuminate\View\View;
 
 /**
- * Class MentorController
+ * Class MentorsController
  * @package App\Http\Controller
  */
-class MentorController extends Controller
+class MentorsController extends Controller
 {
     /**
      * @var MentorsRepository
@@ -20,7 +20,7 @@ class MentorController extends Controller
     private $mentorsRepository;
 
     /**
-     * MentorController constructor.
+     * MentorsController constructor.
      * @param MentorsRepository $mentorsRepository
      */
     public function __construct(MentorsRepository $mentorsRepository)
@@ -41,7 +41,6 @@ class MentorController extends Controller
      */
     public function create(): View
     {
-        dump('bilekas');
         return view('mentors.create');
     }
 
