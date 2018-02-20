@@ -3,6 +3,7 @@ declare(strict_types = 1);
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\MentorUpdateRequest;
 use Illuminate\Http\Request;
 use App\Repositories\MentorsRepository;
 use App\Models\Mentor;
@@ -45,10 +46,10 @@ class MentorsController extends Controller
     }
 
     /**
-     * @param Request $request
+     * @param MentorUpdateRequest $request
      * @return View
      */
-    public function store(Request $request): View
+    public function store(MentorUpdateRequest $request): View
     {
         return view('mentors.index');
     }
