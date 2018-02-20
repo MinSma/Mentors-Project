@@ -11,13 +11,6 @@
 |
 */
 
-Route::get('/', function () {
-    return view('mentors.create');
-});
-
-//Route::get('mentors/create', 'MentorsController@create')->name('mentors.create');
-
-
 // mentors
 Route::get('mentors/', 'MentorsController@index')->name('mentors.index');
 Route::get('mentors/create', 'MentorsController@create')->name('mentors.create');
