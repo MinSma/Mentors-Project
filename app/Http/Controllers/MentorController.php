@@ -4,7 +4,13 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class AdminController extends Controller
+use App\Models\Mentor;
+
+/**
+ * Class MentorController
+ * @package App\Http\Controllers
+ */
+class MentorController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -40,10 +46,10 @@ class AdminController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  Mentor  $mentor
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Mentor $mentor)
     {
         //
     }
@@ -51,10 +57,10 @@ class AdminController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  Mentor  $mentor
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Mentor $mentor)
     {
         //
     }
@@ -63,10 +69,10 @@ class AdminController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  Mentor  $mentor
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Mentor $mentor)
     {
         //
     }
@@ -74,10 +80,10 @@ class AdminController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  Mentor  $mentor
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Mentor $mentor)
     {
         //
     }
