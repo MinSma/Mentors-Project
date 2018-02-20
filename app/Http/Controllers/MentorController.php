@@ -6,6 +6,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Repositories\MentorsRepository;
 use App\Models\Mentor;
+use Illuminate\View\View;
 
 /**
  * Class MentorController
@@ -28,78 +29,64 @@ class MentorController extends Controller
     }
 
     /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
+     * @return View
      */
-    public function index()
+    public function index() : View
     {
-        //
+        return view('mentors.index');
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
+     * @return View
      */
-    public function create()
+    public function create(): View
     {
-        //
+        return view('mentors.create');
     }
 
     /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @return View
      */
-    public function store(Request $request)
+    public function store(Request $request): View
     {
-        //
+        return view('mentors.index');
     }
 
     /**
-     * Display the specified resource.
-     *
-     * @param  Mentor  $mentor
-     * @return \Illuminate\Http\Response
+     * @param Mentor $mentor
+     * @return View
      */
-    public function show(Mentor $mentor)
+    public function show(Mentor $mentor): View
     {
-        //
+        return view('mentors.show', compact('mentor'));
     }
 
     /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  Mentor  $mentor
-     * @return \Illuminate\Http\Response
+     * @param Mentor $mentor
+     * @return View
      */
-    public function edit(Mentor $mentor)
+    public function edit(Mentor $mentor): View
     {
-        //
+        return view('mentors.show', compact('mentor'));
     }
 
     /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  Mentor  $mentor
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @param Mentor $mentor
+     * @return View
      */
-    public function update(Request $request, Mentor $mentor)
+    public function update(Request $request, Mentor $mentor): View
     {
-        //
+        return view('mentors.show', compact('mentor'));
     }
 
     /**
-     * Remove the specified resource from storage.
-     *
-     * @param  Mentor  $mentor
-     * @return \Illuminate\Http\Response
+     * @param Mentor $mentor
+     * @return View
      */
-    public function destroy(Mentor $mentor)
+    public function destroy(Mentor $mentor): View
     {
-        //
+        return view('mentors.show', compact('mentor'));
     }
 }

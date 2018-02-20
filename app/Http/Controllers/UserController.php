@@ -6,6 +6,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Repositories\UsersRepository;
 use App\User;
+use Illuminate\View\View;
 
 /**
  * Class UserController
@@ -28,78 +29,64 @@ class UserController extends Controller
     }
 
     /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
+     * @return View
      */
-    public function index()
+    public function index(): View
     {
-        //
+        return view('users.index');
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
+     * @return View
      */
-    public function create()
+    public function create(): View
     {
-        //
+        return view('users.create');
     }
 
     /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @return View
      */
-    public function store(Request $request)
+    public function store(Request $request): View
     {
-        //
+        return view('users.create');
     }
 
     /**
-     * Display the specified resource.
-     *
-     * @param  User  $user
-     * @return \Illuminate\Http\Response
+     * @param User $user
+     * @return View
      */
-    public function show(User $user)
+    public function show(User $user): View
     {
-        //
+        return view('users.show', compact('user'));
     }
 
     /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  User  $user
-     * @return \Illuminate\Http\Response
+     * @param User $user
+     * @return View
      */
-    public function edit(User $user)
+    public function edit(User $user): View
     {
-        //
+        return view('users.show', compact('user'));
     }
 
     /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  User  $user
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @param User $user
+     * @return View
      */
-    public function update(Request $request, User $user)
+    public function update(Request $request, User $user): View
     {
-        //
+        return view('users.show', compact('user'));
     }
 
     /**
-     * Remove the specified resource from storage.
-     *
-     * @param  User  $user
-     * @return \Illuminate\Http\Response
+     * @param User $user
+     * @return View
      */
-    public function destroy(User $user)
+    public function destroy(User $user): View
     {
-        //
+        return view('users.show', compact('user'));
     }
 }

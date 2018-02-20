@@ -6,6 +6,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Repositories\StudentsRepository;
 use App\Models\Student;
+use Illuminate\View\View;
 
 /**
  * Class StudentController
@@ -28,78 +29,64 @@ class StudentController extends Controller
     }
 
     /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
+     * @return View
      */
-    public function index()
+    public function index(): View
     {
-        //
+        return view('students.show');
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
+     * @return View
      */
-    public function create()
+    public function create(): View
     {
-        //
+        return view('students.create');
     }
 
     /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @return View
      */
-    public function store(Request $request)
+    public function store(Request $request): View
     {
-        //
+        return view('students.index');
     }
 
     /**
-     * Display the specified resource.
-     *
-     * @param  Student  $student
-     * @return \Illuminate\Http\Response
+     * @param Student $student
+     * @return View
      */
-    public function show(Student $student)
+    public function show(Student $student): View
     {
-        //
+        return view('students.show', compact('student'));
     }
 
     /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  Student  $student
-     * @return \Illuminate\Http\Response
+     * @param Student $student
+     * @return View
      */
-    public function edit(Student $student)
+    public function edit(Student $student): View
     {
-        //
+        return view('students.show', compact('student'));
     }
 
     /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  Student  $student
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @param Student $student
+     * @return View
      */
-    public function update(Request $request, Student $student)
+    public function update(Request $request, Student $student): View
     {
-        //
+        return view('students.show', compact('student'));
     }
 
     /**
-     * Remove the specified resource from storage.
-     *
-     * @param  Student  $student
-     * @return \Illuminate\Http\Response
+     * @param Student $student
+     * @return View
      */
-    public function destroy(Student $student)
+    public function destroy(Student $student): View
     {
-        //
+        return view('students.show', compact('student'));
     }
 }
