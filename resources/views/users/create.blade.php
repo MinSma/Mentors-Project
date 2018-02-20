@@ -5,11 +5,11 @@
         <div class="col-md-4"></div>
 
         <div class="col-md-4">
-            <h1>Student Registration</h1>
+            <h1>Admin Creation</h1>
 
             <hr>
 
-            <form action="/students" method="post">
+            <form action="/mentors" method="post">
                 {{ csrf_field() }}
 
                 <div class="form-group">
@@ -38,26 +38,7 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="gender">Gender:</label>
-
-                    <select name="gender" id="gender" class="form-control">
-                        <option value="man">Man</option>
-                        <option value="woman">Woman</option>
-                    </select>
-                </div>
-
-                <div class="form-group">
-                    <label for="age">Age:</label>
-                    <input type="text" class="form-control" id="age"  name="age" required>
-                </div>
-
-                <div class="form-group">
-                    <label for="city">City:</label>
-                    <input type="text" class="form-control" id="city"  name="city" required>
-                </div>
-
-                <div class="form-group">
-                    <button type="submit" class="btn btn-primary">Register</button>
+                    <button type="submit" class="btn btn-primary">Create</button>
                 </div>
             </form>
         </div>

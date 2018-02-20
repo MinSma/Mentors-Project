@@ -9,10 +9,10 @@ use App\Models\Student;
 use Illuminate\View\View;
 
 /**
- * Class StudentController
+ * Class StudentsController
  * @package App\Http\Controllers
  */
-class StudentController extends Controller
+class StudentsController extends Controller
 {
     /**
      * @var StudentsRepository
@@ -20,7 +20,7 @@ class StudentController extends Controller
     private $studentsRepository;
 
     /**
-     * StudentController constructor.
+     * StudentsController constructor.
      * @param StudentsRepository $studentsRepository
      */
     public function __construct(StudentsRepository $studentsRepository)

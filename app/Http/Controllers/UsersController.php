@@ -9,10 +9,10 @@ use App\User;
 use Illuminate\View\View;
 
 /**
- * Class UserController
+ * Class UsersController
  * @package App\Http\Controllers
  */
-class UserController extends Controller
+class UsersController extends Controller
 {
     /**
      * @var UsersRepository
@@ -20,7 +20,7 @@ class UserController extends Controller
     private $usersRepository;
 
     /**
-     * UserController constructor.
+     * UsersController constructor.
      * @param UsersRepository $usersRepository
      */
     public function __construct(UsersRepository $usersRepository)

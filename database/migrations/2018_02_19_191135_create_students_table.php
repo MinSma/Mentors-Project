@@ -12,12 +12,10 @@ class CreateStudentsTable extends Migration
 {
     /**
      * Run the migrations.
-     *
-     * @return void
      */
-    public function up(): void
+    public function up()
     {
-        Schema::create('students', function (Blueprint $table): void {
+        Schema::create('students', function (Blueprint $table) {
             $table->increments('id');
             $table->string('email',60)->unique();
             $table->string('password');
@@ -33,10 +31,8 @@ class CreateStudentsTable extends Migration
 
     /**
      * Reverse the migrations.
-     *
-     * @return void
      */
-    public function down(): void
+    public function down()
     {
         Schema::dropIfExists('students');
     }
