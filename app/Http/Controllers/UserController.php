@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\Repositories\UsersRepository;
 use App\Models\User;
 
 /**
@@ -12,6 +12,17 @@ use App\Models\User;
  */
 class UserController extends Controller
 {
+    private $user; // UsersRepository object
+
+    /**
+     * UserController constructor.
+     * @param UsersRepository $user
+     */
+    public function __construct(UsersRepository $user)
+    {
+        $this->user = $user;
+    }
+
     /**
      * Display a listing of the resource.
      *

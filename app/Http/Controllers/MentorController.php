@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\Repositories\MentorsRepository;
 use App\Models\Mentor;
 
 /**
@@ -12,6 +12,17 @@ use App\Models\Mentor;
  */
 class MentorController extends Controller
 {
+    private $mentor; // MentorsRepository object
+
+    /**
+     * MentorController constructor.
+     * @param MentorsRepository $mentor
+     */
+    public function __construct(MentorsRepository $mentor)
+    {
+        $this->mentor = $mentor;
+    }
+
     /**
      * Display a listing of the resource.
      *

@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\Repositories\StudentsRepository;
 use App\Models\Student;
 
 /**
@@ -12,6 +12,17 @@ use App\Models\Student;
  */
 class StudentController extends Controller
 {
+    private $student; // StudentsRepository object
+
+    /**
+     * StudentController constructor.
+     * @param StudentsRepository $student
+     */
+    public function __construct(StudentsRepository $student)
+    {
+        $this->student = $student;
+    }
+
     /**
      * Display a listing of the resource.
      *
