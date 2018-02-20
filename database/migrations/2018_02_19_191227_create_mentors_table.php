@@ -12,12 +12,10 @@ class CreateMentorsTable extends Migration
 {
     /**
      * Run the migrations.
-     *
-     * @return void
      */
-    public function up(): void
+    public function up()
     {
-        Schema::create('mentors', function (Blueprint $table): void {
+        Schema::create('mentors', function (Blueprint $table) {
             $table->increments('id');
             $table->string('email',60)->unique();
             $table->string('password');
@@ -36,10 +34,8 @@ class CreateMentorsTable extends Migration
 
     /**
      * Reverse the migrations.
-     *
-     * @return void
      */
-    public function down(): void
+    public function down()
     {
         Schema::dropIfExists('mentors');
     }
