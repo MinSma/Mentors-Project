@@ -1,9 +1,10 @@
 <?php
+declare(strict_types = 1);
 
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\Repositories\StudentsRepository;
 use App\Models\Student;
 
 /**
@@ -12,6 +13,20 @@ use App\Models\Student;
  */
 class StudentController extends Controller
 {
+    /**
+     * @var StudentsRepository
+     */
+    private $studentsRepository;
+
+    /**
+     * StudentController constructor.
+     * @param StudentsRepository $studentsRepository
+     */
+    public function __construct(StudentsRepository $studentsRepository)
+    {
+        $this->studentsRepository = $studentsRepository;
+    }
+
     /**
      * Display a listing of the resource.
      *

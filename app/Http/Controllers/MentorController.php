@@ -1,9 +1,10 @@
 <?php
+declare(strict_types = 1);
 
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\Repositories\MentorsRepository;
 use App\Models\Mentor;
 
 /**
@@ -12,6 +13,20 @@ use App\Models\Mentor;
  */
 class MentorController extends Controller
 {
+    /**
+     * @var MentorsRepository
+     */
+    private $mentorsRepository;
+
+    /**
+     * MentorController constructor.
+     * @param MentorsRepository $mentorsRepository
+     */
+    public function __construct(MentorsRepository $mentorsRepository)
+    {
+        $this->mentorsRepository = $mentorsRepository;
+    }
+
     /**
      * Display a listing of the resource.
      *
