@@ -5,7 +5,7 @@
         <div class="col-md-4"></div>
 
         <div class="col-md-4">
-            <h1>Studentu Registracija</h1>
+            <h1>Admininistratoriaus Kurimas</h1>
 
             <hr>
 
@@ -13,13 +13,8 @@
                 {{ csrf_field() }}
 
                 <div class="form-group">
-                    <label for="first_name">Vardas:</label>
+                    <label for="first_name">Vartotojo vardas:</label>
                     <input type="text" class="form-control" id="first_name"  name="first_name" required>
-                </div>
-
-                <div class="form-group">
-                    <label for="last_name">Pavarde:</label>
-                    <input type="text" class="form-control" id="last_name"  name="last_name" required>
                 </div>
 
                 <div class="form-group">
@@ -38,26 +33,7 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="gender">Lytis:</label>
-
-                    <select name="gender" id="gender" class="form-control">
-                        <option value="0">Vyras</option>
-                        <option value="1">Moteris</option>
-                    </select>
-                </div>
-
-                <div class="form-group">
-                    <label for="age">Amzius:</label>
-                    <input type="text" class="form-control" id="age"  name="age" required>
-                </div>
-
-                <div class="form-group">
-                    <label for="city">Miestas:</label>
-                    <input type="text" class="form-control" id="city"  name="city" required>
-                </div>
-
-                <div class="form-group">
-                    <button type="submit" class="btn btn-primary">Registruotis</button>
+                    <button type="submit" class="btn btn-primary">Sukurti</button>
                 </div>
             </form>
         </div>
