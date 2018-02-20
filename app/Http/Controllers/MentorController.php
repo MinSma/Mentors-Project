@@ -10,7 +10,7 @@ use Illuminate\View\View;
 
 /**
  * Class MentorController
- * @package App\Http\Controllers
+ * @package App\Http\Controller
  */
 class MentorController extends Controller
 {
@@ -31,7 +31,7 @@ class MentorController extends Controller
     /**
      * @return View
      */
-    public function index() : View
+    public function index(): View
     {
         return view('mentors.index');
     }
@@ -41,6 +41,7 @@ class MentorController extends Controller
      */
     public function create(): View
     {
+        dump('bilekas');
         return view('mentors.create');
     }
 
