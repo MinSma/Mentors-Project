@@ -1,4 +1,5 @@
 <?php
+declare(strict_types = 1);
 
 namespace App\Http\Controllers;
 
@@ -12,15 +13,18 @@ use App\Models\Student;
  */
 class StudentController extends Controller
 {
-    private $student; // StudentsRepository object
+    /**
+     * @var StudentsRepository
+     */
+    private $studentsRepository;
 
     /**
      * StudentController constructor.
-     * @param StudentsRepository $student
+     * @param StudentsRepository $studentsRepository
      */
-    public function __construct(StudentsRepository $student)
+    public function __construct(StudentsRepository $studentsRepository)
     {
-        $this->student = $student;
+        $this->studentsRepository = $studentsRepository;
     }
 
     /**

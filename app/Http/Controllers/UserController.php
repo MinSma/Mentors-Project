@@ -1,10 +1,11 @@
 <?php
+declare(strict_types = 1);
 
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Repositories\UsersRepository;
-use App\Models\User;
+use App\User;
 
 /**
  * Class UserController
@@ -12,15 +13,18 @@ use App\Models\User;
  */
 class UserController extends Controller
 {
-    private $user; // UsersRepository object
+    /**
+     * @var UsersRepository
+     */
+    private $usersRepository;
 
     /**
      * UserController constructor.
-     * @param UsersRepository $user
+     * @param UsersRepository $usersRepository
      */
-    public function __construct(UsersRepository $user)
+    public function __construct(UsersRepository $usersRepository)
     {
-        $this->user = $user;
+        $this->usersRepository = $usersRepository;
     }
 
     /**

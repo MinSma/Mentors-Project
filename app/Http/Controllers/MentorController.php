@@ -1,4 +1,5 @@
 <?php
+declare(strict_types = 1);
 
 namespace App\Http\Controllers;
 
@@ -12,15 +13,18 @@ use App\Models\Mentor;
  */
 class MentorController extends Controller
 {
-    private $mentor; // MentorsRepository object
+    /**
+     * @var MentorsRepository
+     */
+    private $mentorsRepository;
 
     /**
      * MentorController constructor.
-     * @param MentorsRepository $mentor
+     * @param MentorsRepository $mentorsRepository
      */
-    public function __construct(MentorsRepository $mentor)
+    public function __construct(MentorsRepository $mentorsRepository)
     {
-        $this->mentor = $mentor;
+        $this->mentorsRepository = $mentorsRepository;
     }
 
     /**
