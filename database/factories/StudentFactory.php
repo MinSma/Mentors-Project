@@ -3,14 +3,14 @@ declare(strict_types = 1);
 
 use Faker\Generator as Faker;
 
-$factory->define(App\Student::class, function (Faker $faker) {
+$factory->define(App\Models\Student::class, function (Faker $faker) {
     return [
         'first_name' => $faker->firstName,
         'last_name' => $faker->lastName,
-        'gender' => $faker->randomElement(
+        'gender' => $faker->randomElement(array(
             'vyras',
             'moteris'
-        ),
+        )),
         'age' => $faker->numberBetween(6, 100),
         'city' => $faker->city,
         'email' => $faker->unique()->safeEmail,
