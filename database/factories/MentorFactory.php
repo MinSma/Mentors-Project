@@ -3,17 +3,17 @@ declare(strict_types = 1);
 
 use Faker\Generator as Faker;
 
-$factory->define(App\Mentor::class, function (Faker $faker) {
+$factory->define(App\Models\Mentor::class, function (Faker $faker) {
     return [
         'first_name' => $faker->firstName,
         'last_name' => $faker->lastName,
-        'gender' => $faker->randomElement(
+        'gender' => $faker->randomElement(array(
             'vyras',
             'moteris'
-        ),
+        )),
         'age' =>$faker->numberBetween(16, 75),
         'city' => $faker->city,
-        'topic' => $faker->randomElement(
+        'topic' => $faker->randomElement(array(
             'Matematika',
             'Lietuviu kalba',
             'Anglu kalba',
@@ -22,12 +22,8 @@ $factory->define(App\Mentor::class, function (Faker $faker) {
             'Chemija',
             'Biologija',
             'Istorija'
-        ),
-        'level' => $faker->randomElement(
-            'Pagrindinis',
-            'Vidurinis',
-            'Universitetinis'
-        ),
+        )),
+
         'fixed_hour_price' => $faker->randomFloat(4, 4.0, 50.0),
         'rating' => $faker->randomFloat(4,0.0, 10.0),
         'email' => $faker->unique()->safeEmail,
