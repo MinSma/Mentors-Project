@@ -4,6 +4,7 @@ declare(strict_types = 1);
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\StudentUpdateRequest;
 use App\Repositories\StudentsRepository;
 use App\Models\Student;
 use Illuminate\View\View;
@@ -45,12 +46,25 @@ class StudentsController extends Controller
     }
 
     /**
-     * @param Request $request
+     * @param StudentUpdateRequest $request
      * @return View
      */
-    public function store(Request $request): View
+    public function store(StudentUpdateRequest $request): View
     {
-        return view('students.index');
+        $data = [
+            'email' => $request->getEmail(),
+            'password' => bcrypt($request->getPassword()),
+            'first_name' => $request->getFirstName(),
+            'last_name' => $request->getLastName(),
+            'gender' => $request->getGender(),
+            'age' => $request->getAge(),
+            'city' => $request->getCity()
+        ];
+
+        $this->studentsRepository->create($data);
+
+        return view('students.index')
+            ->withSuccess('Student has been created');
     }
 
     /**

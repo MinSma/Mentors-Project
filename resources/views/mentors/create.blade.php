@@ -9,7 +9,7 @@
 
             <hr>
 
-            <form action="/mentors" method="post">
+            <form action="{{route('mentors.store')}}" method="post">
                 {{ csrf_field() }}
 
                 <div class="form-group">
@@ -28,13 +28,13 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="password_confirmation">Password:</label>
-                    <input type="password" class="form-control" id="password_confirmation" name="password_confirmation" required>
+                    <label for="password">Password:</label>
+                    <input type="password" class="form-control" id="password" name="password" required>
                 </div>
 
                 <div class="form-group">
-                    <label for="password">Password Confirmation:</label>
-                    <input type="password" class="form-control" id="password" name="password" required>
+                    <label for="password_confirmation">Password Confirmation:</label>
+                    <input type="password" class="form-control" id="password_confirmation" name="password_confirmation" required>
                 </div>
 
                 <div class="form-group">
@@ -48,7 +48,7 @@
 
                 <div class="form-group">
                     <label for="age">Age:</label>
-                    <input type="text" class="form-control" id="age"  name="age" required>
+                    <input type="number" class="form-control" id="age"  name="age" required>
                 </div>
 
                 <div class="form-group">
@@ -60,7 +60,6 @@
                     <label for="topic">Topic:</label>
 
                     <select name="topic" id="topic" class="form-control">
-                        <option value=" "></option>
                         <option value="mathematics">Mathematics</option>
                         <option value="english">English language</option>
                         <option value="it">Information Technology</option>

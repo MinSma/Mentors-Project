@@ -40,7 +40,7 @@ abstract class Repository
      * @param array $columns
      * @return Collection
      */
-    final protected function all(array $columns = ['*']): Collection
+    final public function all(array $columns = ['*']): Collection
     {
         return $this->makeQuery()->get($columns);
     }
@@ -49,7 +49,7 @@ abstract class Repository
      * @param array $data
      * @return Model
      */
-    final protected function create(array $data): Model
+    final public function create(array $data): Model
     {
         return $this->makeQuery()->create($data);
     }
@@ -58,7 +58,7 @@ abstract class Repository
      * @param array $data
      * @return int
      */
-    final protected function update(array $data)
+    final public function update(array $data)
     {
         return $this->makeQuery()->update($data);
     }

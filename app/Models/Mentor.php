@@ -16,6 +16,7 @@ class Mentor extends Model
      */
     protected $fillable = [
         'email',
+        'password',
         'first_name',
         'last_name',
         'gender',
@@ -31,7 +32,6 @@ class Mentor extends Model
      *
      */
     protected $hidden = [
-        'password',
         'remember_token'
     ];
 }
