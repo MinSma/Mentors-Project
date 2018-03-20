@@ -51,7 +51,23 @@ class MentorsController extends Controller
      */
     public function store(MentorUpdateRequest $request): View
     {
-        return view('mentors.index');
+        $data = [
+            'email' => $request->getEmail(),
+            'password' => bcrypt($request->getPassword()),
+            'first_name' => $request->getFirstName(),
+            'last_name' => $request->getLastName(),
+            'gender' => $request->getGender(),
+            'age' => $request->getAge(),
+            'city' => $request->getCity(),
+            'topic' => $request->getTopic(),
+            'fixed_hour_price' => $request->getFixedHourPrice(),
+            'rating' => null
+        ];
+
+        $this->mentorsRepository->create($data);
+
+        return view('mentors.index')
+                         ->withSuccess('Mentor has been created');
     }
 
     /**

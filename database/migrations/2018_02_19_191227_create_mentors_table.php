@@ -26,7 +26,7 @@ class CreateMentorsTable extends Migration
             $table->string('city');
             $table->string('topic');
             $table->double('fixed_hour_price');
-            $table->double('rating');
+            $table->double('rating')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

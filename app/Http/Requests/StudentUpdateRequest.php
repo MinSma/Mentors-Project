@@ -24,12 +24,14 @@ class StudentUpdateRequest extends FormRequest
     public function rules()
     {
         return [
-            'email'            => 'required|email',
-            'first_name'       => 'required',
-            'last_name'        => 'required',
-            'gender'           => 'required',
-            'age'              => 'required|min:value',
-            'city'             => 'required',
+//            'email'                 => 'required|email',
+//            'password'              => 'required',
+//            'password_confirmation' => 'confirmed',
+//            'first_name'            => 'required',
+//            'last_name'             => 'required',
+//            'gender'                => 'required',
+//            'age'                   => 'required|min:value',
+//            'city'                  => 'required',
         ];
     }
 
@@ -39,6 +41,14 @@ class StudentUpdateRequest extends FormRequest
     public function getFirstName()
     {
         return $this->input('first_name');
+    }
+
+    /**
+     * @return array|null|string
+     */
+    public function getPassword()
+    {
+        return $this->input('password');
     }
 
     /**
@@ -71,5 +81,13 @@ class StudentUpdateRequest extends FormRequest
     public function getAge()
     {
         return $this->input('age');
+    }
+
+    /**
+     * @return array|string
+     */
+    public function getCity()
+    {
+        return $this->input('city');
     }
 }
