@@ -61,7 +61,7 @@ class MentorsController extends Controller
             'city' => $request->getCity(),
             'topic' => $request->getTopic(),
             'fixed_hour_price' => $request->getFixedHourPrice(),
-            'rating' => null
+            'rating' => 0.0
         ];
 
         $this->mentorsRepository->create($data);
