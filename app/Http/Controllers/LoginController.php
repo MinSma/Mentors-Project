@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\LoginRequest;
 use App\Services\LoginService;
-use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
 {
@@ -25,17 +24,16 @@ class LoginController extends Controller
     /**
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function dashboard()
-    {
-        return view('dashboard');
-    }
-    /**
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-     */
     public function index()
     {
-        if(Auth::check())
-            return redirect()->route('login.dashboard');
+        if (auth('student')->check())
+            return view('students.dashboard');
+
+        else if (auth('mentor')->check())
+            return view('mentors.dashboard');
+
+        else if (auth('web')->check())
+            return view('users.dashboard');
 
         return view('login.index');
     }
@@ -47,13 +45,13 @@ class LoginController extends Controller
     public function connect(LoginRequest $request)
     {
         if ($this->loginService->tryStudent($request))
-            echo 'as studentas';
+            return view('students.dashboard');
 
         else if ($this->loginService->tryMentor($request))
-            echo 'as mentorius';
+            return view('mentors.dashboard');
 
         else if ($this->loginService->tryUser($request))
-            echo 'as useris';
+            return view('users.dashboard');
 
         else return redirect()->back();
     }
@@ -65,6 +63,6 @@ class LoginController extends Controller
     {
         auth()->logout();
 
-        return redirect()->route('login');;
+        return view('login.index');
     }
 }

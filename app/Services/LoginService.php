@@ -54,7 +54,7 @@ class LoginService
      */
     public function tryUser(LoginRequest $request)
     {
-        if($this->getLoginData($request))
+        if($this->getLoginData($request, 'web'))
             return true;
         return false;
 

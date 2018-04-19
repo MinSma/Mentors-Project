@@ -20,4 +20,4 @@
         <li><a href="{{ URL::to('events/create') }}">Create an Event</a></li>
     </ul>
 </li>
-<li><a href="{{ URL::to('login/disconnect') }}">Logout</a></li>
+<li><a href="{{ route('login.disconnect') }}">Logout</a></li>

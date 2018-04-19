@@ -14,7 +14,6 @@
             <td>ID</td>
             <td>Name</td>
             <td>Email</td>
-            <td>Is Admin</td>
             <td>Actions</td>
 
         </tr>
@@ -25,15 +24,14 @@
                 <td>{{ $value->id }}</td>
                 <td>{{ $value->name }}</td>
                 <td>{{ $value->email }}</td>
-                <td>{{ $value->is_admin }}</td>
 
                 <td>
                     <a class="btn btn-small btn-info" href="{{ URL::to('users/' . $value->id . '/edit') }}">Edit this User</a>
 
-                    {{--{{ Form::open(array('url' => 'users/' . $value->id . '/delete', 'class' => 'pull-right')) }}--}}
-                    {{--{{ Form::hidden('_method', 'DELETE') }}--}}
-                    {{--{{ Form::submit('Delete this User', array('class' => 'btn btn-danger')) }}--}}
-                    {{--{{ Form::close() }}--}}
+                    {{ Form::open(array('url' => 'users/' . $value->id . '/delete', 'class' => 'pull-right')) }}
+                    {{ Form::hidden('_method', 'DELETE') }}
+                    {{ Form::submit('Delete this User', array('class' => 'btn btn-danger')) }}
+                    {{ Form::close() }}
                 </td>
             </tr>
         @endforeach

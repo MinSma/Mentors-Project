@@ -40,6 +40,14 @@ class MentorsController extends Controller
     /**
      * @return View
      */
+    public function dashboard(): View
+    {
+        return view('mentors.dashboard');
+    }
+
+    /**
+     * @return View
+     */
     public function create(): View
     {
         return view('mentors.create');

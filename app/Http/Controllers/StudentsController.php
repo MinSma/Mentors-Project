@@ -38,6 +38,14 @@ class StudentsController extends Controller
     }
 
     /**
+     * @return \Illuminate\Contracts\View\Factory|View
+     */
+    public function dashboard(): View
+    {
+        return view('students.dashboard');
+    }
+
+    /**
      * @return View
      */
     public function create(): View
