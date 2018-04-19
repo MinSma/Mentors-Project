@@ -3,14 +3,17 @@ declare(strict_types = 1);
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\Notifications\Notifiable;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 
 /**
  * Class Mentor
  * @package App\Models
  */
-class Mentor extends Model
+class Mentor extends Authenticatable
 {
+    use Notifiable;
+
     /**
      * @var array
      */

@@ -37,3 +37,9 @@ Route::get('users/{user}/edit', 'UsersController@edit')->name('users.edit');
 Route::post('users/', 'UsersController@store')->name('users.store');
 Route::patch('users/{user}/update', 'UsersController@update')->name('users.update');
 Route::delete('users/{user}/delete', 'UsersController@destroy')->name('users.delete');
+
+// Login routing
+Route::get('login/', 'LoginController@index')->name('login');
+Route::post('login/connect', 'LoginController@connect')->name('login.connect');
+Route::get('login/disconnect', 'LoginController@disconnect')->name('login.disconnect');
+Route::get('dashboard/', 'LoginController@dashboard')->name('login.dashboard');

@@ -3,6 +3,7 @@ declare(strict_types = 1);
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\UserUpdateRequest;
 use Illuminate\Http\Request;
 use App\Repositories\UsersRepository;
 use App\User;
@@ -33,7 +34,9 @@ class UsersController extends Controller
      */
     public function index(): View
     {
-        return view('users.index');
+        $users = $this->usersRepository->all();
+
+        return view('users.index', ['users' => $users]);
     }
 
     /**
@@ -45,12 +48,21 @@ class UsersController extends Controller
     }
 
     /**
-     * @param Request $request
-     * @return View
+     * @param UserUpdateRequest $request
+     * @return mixed
      */
-    public function store(Request $request): View
+    public function store(UserUpdateRequest $request)
     {
-        return view('users.create');
+        $data = [
+            'email' => $request->getEmail(),
+            'password' => bcrypt($request->getPassword()),
+            'name' => $request->getName(),
+        ];
+
+        $this->usersRepository->create($data);
+
+        return redirect()->back()
+            ->withSuccess('User has been created');
     }
 
     /**
