@@ -62,4 +62,5 @@ abstract class Repository
     {
         return $this->makeQuery()->update($data);
     }
+
 }

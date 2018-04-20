@@ -34,7 +34,17 @@ class MentorsController extends Controller
      */
     public function index(): View
     {
-        return view('mentors.index');
+        $mentors = $this->mentorsRepository->all();
+
+        return view('mentors.index', ['mentors' => $mentors]);
+    }
+
+    /**
+     * @return View
+     */
+    public function dashboard(): View
+    {
+        return view('mentors.dashboard');
     }
 
     /**
@@ -85,25 +95,41 @@ class MentorsController extends Controller
      */
     public function edit(Mentor $mentor): View
     {
-        return view('mentors.show', compact('mentor'));
+        return view('mentors.edit', compact('mentor'));
     }
 
     /**
-     * @param Request $request
+     * @param MentorUpdateRequest $request
      * @param Mentor $mentor
-     * @return View
+     * @return mixed
      */
-    public function update(Request $request, Mentor $mentor): View
+    public function update(MentorUpdateRequest $request, Mentor $mentor)
     {
-        return view('mentors.show', compact('mentor'));
+        $mentor->update([
+            'email' => $request->getEmail(),
+//            'password' => bcrypt($request->getPassword()),
+            'first_name' => $request->getFirstName(),
+            'last_name' => $request->getLastName(),
+            'gender' => $request->getGender(),
+            'age' => $request->getAge(),
+            'city' => $request->getCity(),
+            'topic' => $request->getTopic(),
+            'fixed_hour_price' => $request->getFixedHourPrice()]);
+
+        return redirect()->route('mentors.index')
+            ->withSuccess('Mentor has been updated');
     }
 
     /**
      * @param Mentor $mentor
-     * @return View
+     * @return mixed
+     * @throws \Exception
      */
-    public function destroy(Mentor $mentor): View
+    public function destroy(Mentor $mentor)
     {
-        return view('mentors.show', compact('mentor'));
+        $mentor->delete();
+
+        return redirect()->back()
+            ->withSuccess('Mentor has been deleted');
     }
 }

@@ -1,4 +1,8 @@
-@extends('layout.layout')
+@extends('layouts.main')
+@section('title', 'Users Create')
+@section('menu')
+    @include('layouts.userNavPanel')
+@endsection
 
 @section('content')
     <div class="row">
@@ -9,32 +13,27 @@
 
             <hr>
 
-            <form action="/mentors" method="post">
+            <form action="{{route('users.store')}}" method="post">
                 {{ csrf_field() }}
 
                 <div class="form-group">
-                    <label for="first_name">First Name:</label>
-                    <input type="text" class="form-control" id="first_name"  name="first_name" required>
+                    <label for="name">Name:</label>
+                    <input type="text" class="form-control" id="name"  name="name" required>
                 </div>
 
                 <div class="form-group">
-                    <label for="last_name">Last Name:</label>
-                    <input type="text" class="form-control" id="last_name"  name="last_name" required>
-                </div>
-
-                <div class="form-group">
-                    <label for="email">Email Adresas:</label>
+                    <label for="email">Email Address:</label>
                     <input type="email" class="form-control" id="email"  name="email" required>
                 </div>
 
                 <div class="form-group">
-                    <label for="password_confirmation">Password:</label>
-                    <input type="password" class="form-control" id="password_confirmation" name="password_confirmation" required>
+                    <label for="password">Password:</label>
+                    <input type="password" class="form-control" id="password" name="password" required>
                 </div>
 
                 <div class="form-group">
-                    <label for="password">Password Confirmation:</label>
-                    <input type="password" class="form-control" id="password" name="password" required>
+                    <label for="password_confirmation">Password Confirmation:</label>
+                    <input type="password" class="form-control" id="password_confirmation" name="password_confirmation" required>
                 </div>
 
                 <div class="form-group">

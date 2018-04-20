@@ -3,7 +3,7 @@ declare(strict_types = 1);
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Http\Requests\UserUpdateRequest;
 use App\Repositories\UsersRepository;
 use App\User;
 use Illuminate\View\View;
@@ -33,7 +33,17 @@ class UsersController extends Controller
      */
     public function index(): View
     {
-        return view('users.index');
+        $users = $this->usersRepository->all();
+
+        return view('users.index', ['users' => $users]);
+    }
+
+    /**
+     * @return \Illuminate\Contracts\View\Factory|View
+     */
+    public function dashboard(): View
+    {
+        return view('users.dashboard');
     }
 
     /**
@@ -45,12 +55,21 @@ class UsersController extends Controller
     }
 
     /**
-     * @param Request $request
-     * @return View
+     * @param UserUpdateRequest $request
+     * @return mixed
      */
-    public function store(Request $request): View
+    public function store(UserUpdateRequest $request)
     {
-        return view('users.create');
+        $data = [
+            'email' => $request->getEmail(),
+            'password' => bcrypt($request->getPassword()),
+            'name' => $request->getName(),
+        ];
+
+        $this->usersRepository->create($data);
+
+        return redirect()->back()
+            ->withSuccess('User has been created');
     }
 
     /**
@@ -68,25 +87,37 @@ class UsersController extends Controller
      */
     public function edit(User $user): View
     {
-        return view('users.show', compact('user'));
+        return view('users.edit', [
+            'user' => $user
+        ]);
     }
 
     /**
-     * @param Request $request
+     * @param UserUpdateRequest $request
      * @param User $user
-     * @return View
+     * @return mixed
      */
-    public function update(Request $request, User $user): View
+    public function update(UserUpdateRequest $request, User $user)
     {
-        return view('users.show', compact('user'));
+        $user->update([
+            'email' => $request->getEmail(),
+//            'password' => bcrypt($request->getPassword()),
+            'name' => $request->getName()]);
+
+        return redirect()->route('users.index')
+            ->withSuccess('User has been updated');
     }
 
     /**
      * @param User $user
-     * @return View
+     * @return mixed
+     * @throws \Exception
      */
-    public function destroy(User $user): View
+    public function destroy(User $user)
     {
-        return view('users.show', compact('user'));
+        $user->delete();
+
+        return redirect()->back()
+            ->withSuccess('User has been deleted');
     }
 }
