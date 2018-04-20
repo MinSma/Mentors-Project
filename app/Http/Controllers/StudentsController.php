@@ -34,7 +34,9 @@ class StudentsController extends Controller
      */
     public function index(): View
     {
-        return view('students.show');
+        $students = $this->studentsRepository->all();
+
+        return view('students.index', ['students' => $students]);
     }
 
     /**
@@ -90,25 +92,41 @@ class StudentsController extends Controller
      */
     public function edit(Student $student): View
     {
-        return view('students.show', compact('student'));
+        return view('students.edit', [
+            'student' => $student
+        ]);
     }
 
     /**
-     * @param Request $request
+     * @param StudentUpdateRequest $request
      * @param Student $student
      * @return View
      */
-    public function update(Request $request, Student $student): View
+    public function update(StudentUpdateRequest $request, Student $student)
     {
-        return view('students.show', compact('student'));
+        $student->update([
+            'email' => $request->getEmail(),
+//            'password' => bcrypt($request->getPassword()),
+            'first_name' => $request->getFirstName(),
+            'last_name' => $request->getLastName(),
+            'gender' => $request->getGender(),
+            'age' => $request->getAge(),
+            'city' => $request->getCity()]);
+
+        return redirect()->route('students.index')
+            ->withSuccess('Student has been updated');
     }
 
     /**
      * @param Student $student
      * @return View
+     * @throws \Exception
      */
-    public function destroy(Student $student): View
+    public function destroy(Student $student)
     {
-        return view('students.show', compact('student'));
+        $student->delete();
+
+        return redirect()->back()
+            ->withSuccess('Student has been deleted');
     }
 }

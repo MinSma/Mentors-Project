@@ -5,6 +5,10 @@ namespace App\Http\Controllers;
 use App\Http\Requests\LoginRequest;
 use App\Services\LoginService;
 
+/**
+ * Class LoginController
+ * @package App\Http\Controllers
+ */
 class LoginController extends Controller
 {
     /**
@@ -27,13 +31,13 @@ class LoginController extends Controller
     public function index()
     {
         if (auth('student')->check())
-            return view('students.dashboard');
+            return redirect()->route('students.dashboard');
 
         else if (auth('mentor')->check())
-            return view('mentors.dashboard');
+            return redirect()->route('mentors.dashboard');
 
         else if (auth('web')->check())
-            return view('users.dashboard');
+            return redirect()->route('users.dashboard');
 
         return view('login.index');
     }
@@ -45,13 +49,13 @@ class LoginController extends Controller
     public function connect(LoginRequest $request)
     {
         if ($this->loginService->tryStudent($request))
-            return view('students.dashboard');
+            return redirect()->route('students.dashboard');
 
         else if ($this->loginService->tryMentor($request))
-            return view('mentors.dashboard');
+            return redirect()->route('mentors.dashboard');
 
         else if ($this->loginService->tryUser($request))
-            return view('users.dashboard');
+            return redirect()->route('users.dashboard');
 
         else return redirect()->back();
     }
@@ -61,7 +65,9 @@ class LoginController extends Controller
      */
     public function disconnect()
     {
-        auth()->logout();
+        auth('mentor')->logout();
+        auth('student')->logout();
+        auth('web')->logout();
 
         return view('login.index');
     }

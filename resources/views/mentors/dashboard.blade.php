@@ -1,9 +1,9 @@
 @extends('layouts.main')
 @section('title', 'Login Panel')
 @section('menu')
-    @include('layouts.userNavPanel')
+    @include('layouts.mentorNavPanel')
 @endsection
 @section('content')
-    mentoriaus
+    mentoriaus dashboard
 
 @endsection

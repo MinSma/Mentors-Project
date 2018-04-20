@@ -101,10 +101,10 @@ class UsersController extends Controller
     {
         $user->update([
             'email' => $request->getEmail(),
-            'password' => bcrypt($request->getPassword()),
+//            'password' => bcrypt($request->getPassword()),
             'name' => $request->getName()]);
 
-        return redirect()->back()
+        return redirect()->route('users.index')
             ->withSuccess('User has been updated');
     }
 
