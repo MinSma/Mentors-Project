@@ -24,16 +24,15 @@ class MentorUpdateRequest extends FormRequest
     public function rules()
     {
         return [
-//            'email'                 => 'required|email',
-//            'password'              => 'required',
-//            'password_confirmation' => 'confirmed',
-//            'first_name'            => 'required',
-//            'last_name'             => 'required',
-//            'gender'                => 'required',
-//            'age'                   => 'required|min:value',
-//            'city'                  => 'required',
-//            'topic'                 => 'required',
-//            'fixed_hour_price'      => 'required',
+            'email'                 => 'required|email',
+            'password'              => 'required|confirmed',
+            'first_name'            => 'required',
+            'last_name'             => 'required',
+            'gender'                => 'required',
+            'age'                   => 'required|min:value',
+            'city'                  => 'required',
+            'topic'                 => 'required',
+            'fixed_hour_price'      => 'required',
         ];
     }
 
