@@ -26,11 +26,11 @@ class StudentUpdateRequest extends FormRequest
         return [
             'email'                 => 'required|email|unique:students|unique:mentors|unique:users',
             'password'              => 'required|confirmed',
-            'first_name'            => 'required|regex: /[a-zA-Z]+/',
-            'last_name'             => 'required|regex: /[a-zA-Z]+/',
+            'first_name'            => 'required|regex:/[a-zA-Z]+/',
+            'last_name'             => 'required|regex:/[a-zA-Z]+/',
             'gender'                => 'required',
-            'age'                   => 'required|integer|min:0',
-            'city'                  => 'required|regex: /[a-zA-Z]+/',
+            'age'                   => 'required|integer|min:1',
+            'city'                  => 'required|regex:/[a-zA-Z]+/',
         ];
     }
 
