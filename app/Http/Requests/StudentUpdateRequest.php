@@ -24,13 +24,13 @@ class StudentUpdateRequest extends FormRequest
     public function rules()
     {
         return [
-            'email'                 => 'required|email',
+            'email'                 => 'required|email|unique:students|unique:mentors|unique:users',
             'password'              => 'required|confirmed',
-            'first_name'            => 'required',
-            'last_name'             => 'required',
+            'first_name'            => 'required|regex: /[a-zA-Z]+/',
+            'last_name'             => 'required|regex: /[a-zA-Z]+/',
             'gender'                => 'required',
-            'age'                   => 'required|min:value',
-            'city'                  => 'required',
+            'age'                   => 'required|integer|min:0',
+            'city'                  => 'required|regex: /[a-zA-Z]+/',
         ];
     }
 
