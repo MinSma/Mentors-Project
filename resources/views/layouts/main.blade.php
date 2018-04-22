@@ -12,16 +12,15 @@
 
 </head>
 <body>
-
-<div class="container">
-    <nav class="navbar navbar-inverse">
-        <div class="navbar-header">
-            <a class="navbar-brand" href="{{ URL::to('/') }}">Main Page</a>
-        </div>
-        <ul class="nav navbar-nav">
-            @yield('menu')
-        </ul>
-    </nav>
+<nav class="navbar navbar">
+    <div class="navbar-header">
+        <a class="navbar-brand" href="{{ URL::to('/') }}">Main Page</a>
+    </div>
+    <ul class="nav navbar-nav">
+        @yield('menu')
+    </ul>
+</nav>
+<div class="container-fluid">
     @include('layouts.sessionsFlash')
     @yield('content')
 </div>

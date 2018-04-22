@@ -98,9 +98,9 @@ class StudentsController extends Controller
     }
 
     /**
-     * @param StudentCreateRequest $request
+     * @param StudentUpdateRequest $request
      * @param Student $student
-     * @return View
+     * @return mixed
      */
     public function update(StudentUpdateRequest $request, Student $student)
     {
