@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\MentorCreateRequest;
 use App\Http\Requests\MentorUpdateRequest;
+use App\Services\SearchService;
 use Illuminate\Http\Request;
 use App\Repositories\MentorsRepository;
 use App\Models\Mentor;
@@ -22,12 +23,18 @@ class MentorsController extends Controller
     private $mentorsRepository;
 
     /**
+     * @var SearchService
+     */
+    private $searchService;
+
+    /**
      * MentorsController constructor.
      * @param MentorsRepository $mentorsRepository
      */
-    public function __construct(MentorsRepository $mentorsRepository)
+    public function __construct(MentorsRepository $mentorsRepository, SearchService $searchService)
     {
         $this->mentorsRepository = $mentorsRepository;
+        $this->searchService = $searchService;
     }
 
     /**
@@ -131,5 +138,23 @@ class MentorsController extends Controller
 
         return redirect()->back()
             ->withSuccess('Mentor has been deleted');
+    }
+
+
+    /**
+     * @return View
+     */
+    public function search() : View {
+        return view('mentors.search');
+    }
+
+    /**
+     * @param Request $request
+     * @return View
+     */
+    public function found(Request $request) : View {
+        $mentors = $this->searchService->getMentors($request);
+
+        return view('mentors.found', ['mentors' => $mentors]);
     }
 }

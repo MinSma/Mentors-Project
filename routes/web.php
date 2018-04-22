@@ -13,6 +13,8 @@
 
 // Mentors
 Route::get('mentors/', 'MentorsController@index')->name('mentors.index')->middleware('auth');
+Route::get('mentors/search', 'MentorsController@search')->name('mentors.search');
+Route::post('mentors/found', 'MentorsController@found')->name('mentors.found');
 Route::get('mentors/dashboard', 'MentorsController@dashboard')->name('mentors.dashboard')->middleware('auth:mentor');
 Route::get('mentors/create', 'MentorsController@create')->name('mentors.create');
 Route::get('mentors/{mentor}/', 'MentorsController@show')->name('mentors.show');
