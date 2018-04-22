@@ -24,16 +24,14 @@ class MentorUpdateRequest extends FormRequest
     public function rules()
     {
         return [
-//            'email'                 => 'required|email',
-//            'password'              => 'required',
-//            'password_confirmation' => 'confirmed',
-//            'first_name'            => 'required',
-//            'last_name'             => 'required',
-//            'gender'                => 'required',
-//            'age'                   => 'required|min:value',
-//            'city'                  => 'required',
-//            'topic'                 => 'required',
-//            'fixed_hour_price'      => 'required',
+            'password'              => 'required|min:6|max:255|confirmed',
+            'first_name'            => 'required|max:255|regex:/[a-zA-Z]+/',
+            'last_name'             => 'required|max:255|regex:/[a-zA-Z]+/',
+            'gender'                => 'required',
+            'age'                   => 'required|integer|min:1',
+            'city'                  => 'required|max:255|regex:/[a-zA-Z]+/',
+            'topic'                 => 'required',
+            'fixed_hour_price'      => 'required|numeric|min:0.0',
         ];
     }
 
@@ -60,14 +58,6 @@ class MentorUpdateRequest extends FormRequest
     public function getLastName()
     {
         return $this->input('last_name');
-    }
-
-    /**
-     * @return array|string
-     */
-    public function getEmail()
-    {
-        return $this->input('email');
     }
 
     /**

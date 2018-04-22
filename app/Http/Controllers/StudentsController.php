@@ -4,7 +4,7 @@ declare(strict_types = 1);
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Http\Requests\StudentUpdateRequest;
+use App\Http\Requests\StudentCreateRequest;
 use App\Repositories\StudentsRepository;
 use App\Models\Student;
 use Illuminate\View\View;
@@ -56,10 +56,10 @@ class StudentsController extends Controller
     }
 
     /**
-     * @param StudentUpdateRequest $request
+     * @param StudentCreateRequest $request
      * @return View
      */
-    public function store(StudentUpdateRequest $request): View
+    public function store(StudentCreateRequest $request): View
     {
         $data = [
             'email' => $request->getEmail(),
@@ -98,15 +98,14 @@ class StudentsController extends Controller
     }
 
     /**
-     * @param StudentUpdateRequest $request
+     * @param StudentCreateRequest $request
      * @param Student $student
      * @return View
      */
     public function update(StudentUpdateRequest $request, Student $student)
     {
         $student->update([
-            'email' => $request->getEmail(),
-//            'password' => bcrypt($request->getPassword()),
+            'password' => bcrypt($request->getPassword()),
             'first_name' => $request->getFirstName(),
             'last_name' => $request->getLastName(),
             'gender' => $request->getGender(),

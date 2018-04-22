@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class StudentUpdateRequest extends FormRequest
+class StudentCreateRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,6 +24,7 @@ class StudentUpdateRequest extends FormRequest
     public function rules()
     {
         return [
+            'email'                 => 'required|max:60|email|unique:students|unique:mentors|unique:users',
             'password'              => 'required|min:6|max:255|confirmed',
             'first_name'            => 'required|max:255|regex:/[a-zA-Z]+/',
             'last_name'             => 'required|max:255|regex:/[a-zA-Z]+/',
@@ -55,6 +56,14 @@ class StudentUpdateRequest extends FormRequest
     public function getLastName()
     {
         return $this->input('last_name');
+    }
+
+    /**
+     * @return array|string
+     */
+    public function getEmail()
+    {
+        return $this->input('email');
     }
 
     /**
