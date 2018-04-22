@@ -3,6 +3,7 @@ declare(strict_types = 1);
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\MentorCreateRequest;
 use App\Http\Requests\MentorUpdateRequest;
 use Illuminate\Http\Request;
 use App\Repositories\MentorsRepository;
@@ -56,10 +57,10 @@ class MentorsController extends Controller
     }
 
     /**
-     * @param MentorUpdateRequest $request
+     * @param MentorCreateRequest $request
      * @return View
      */
-    public function store(MentorUpdateRequest $request): View
+    public function store(MentorCreateRequest $request): View
     {
         $data = [
             'email' => $request->getEmail(),
@@ -99,15 +100,14 @@ class MentorsController extends Controller
     }
 
     /**
-     * @param MentorUpdateRequest $request
+     * @param MentorCreateRequest $request
      * @param Mentor $mentor
      * @return mixed
      */
     public function update(MentorUpdateRequest $request, Mentor $mentor)
     {
         $mentor->update([
-            'email' => $request->getEmail(),
-//            'password' => bcrypt($request->getPassword()),
+            'password' => bcrypt($request->getPassword()),
             'first_name' => $request->getFirstName(),
             'last_name' => $request->getLastName(),
             'gender' => $request->getGender(),
