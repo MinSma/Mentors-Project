@@ -132,4 +132,18 @@ class MentorsController extends Controller
         return redirect()->back()
             ->withSuccess('Mentor has been deleted');
     }
+
+    public function search() {
+        return view('mentors.search');
+    }
+
+    public function found(Request $request) {
+        $search = $request->get('search');
+
+        var_dump($search);
+
+        $mentors = $this->mentorsRepository->all()->where('first_name', 'like', $search);
+
+        return view('mentors.found', ['mentors' => $mentors]);
+    }
 }
