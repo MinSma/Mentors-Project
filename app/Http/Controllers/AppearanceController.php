@@ -8,6 +8,6 @@ class AppearanceController extends Controller
 {
     public function home(): View
     {
-        return view('guestPages.home');
+        return view('guestPages.homePage.home');
     }
 }

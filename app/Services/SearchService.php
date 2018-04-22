@@ -26,8 +26,9 @@ class SearchService
     }
 
     /**
+     * /**
      * @param Request $request
-     * @return Collection
+     * @return static
      */
     public function getMentors(Request $request)
     {
