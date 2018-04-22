@@ -6,6 +6,7 @@ use App\Repositories\MentorsRepository;
 use App\Repositories\StudentsRepository;
 use App\Repositories\UsersRepository;
 use App\Services\LoginService;
+use App\Services\SearchService;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -31,5 +32,6 @@ class AppServiceProvider extends ServiceProvider
         $this->app->singleton(StudentsRepository::class);
         $this->app->singleton(UsersRepository::class);
         $this->app->singleton(LoginService::class);
+        $this->app->singleton(SearchService::class);
     }
 }
