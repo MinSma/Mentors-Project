@@ -77,8 +77,8 @@ class MentorsController extends Controller
 
         $this->mentorsRepository->create($data);
 
-        return view('mentors.index')
-                         ->withSuccess('Mentor has been created');
+        return redirect()->back()
+                 ->withSuccess('Mentor has been created');
     }
 
     /**
@@ -100,7 +100,7 @@ class MentorsController extends Controller
     }
 
     /**
-     * @param MentorCreateRequest $request
+     * @param MentorUpdateRequest $request
      * @param Mentor $mentor
      * @return mixed
      */
