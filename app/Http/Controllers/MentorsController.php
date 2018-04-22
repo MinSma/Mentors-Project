@@ -5,8 +5,10 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\MentorCreateRequest;
 use App\Http\Requests\MentorUpdateRequest;
+use App\Http\Requests\PasswordChangeRequest;
 use Illuminate\Http\Request;
 use App\Repositories\MentorsRepository;
+use App\User;
 use App\Models\Mentor;
 use Illuminate\View\View;
 
@@ -107,7 +109,6 @@ class MentorsController extends Controller
     public function update(MentorUpdateRequest $request, Mentor $mentor)
     {
         $mentor->update([
-            'password' => bcrypt($request->getPassword()),
             'first_name' => $request->getFirstName(),
             'last_name' => $request->getLastName(),
             'gender' => $request->getGender(),
@@ -131,5 +132,16 @@ class MentorsController extends Controller
 
         return redirect()->back()
             ->withSuccess('Mentor has been deleted');
+    }
+
+    public function changePassword(PasswordChangeRequest $request, Mentor $mentor) {
+        var_dump("IVESTAS_FORMOJ: " . bcrypt($request->getCurrentPassword()));
+        var_dump("IS DB: " . bcrypt($mentor->password));
+
+        if(bcrypt($mentor->password) == bcrypt($request->getCurrentPassword())) {
+            var_dump("VIENODI");
+        } else{
+            var_dump("NESUTAPO");
+        }
     }
 }

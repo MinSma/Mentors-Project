@@ -14,6 +14,7 @@
 // mentors
 Route::get('mentors/', 'MentorsController@index')->name('mentors.index')->middleware('auth');
 Route::get('mentors/dashboard', 'MentorsController@dashboard')->name('mentors.dashboard')->middleware('auth:mentor');
+Route::post('mentors/dashboard', 'MentorsController@changePassword')->name('mentors.changePassword');
 Route::get('mentors/create', 'MentorsController@create')->name('mentors.create');
 Route::get('mentors/{mentor}/', 'MentorsController@show')->name('mentors.show');
 Route::get('mentors/{mentor}/edit', 'MentorsController@edit')->name('mentors.edit');

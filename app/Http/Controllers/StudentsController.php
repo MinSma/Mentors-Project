@@ -63,7 +63,6 @@ class StudentsController extends Controller
     {
         $data = [
             'email' => $request->getEmail(),
-            'password' => bcrypt($request->getPassword()),
             'first_name' => $request->getFirstName(),
             'last_name' => $request->getLastName(),
             'gender' => $request->getGender(),
