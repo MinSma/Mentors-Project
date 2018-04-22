@@ -18,14 +18,7 @@
         {!! Form::text('email', null, ['class' => 'form-control']) !!}
     </div>
 
-    {{--<div class="form-group">--}}
-        {{--{!! Form::label('password', 'Password:', ['class' => 'control-label']) !!}--}}
-        {{--{!! Form::password('password',  null, ['class' => 'form-control']) !!}--}}
-    {{--</div>--}}
-
     {!! Form::hidden('id', $user->id) !!}
-
-
 
     {!! Form::submit('Edit User', ['class' => 'btn btn-primary']) !!}
 
