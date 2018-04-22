@@ -73,7 +73,7 @@ class StudentsController extends Controller
 
         $this->studentsRepository->create($data);
 
-        return view('students.index')
+        return redirect()->back()
             ->withSuccess('Student has been created');
     }
 
