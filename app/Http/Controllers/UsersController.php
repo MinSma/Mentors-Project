@@ -3,6 +3,7 @@ declare(strict_types = 1);
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\PasswordChangeRequest;
 use App\Http\Requests\UserUpdateRequest;
 use App\Repositories\UsersRepository;
 use App\Services\PasswordChangeService;
