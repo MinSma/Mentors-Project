@@ -8,9 +8,9 @@ use App\Http\Requests\MentorUpdateRequest;
 use App\Http\Requests\PasswordChangeRequest;
 use Illuminate\Http\Request;
 use App\Repositories\MentorsRepository;
-use App\User;
 use App\Models\Mentor;
 use Illuminate\View\View;
+use Illuminate\Support\Facades\Hash;
 
 /**
  * Class MentorsController
@@ -135,13 +135,8 @@ class MentorsController extends Controller
     }
 
     public function changePassword(PasswordChangeRequest $request, Mentor $mentor) {
-        var_dump("IVESTAS_FORMOJ: " . bcrypt($request->getCurrentPassword()));
-        var_dump("IS DB: " . bcrypt($mentor->password));
+        //$changedOrNot = Hash::check($request->getCurrentPassword(), bcrypt($mentor->password));
 
-        if(bcrypt($mentor->password) == bcrypt($request->getCurrentPassword())) {
-            var_dump("VIENODI");
-        } else{
-            var_dump("NESUTAPO");
-        }
+        var_dump();
     }
 }
