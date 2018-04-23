@@ -72,7 +72,7 @@ class StudentsController extends Controller
 
         $this->studentsRepository->create($data);
 
-        return view('students.index')
+        return redirect()->back()
             ->withSuccess('Student has been created');
     }
 
@@ -97,9 +97,9 @@ class StudentsController extends Controller
     }
 
     /**
-     * @param StudentCreateRequest $request
+     * @param StudentUpdateRequest $request
      * @param Student $student
-     * @return View
+     * @return mixed
      */
     public function update(StudentUpdateRequest $request, Student $student)
     {

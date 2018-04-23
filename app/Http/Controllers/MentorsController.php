@@ -5,12 +5,11 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\MentorCreateRequest;
 use App\Http\Requests\MentorUpdateRequest;
-use App\Http\Requests\PasswordChangeRequest;
+use App\Services\SearchService;
 use Illuminate\Http\Request;
 use App\Repositories\MentorsRepository;
 use App\Models\Mentor;
 use Illuminate\View\View;
-use Illuminate\Support\Facades\Hash;
 
 /**
  * Class MentorsController
@@ -24,12 +23,18 @@ class MentorsController extends Controller
     private $mentorsRepository;
 
     /**
+     * @var SearchService
+     */
+    private $searchService;
+
+    /**
      * MentorsController constructor.
      * @param MentorsRepository $mentorsRepository
      */
-    public function __construct(MentorsRepository $mentorsRepository)
+    public function __construct(MentorsRepository $mentorsRepository, SearchService $searchService)
     {
         $this->mentorsRepository = $mentorsRepository;
+        $this->searchService = $searchService;
     }
 
     /**
@@ -79,8 +84,8 @@ class MentorsController extends Controller
 
         $this->mentorsRepository->create($data);
 
-        return view('mentors.index')
-                         ->withSuccess('Mentor has been created');
+        return redirect()->back()
+                 ->withSuccess('Mentor has been created');
     }
 
     /**
@@ -102,13 +107,14 @@ class MentorsController extends Controller
     }
 
     /**
-     * @param MentorCreateRequest $request
+     * @param MentorUpdateRequest $request
      * @param Mentor $mentor
      * @return mixed
      */
     public function update(MentorUpdateRequest $request, Mentor $mentor)
     {
         $mentor->update([
+            'password' => bcrypt($request->getPassword()),
             'first_name' => $request->getFirstName(),
             'last_name' => $request->getLastName(),
             'gender' => $request->getGender(),
@@ -134,9 +140,21 @@ class MentorsController extends Controller
             ->withSuccess('Mentor has been deleted');
     }
 
-    public function changePassword(PasswordChangeRequest $request, Mentor $mentor) {
-        //$changedOrNot = Hash::check($request->getCurrentPassword(), bcrypt($mentor->password));
 
-        var_dump();
+    /**
+     * @return View
+     */
+    public function search() : View {
+        return view('mentors.search');
+    }
+
+    /**
+     * @param Request $request
+     * @return View
+     */
+    public function found(Request $request) : View {
+        $mentors = $this->searchService->getMentors($request);
+
+        return view('mentors.found', ['mentors' => $mentors]);
     }
 }

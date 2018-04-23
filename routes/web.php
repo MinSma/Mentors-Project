@@ -11,8 +11,10 @@
 |
 */
 
-// mentors
+// Mentors
 Route::get('mentors/', 'MentorsController@index')->name('mentors.index')->middleware('auth');
+Route::get('mentors/search', 'MentorsController@search')->name('mentors.search');
+Route::post('mentors/found', 'MentorsController@found')->name('mentors.found');
 Route::get('mentors/dashboard', 'MentorsController@dashboard')->name('mentors.dashboard')->middleware('auth:mentor');
 Route::post('mentors/dashboard', 'MentorsController@changePassword')->name('mentors.changePassword');
 Route::get('mentors/create', 'MentorsController@create')->name('mentors.create');
@@ -22,7 +24,7 @@ Route::post('mentors/', 'MentorsController@store')->name('mentors.store');
 Route::put('mentors/{mentor}/update', 'MentorsController@update')->name('mentors.update');
 Route::delete('mentors/{mentor}/delete', 'MentorsController@destroy')->name('mentors.delete')->middleware('auth');
 
-// students
+// Students
 Route::get('students/', 'StudentsController@index')->name('students.index')->middleware('auth');
 Route::get('students/dashboard', 'StudentsController@dashboard')->name('students.dashboard')->middleware('auth:student');
 Route::get('students/create', 'StudentsController@create')->name('students.create');
@@ -32,7 +34,7 @@ Route::post('students/', 'StudentsController@store')->name('students.store');
 Route::put('students/{student}/update', 'StudentsController@update')->name('students.update');
 Route::delete('students/{student}/delete', 'StudentsController@destroy')->name('students.delete')->middleware('auth');
 
-// users
+// Users
 Route::get('users/', 'UsersController@index')->name('users.index')->middleware('auth');
 Route::get('users/dashboard', 'UsersController@dashboard')->name('users.dashboard')->middleware('auth');
 Route::get('users/create', 'UsersController@create')->name('users.create')->middleware('auth');
@@ -46,3 +48,6 @@ Route::delete('users/{user}/delete', 'UsersController@destroy')->name('users.del
 Route::get('login/', 'LoginController@index')->name('login');
 Route::get('login/disconnect', 'LoginController@disconnect')->name('login.disconnect');
 Route::post('login/connect', 'LoginController@connect')->name('login.connect');
+
+// Guest routing
+Route::get('/', 'AppearanceController@home')->name('guestPages.home');
