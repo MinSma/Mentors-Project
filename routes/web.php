@@ -16,7 +16,7 @@ Route::get('mentors/', 'MentorsController@index')->name('mentors.index')->middle
 Route::get('mentors/search', 'MentorsController@search')->name('mentors.search');
 Route::post('mentors/found', 'MentorsController@found')->name('mentors.found');
 Route::get('mentors/dashboard', 'MentorsController@dashboard')->name('mentors.dashboard')->middleware('auth:mentor');
-Route::post('mentors/dashboard', 'MentorsController@changePassword')->name('mentors.changePassword');
+Route::post('mentors/dashboard', 'MentorsController@changePassword')->name('mentors.changePassword')->middleware('auth:mentor');
 Route::get('mentors/create', 'MentorsController@create')->name('mentors.create');
 Route::get('mentors/{mentor}/', 'MentorsController@show')->name('mentors.show');
 Route::get('mentors/{mentor}/edit', 'MentorsController@edit')->name('mentors.edit');
@@ -27,6 +27,7 @@ Route::delete('mentors/{mentor}/delete', 'MentorsController@destroy')->name('men
 // Students
 Route::get('students/', 'StudentsController@index')->name('students.index')->middleware('auth');
 Route::get('students/dashboard', 'StudentsController@dashboard')->name('students.dashboard')->middleware('auth:student');
+Route::get('students/dashboard', 'StudentsController@changePassword')->name('students.changePassword')->middleware('auth:student');
 Route::get('students/create', 'StudentsController@create')->name('students.create');
 Route::get('students/{student}/', 'StudentsController@show')->name('students.show');
 Route::get('students/{student}/edit', 'StudentsController@edit')->name('students.edit');
@@ -37,6 +38,7 @@ Route::delete('students/{student}/delete', 'StudentsController@destroy')->name('
 // Users
 Route::get('users/', 'UsersController@index')->name('users.index')->middleware('auth');
 Route::get('users/dashboard', 'UsersController@dashboard')->name('users.dashboard')->middleware('auth');
+Route::get('users/dashboard', 'UsersController@changePassword')->name('users.changePassword')->middleware('auth');
 Route::get('users/create', 'UsersController@create')->name('users.create')->middleware('auth');
 Route::get('users/{user}/', 'UsersController@show')->name('users.show');
 Route::get('users/{user}/edit', 'UsersController@edit')->name('users.edit')->middleware('auth');
