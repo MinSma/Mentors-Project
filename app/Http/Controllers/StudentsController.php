@@ -67,9 +67,10 @@ class StudentsController extends Controller
      * @param StudentCreateRequest $request
      * @return View
      */
-    public function store(StudentCreateRequest $request): View
+    public function store(StudentCreateRequest $request)
     {
         $data = [
+            'password' => bcrypt($request->getPassword()),
             'email' => $request->getEmail(),
             'first_name' => $request->getFirstName(),
             'last_name' => $request->getLastName(),
@@ -112,7 +113,6 @@ class StudentsController extends Controller
     public function update(StudentUpdateRequest $request, Student $student)
     {
         $student->update([
-            'password' => bcrypt($request->getPassword()),
             'first_name' => $request->getFirstName(),
             'last_name' => $request->getLastName(),
             'gender' => $request->getGender(),
@@ -142,7 +142,7 @@ class StudentsController extends Controller
      */
     public function changePassword(PasswordChangeRequest $request)
     {
-        $this->passwordChangeService($request);
+        $this->passwordChangeService->changePassword($request);
 
         return redirect()->back()
             ->withSuccess('Password has been changed');

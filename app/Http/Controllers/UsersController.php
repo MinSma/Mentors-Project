@@ -134,7 +134,7 @@ class UsersController extends Controller
      */
     public function changePassword(PasswordChangeRequest $request)
     {
-        $this->passwordChangeService($request);
+        $this->passwordChangeService->changePassword($request);
 
         return redirect()->back()
             ->withSuccess('Password has been changed');
