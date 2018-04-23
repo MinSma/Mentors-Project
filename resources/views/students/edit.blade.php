@@ -33,14 +33,7 @@
         {!! Form::text('city', null, ['class' => 'form-control']) !!}
     </div>
 
-    <div class="form-group">
-        {!! Form::label('password', 'Password:', ['class' => 'control-label']) !!}
-        {!! Form::password('password',  null, ['class' => 'form-control']) !!}
-    </div>
-
     {!! Form::hidden('id', $student->id) !!}
-
-
 
     {!! Form::submit('Edit Student', ['class' => 'btn btn-primary']) !!}
 

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\UserUpdateRequest;
 use App\Repositories\UsersRepository;
+use App\Services\PasswordChangeService;
 use App\User;
 use Illuminate\View\View;
 
@@ -20,12 +21,18 @@ class UsersController extends Controller
     private $usersRepository;
 
     /**
+     * @var PasswordChangeService
+     */
+    private $passwordChangeService;
+
+    /**
      * UsersController constructor.
      * @param UsersRepository $usersRepository
      */
-    public function __construct(UsersRepository $usersRepository)
+    public function __construct(UsersRepository $usersRepository, PasswordChangeService $passwordChangeService)
     {
         $this->usersRepository = $usersRepository;
+        $this->passwordChangeService = $passwordChangeService;
     }
 
     /**
@@ -119,5 +126,17 @@ class UsersController extends Controller
 
         return redirect()->back()
             ->withSuccess('User has been deleted');
+    }
+
+    /**
+     * @param PasswordChangeRequest $request
+     * @return mixed
+     */
+    public function changePassword(PasswordChangeRequest $request)
+    {
+        $this->passwordChangeService->changePassword($request);
+
+        return redirect()->back()
+            ->withSuccess('Password has been changed');
     }
 }

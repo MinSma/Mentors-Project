@@ -3,8 +3,10 @@ declare(strict_types = 1);
 
 namespace App\Http\Controllers;
 
+use App\Services\PasswordChangeService;
 use Illuminate\Http\Request;
 use App\Http\Requests\StudentCreateRequest;
+use App\Http\Requests\PasswordChangeRequest;
 use App\Repositories\StudentsRepository;
 use App\Models\Student;
 use Illuminate\View\View;
@@ -21,12 +23,18 @@ class StudentsController extends Controller
     private $studentsRepository;
 
     /**
+     * @var PasswordChangeService
+     */
+    private $passwordChangeService;
+
+    /**
      * StudentsController constructor.
      * @param StudentsRepository $studentsRepository
      */
-    public function __construct(StudentsRepository $studentsRepository)
+    public function __construct(StudentsRepository $studentsRepository, PasswordChangeService $passwordChangeService)
     {
         $this->studentsRepository = $studentsRepository;
+        $this->passwordChangeService = $passwordChangeService;
     }
 
     /**
@@ -59,11 +67,11 @@ class StudentsController extends Controller
      * @param StudentCreateRequest $request
      * @return View
      */
-    public function store(StudentCreateRequest $request): View
+    public function store(StudentCreateRequest $request)
     {
         $data = [
-            'email' => $request->getEmail(),
             'password' => bcrypt($request->getPassword()),
+            'email' => $request->getEmail(),
             'first_name' => $request->getFirstName(),
             'last_name' => $request->getLastName(),
             'gender' => $request->getGender(),
@@ -105,7 +113,6 @@ class StudentsController extends Controller
     public function update(StudentUpdateRequest $request, Student $student)
     {
         $student->update([
-            'password' => bcrypt($request->getPassword()),
             'first_name' => $request->getFirstName(),
             'last_name' => $request->getLastName(),
             'gender' => $request->getGender(),
@@ -127,5 +134,17 @@ class StudentsController extends Controller
 
         return redirect()->back()
             ->withSuccess('Student has been deleted');
+    }
+
+    /**
+     * @param PasswordChangeRequest $request
+     * @return mixed
+     */
+    public function changePassword(PasswordChangeRequest $request)
+    {
+        $this->passwordChangeService->changePassword($request);
+
+        return redirect()->back()
+            ->withSuccess('Password has been changed');
     }
 }

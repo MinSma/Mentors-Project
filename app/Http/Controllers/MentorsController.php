@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\MentorCreateRequest;
 use App\Http\Requests\MentorUpdateRequest;
+use App\Http\Requests\PasswordChangeRequest;
 use App\Services\SearchService;
+use App\Services\PasswordChangeService;
 use Illuminate\Http\Request;
 use App\Repositories\MentorsRepository;
 use App\Models\Mentor;
@@ -28,13 +30,22 @@ class MentorsController extends Controller
     private $searchService;
 
     /**
+     * @var PasswordChangeService
+     */
+    private $passwordChangeService;
+
+    /**
      * MentorsController constructor.
      * @param MentorsRepository $mentorsRepository
+     * @param SearchService $searchService
+     * @param PasswordChangeService $passwordChangeService
      */
-    public function __construct(MentorsRepository $mentorsRepository, SearchService $searchService)
+    public function __construct(MentorsRepository $mentorsRepository, SearchService $searchService,
+                                PasswordChangeService $passwordChangeService)
     {
         $this->mentorsRepository = $mentorsRepository;
         $this->searchService = $searchService;
+        $this->passwordChangeService = $passwordChangeService;
     }
 
     /**
@@ -67,7 +78,7 @@ class MentorsController extends Controller
      * @param MentorCreateRequest $request
      * @return View
      */
-    public function store(MentorCreateRequest $request): View
+    public function store(MentorCreateRequest $request)
     {
         $data = [
             'email' => $request->getEmail(),
@@ -156,5 +167,17 @@ class MentorsController extends Controller
         $mentors = $this->searchService->getMentors($request);
 
         return view('mentors.found', ['mentors' => $mentors]);
+    }
+
+    /**
+     * @param PasswordChangeRequest $request
+     * @return mixed
+     */
+    public function changePassword(PasswordChangeRequest $request)
+    {
+        $this->passwordChangeService->changePassword($request);
+
+        return redirect()->back()
+            ->withSuccess('Password has been changed');
     }
 }

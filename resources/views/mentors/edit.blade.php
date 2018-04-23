@@ -59,8 +59,6 @@
 
     {!! Form::hidden('id', $mentor->id) !!}
 
-
-
     {!! Form::submit('Edit Mentor', ['class' => 'btn btn-primary']) !!}
 
     {!! Form::close() !!}
