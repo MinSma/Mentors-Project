@@ -53,3 +53,7 @@ Route::post('login/connect', 'LoginController@connect')->name('login.connect');
 
 // Guest routing
 Route::get('/', 'AppearanceController@home')->name('guestPages.home');
+
+// Conctact up routing
+Route::get('/contactus', 'ContactsController@show');
+Route::post('/contactus',  'ContactsController@mailToAdmin');
