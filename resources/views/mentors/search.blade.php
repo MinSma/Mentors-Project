@@ -1,8 +1,7 @@
 @extends('layouts.main')
 
 @section('content')
-    <form action="/mentors/found" method="POST" role="search">
-        {{ csrf_field() }}
+    <form action="/mentors/found" method="GET" role="search">
 
         <div class="form-group">
             <label for="topic">Topic:</label>
@@ -20,7 +19,7 @@
         </div>
 
         <div class="form-group">
-            <button type="submit" class="btn btn-primary">Register</button>
+            <button type="submit" class="btn btn-primary">Search</button>
         </div>
     </form>
 @endsection
