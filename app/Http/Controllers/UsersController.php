@@ -41,7 +41,7 @@ class UsersController extends Controller
      */
     public function index(): View
     {
-        $users = $this->usersRepository->all();
+        $users = $this->usersRepository->model()::paginate(5);
 
         return view('users.index', ['users' => $users]);
     }

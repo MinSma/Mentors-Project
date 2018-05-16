@@ -33,4 +33,5 @@
         @endforeach
         </tbody>
     </table>
+    {{ $mentors->appends(Request::only('topic'))->links() }}
 @endsection
