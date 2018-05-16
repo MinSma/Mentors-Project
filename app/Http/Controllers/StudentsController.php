@@ -137,14 +137,25 @@ class StudentsController extends Controller
     }
 
     /**
+     * @return View
+     */
+    public function changePassword() : View
+    {
+        return view('students.changePassword');
+    }
+
+    /**
      * @param PasswordChangeRequest $request
      * @return mixed
      */
-    public function changePassword(PasswordChangeRequest $request)
+    public function storePassword(PasswordChangeRequest $request)
     {
-        $this->passwordChangeService->changePassword($request);
+        $wasChanged = $this->passwordChangeService->changePassword($request);
 
-        return redirect()->back()
+        if($wasChanged)
+            return redirect()->back()
             ->withSuccess('Password has been changed');
+        else
+            return redirect()->back()->withErrors('Password has not been changed, wrong current password');
     }
 }

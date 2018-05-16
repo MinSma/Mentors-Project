@@ -1,7 +1,6 @@
 @extends('layouts.main')
 @section('title', 'Students Create')
 @section('menu')
-    @include('layouts.userNavPanel')
 @endsection
 
 @section('content')

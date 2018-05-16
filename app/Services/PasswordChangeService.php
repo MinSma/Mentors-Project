@@ -24,6 +24,10 @@ class PasswordChangeService
         {
             $user->password = bcrypt($request->getPassword());
             $user->save();
+
+            return true;
         }
+
+        return false;
     }
 }
