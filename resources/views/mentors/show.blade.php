@@ -17,4 +17,25 @@
     <h3>Topic:</h3><?php echo $mentor->topic ?>
     <h3>Fixed hour price:</h3><?php echo $mentor->fixed_hour_price ?>
 
+    <h2>Comments:</h2>
+    @foreach($mentor->comments as $comment)
+        <h3>{{$comment->body}} {{$comment->created_at->diffForHumans()}}</h3>
+    @endforeach
+
+    <div class="card">
+        <div class="card-block">
+            <form method="POST" action="/mentors/{{ $mentor->id }}/comments">
+                {{ csrf_field() }}
+
+                <div class="form-group">
+                    <textarea name="body" placeholder="Your comment here." class="form-control"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary">Add Comment</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
 @endsection
