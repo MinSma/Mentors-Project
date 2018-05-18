@@ -37,4 +37,11 @@ class Mentor extends Authenticatable
     protected $hidden = [
         'remember_token'
     ];
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function comments() {
+        return $this->hasMany('App\\Models\\Comment');
+    }
 }
