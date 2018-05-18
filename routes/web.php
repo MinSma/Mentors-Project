@@ -19,7 +19,7 @@ Route::get('mentors/dashboard', 'MentorsController@dashboard')->name('mentors.da
 Route::get('mentors/dashboard/change', 'MentorsController@changePassword')->name('mentors.changePassword')->middleware('auth:mentor');
 Route::post('mentors/dashboard/change', 'MentorsController@storePassword')->name('mentors.storePassword')->middleware('auth:mentor');
 Route::get('mentors/create', 'MentorsController@create')->name('mentors.create');
-Route::get('mentors/{mentor}/', 'MentorsController@show')->name('mentors.show');
+Route::get('mentors/{mentor}/', 'MentorsController@show')->name('mentors.show')->middleware('auth:mentor');
 Route::get('mentors/{mentor}/edit', 'MentorsController@edit')->name('mentors.edit');
 Route::post('mentors/', 'MentorsController@store')->name('mentors.store');
 Route::put('mentors/{mentor}/update', 'MentorsController@update')->name('mentors.update');
@@ -62,4 +62,4 @@ Route::get('/contactus', 'ContactsController@show');
 Route::post('/contactus',  'ContactsController@mailToAdmin');
 
 // Comments routing
-Route::post('mentors/{mentor}/', 'CommentsController@store')->name('comments.store');
+Route::post('mentors/{mentor}/', 'CommentsController@store')->name('comments.store')->middleware('auth:mentor');

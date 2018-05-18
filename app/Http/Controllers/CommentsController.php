@@ -4,8 +4,11 @@ declare(strict_types = 1);
 namespace App\Http\Controllers;
 
 use App\Repositories\CommentsRepository;
+use App\Http\Requests\CommentStoreRequest;
 use App\Models\Mentor;
 use App\Models\Student;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\Request;
 
 /**
  * Class CommentsController
@@ -27,7 +30,25 @@ class CommentsController extends Controller
         $this->commentsRepository = $commentsRepository;
     }
 
-    public function store(Request $request) {
+    /**
+     * @param Mentor $mentor
+     * @param CommentStoreRequest $request
+     * @return View
+     */
+    public function store(Mentor $mentor, CommentStoreRequest $request) : View{
+        if (Auth::check())
+        {
+            $id = Auth::id();
 
+            $data = [
+                'body'          => $request->getBody(),
+                'mentor_id'     => $mentor['id'],
+                'student_id'    => $id
+            ];
+
+            $this->commentsRepository->create($data);
+        }
+
+        return view('mentors.show', compact('mentor'));
     }
 }

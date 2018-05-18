@@ -24,7 +24,7 @@
 
     <div class="card">
         <div class="card-block">
-            <form method="POST" action="/mentors/{{ $mentor->id }}/comments">
+            <form method="POST" action="/mentors/{{ $mentor->id }}">
                 {{ csrf_field() }}
 
                 <div class="form-group">
