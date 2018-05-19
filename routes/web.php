@@ -60,3 +60,6 @@ Route::get('/', 'AppearanceController@home')->name('guestPages.home');
 // Conctact up routing
 Route::get('/contactus', 'ContactsController@show');
 Route::post('/contactus',  'ContactsController@mailToAdmin');
+
+// Reservation routing
+Route::get('mentors/{mentor}/reservation', 'ReservationsController@store')->name('reservation.store');
