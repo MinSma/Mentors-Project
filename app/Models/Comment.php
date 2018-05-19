@@ -16,13 +16,13 @@ class Comment extends Model
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
     public function mentor() {
-        return $this->belongsTo('App\\Models\\Mentor');
+        return $this->belongsTo(Mentor::class);
     }
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
     public function student() {
-        return $this->belongsTo('App\\Models\\Student');
+        return $this->belongsTo(Student::class);
     }
 }
