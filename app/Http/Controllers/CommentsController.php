@@ -35,10 +35,9 @@ class CommentsController extends Controller
      * @return View
      */
     public function store(Mentor $mentor, CommentStoreRequest $request) : View {
-        if (Auth::check())
-        {
-            $id = Auth::guard('student')->user()->id;
+        $id = Auth::guard('student')->user()['id'];
 
+        if($id != null){
             $data = [
                 'body'          => $request->getBody(),
                 'mentor_id'     => $mentor['id'],
