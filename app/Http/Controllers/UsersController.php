@@ -109,7 +109,6 @@ class UsersController extends Controller
     {
         $user->update([
             'email' => $request->getEmail(),
-//            'password' => bcrypt($request->getPassword()),
             'name' => $request->getName()]);
 
         return redirect()->route('users.index')
