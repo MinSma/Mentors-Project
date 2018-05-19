@@ -117,7 +117,8 @@ class StudentsController extends Controller
             'last_name' => $request->getLastName(),
             'gender' => $request->getGender(),
             'age' => $request->getAge(),
-            'city' => $request->getCity()]);
+            'city' => $request->getCity()
+        ]);
 
         return redirect()->route('students.index')
             ->withSuccess('Student has been updated');

@@ -6,9 +6,8 @@ namespace App\Http\Controllers;
 use App\Repositories\CommentsRepository;
 use App\Http\Requests\CommentStoreRequest;
 use App\Models\Mentor;
-use App\Models\Student;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Http\Request;
+use Illuminate\View\View;
 
 /**
  * Class CommentsController
@@ -35,10 +34,10 @@ class CommentsController extends Controller
      * @param CommentStoreRequest $request
      * @return View
      */
-    public function store(Mentor $mentor, CommentStoreRequest $request) : View{
+    public function store(Mentor $mentor, CommentStoreRequest $request) : View {
         if (Auth::check())
         {
-            $id = Auth::id();
+            $id = Auth::guard('student')->user()->id;
 
             $data = [
                 'body'          => $request->getBody(),
