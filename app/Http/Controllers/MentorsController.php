@@ -11,6 +11,7 @@ use App\Services\PasswordChangeService;
 use Illuminate\Http\Request;
 use App\Repositories\MentorsRepository;
 use App\Models\Mentor;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
 
 /**
@@ -106,6 +107,19 @@ class MentorsController extends Controller
     public function show(Mentor $mentor): View
     {
         return view('mentors.show', compact('mentor'));
+    }
+
+    /**
+     * @param Mentor $mentor
+     * @return View
+     */
+    public function students(): View
+    {
+        $id = Auth::guard('mentor')->user()['id'];
+
+        $mentor = $this->mentorsRepository->all()->find($id);
+
+        return view('mentors.students', compact('mentor'));
     }
 
     /**
