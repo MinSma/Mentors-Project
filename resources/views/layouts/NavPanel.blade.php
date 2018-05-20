@@ -7,7 +7,7 @@
         <li><a href="{{ route('students.dashboard') }}">Dashboard</a></li>
         <li><a href="{{ route('students.changePassword') }}">Change Password</a></li>
         <li><a href="{{ route('login.disconnect') }}">Logout</a></li>
-    @elseif (Auth::guard('user')->user()['id'] != null)
+    @elseif (Auth::guard('web')->user()['id'] != null)
         <li><a href="{{ route('users.dashboard') }}">Users Dashboard</a></li>
         <li class="dropdown">
             <a href="#" data-toggle="dropdown" class="dropdown-toggle">Mentors <b class="caret"></b></a>
