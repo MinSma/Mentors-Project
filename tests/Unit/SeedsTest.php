@@ -8,7 +8,7 @@ use App\User;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
-class SeedTests extends TestCase
+class SeedsTest extends TestCase
 {
     use RefreshDatabase;
 
