@@ -26,4 +26,25 @@
         </div>
     </div>
 
+    <h2>Comments:</h2>
+    @foreach($mentor->comments as $comment)
+        <h3>{{$comment->body}} {{$comment->created_at->diffForHumans()}}</h3>
+    @endforeach
+
+    <div class="card">
+        <div class="card-block">
+            <form method="POST" action="/mentors/{{ $mentor->id }}">
+                {{ csrf_field() }}
+
+                <div class="form-group">
+                    <textarea name="body" placeholder="Your comment here." class="form-control"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary">Add Comment</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
 @endsection
