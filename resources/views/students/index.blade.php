@@ -1,7 +1,7 @@
 @extends('layouts.main')
 @section('title', 'Users')
 @section('menu')
-    @include('layouts.userNavPanel')
+    @include('layouts.NavPanel')
 @endsection
 
 @section('content')

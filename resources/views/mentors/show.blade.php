@@ -1,7 +1,7 @@
 @extends('layouts.main')
 @section('title', 'Users')
 @section('menu')
-    @include('layouts.mentorNavPanel')
+    @include('layouts.NavPanel')
 @endsection
 
 @section('content')
@@ -22,20 +22,24 @@
         <h3>{{$comment->body}} {{$comment->created_at->diffForHumans()}}</h3>
     @endforeach
 
-    <div class="card">
-        <div class="card-block">
-            <form method="POST" action="/mentors/{{ $mentor->id }}">
-                {{ csrf_field() }}
+    @if(Auth::check())
+        @if(Auth::guard('student')->user()['id'] != null)
+            <div class="card">
+                <div class="card-block">
+                    <form method="POST" action="/mentors/{{ $mentor->id }}">
+                        {{ csrf_field() }}
 
-                <div class="form-group">
-                    <textarea name="body" placeholder="Your comment here." class="form-control"></textarea>
-                </div>
+                        <div class="form-group">
+                            <textarea name="body" placeholder="Your comment here." class="form-control"></textarea>
+                        </div>
 
-                <div class="form-group">
-                    <button type="submit" class="btn btn-primary">Add Comment</button>
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-primary">Add Comment</button>
+                        </div>
+                    </form>
                 </div>
-            </form>
-        </div>
-    </div>
+            </div>
+        @endif
+    @endif
 
 @endsection

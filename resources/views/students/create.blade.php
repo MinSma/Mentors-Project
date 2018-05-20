@@ -1,6 +1,7 @@
 @extends('layouts.main')
 @section('title', 'Students Create')
 @section('menu')
+    @include('layouts.NavPanel')
 @endsection
 
 @section('content')

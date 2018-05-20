@@ -1,4 +1,7 @@
 @extends('layouts.main')
+@section('menu')
+    @include('layouts.NavPanel')
+@endsection
 
 @section('content')
     <form action="/mentors/found" method="GET" role="search">
