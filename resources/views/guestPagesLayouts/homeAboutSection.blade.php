@@ -2,7 +2,7 @@
 <div id="about" class="container-fluid">
     <div class="row">
         <div class="col-sm-8">
-            <h2>Apie svatainę</h2>
+            <h2>Apie svetainę</h2>
             <h3>Mentoriams</h3>
             <h4>Padėkite sau būti geriau matomais internete.</h4>
             <h3>Studentams</h3>
