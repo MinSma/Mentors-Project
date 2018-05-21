@@ -17,17 +17,17 @@
 
                 <div class="form-group">
                     <label for="first_name">First Name:</label>
-                    <input type="text" class="form-control" id="first_name"  name="first_name" value="{{ old('first_name') }} required>
+                    <input type="text" class="form-control" id="first_name"  name="first_name" value="{{ old('first_name') }}" required>
                 </div>
 
                 <div class="form-group">
                     <label for="last_name">Last Name:</label>
-                    <input type="text" class="form-control" id="last_name"  name="last_name" value="{{ old('last_name') }} required>
+                    <input type="text" class="form-control" id="last_name"  name="last_name" value="{{ old('last_name') }}" required>
                 </div>
 
                 <div class="form-group">
                     <label for="email">Email Address:</label>
-                    <input type="email" class="form-control" id="email"  name="email" value="{{ old('email') }} required>
+                    <input type="email" class="form-control" id="email"  name="email" value="{{ old('email') }}" required>
                 </div>
 
                 <div class="form-group">
@@ -45,7 +45,7 @@
 
                     <select name="gender" id="gender" class="form-control">
                         <option value="man"     @if (old('gender') == "man") {{ 'selected' }}       @endif>Man</option>
-                        <option value="woman"   @if (old('gender') == "woman") {{ 'selected' }}       @endif>Woman</option>
+                        <option value="woman"   @if (old('gender') == "woman") {{ 'selected' }}     @endif>Woman</option>
                     </select>
                 </div>
 
