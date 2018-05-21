@@ -14,7 +14,9 @@
 <body>
 <nav class="navbar navbar">
     <div class="navbar-header">
-        <a class="navbar-brand" href="{{ URL::to('/') }}">Main Page</a>
+        <a class="navbar-brand" href="{{ route('guestPages.home') }}" title="Pagrindinis puslapis">
+            <img style="max-width:125px; margin-top: -10px;" src="{{ asset('images/Logo_orange.png') }}">
+        </a>
     </div>
     <ul class="nav navbar-nav">
         @yield('menu')
