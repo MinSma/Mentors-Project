@@ -35,10 +35,10 @@ class SearchService
         $topic = $request->get('topic');
 
         if($topic == 'all') {
-            return $this->mentorsRepository->model()::paginate(5);
+            return $this->mentorsRepository->model()::paginate(10);
         }
         else {
-                return $this->mentorsRepository->model()::where('topic', 'like', $topic)->paginate(5);
+                return $this->mentorsRepository->model()::where('topic', 'like', $topic)->paginate(10);
         }
     }
 }

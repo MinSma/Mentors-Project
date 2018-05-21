@@ -54,7 +54,7 @@ class MentorsController extends Controller
      */
     public function index(): View
     {
-        $mentors = $this->mentorsRepository->model()::paginate(5);
+        $mentors = $this->mentorsRepository->model()::paginate(10);
 
         return view('mentors.index', ['mentors' => $mentors]);
     }

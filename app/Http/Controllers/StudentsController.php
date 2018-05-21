@@ -42,7 +42,7 @@ class StudentsController extends Controller
      */
     public function index(): View
     {
-        $students = $this->studentsRepository->model()::paginate(5);
+        $students = $this->studentsRepository->model()::paginate(10);
 
         return view('students.index', ['students' => $students]);
     }
