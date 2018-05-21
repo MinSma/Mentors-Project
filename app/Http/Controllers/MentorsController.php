@@ -125,7 +125,6 @@ class MentorsController extends Controller
     public function update(MentorUpdateRequest $request, Mentor $mentor)
     {
         $mentor->update([
-            'password' => bcrypt($request->getPassword()),
             'first_name' => $request->getFirstName(),
             'last_name' => $request->getLastName(),
             'gender' => $request->getGender(),
