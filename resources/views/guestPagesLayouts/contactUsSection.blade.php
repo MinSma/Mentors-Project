@@ -1,15 +1,16 @@
-@extends('layouts.main')
-@section('content')
-    <div class="container">
-        <h1 class="mb-2 text-center">Contact Us</h1>
+<div class="container">
+    <h1 class="mb-2 text-center">Contact Us</h1>
 
-        @if(session('message'))
-            <div class='alert alert-success'>
-                {{ session('message') }}
-            </div>
-        @endif
+    @if(session('message'))
+        <div class='alert alert-success'>
+            {{ session('message') }}
+        </div>
+    @endif
 
-        <div class="col-12 col-md-6">
+    <br />
+
+    <div class="row">
+        <div class="col-md-6 text-center col-md-offset-3">
             <form class="form-horizontal" method="POST" action="/contactus">
                 {{ csrf_field() }}
                 <div class="form-group">
@@ -33,4 +34,4 @@
             </form>
         </div>
     </div>
-@endsection
+</div>
