@@ -34,7 +34,11 @@ class SearchService
     {
         $topic = $request->get('topic');
 
-        return $this->mentorsRepository->model()::where('topic', 'like', $topic)->paginate(5);
-
+        if($topic == 'all') {
+            return $this->mentorsRepository->model()::paginate(5);
+        }
+        else {
+                return $this->mentorsRepository->model()::where('topic', 'like', $topic)->paginate(5);
+        }
     }
 }
