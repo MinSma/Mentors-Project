@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        @section('title', 'Pagrindinis')
+        @section('title', 'Susisiekite su mumis')
         @include('guestPagesLayouts.homeHeaderIncludes')
     </head>
 
@@ -11,6 +11,6 @@
 
         @include('guestPagesLayouts.homeHeaderSection')
 
-        @include('guestPagesLayouts.homeAboutSection')
+        @include('guestPagesLayouts.contactUsSection')
     </body>
 </html>

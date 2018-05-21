@@ -16,8 +16,8 @@ class ContactsController extends Controller
     /**
      * @return View
      */
-    public function show() : View{
-        return view('contactus.index');
+    public function show() {
+        return view('guestPages.contactus.index');
     }
 
     /**
