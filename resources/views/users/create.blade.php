@@ -1,7 +1,7 @@
 @extends('layouts.main')
 @section('title', 'Users Create')
 @section('menu')
-    @include('layouts.userNavPanel')
+    @include('layouts.NavPanel')
 @endsection
 
 @section('content')
@@ -18,12 +18,12 @@
 
                 <div class="form-group">
                     <label for="name">Name:</label>
-                    <input type="text" class="form-control" id="name"  name="name" required>
+                    <input type="text" class="form-control" id="name"  name="name" value="{{ old('name') }}" required>
                 </div>
 
                 <div class="form-group">
                     <label for="email">Email Address:</label>
-                    <input type="email" class="form-control" id="email"  name="email" required>
+                    <input type="email" class="form-control" id="email"  name="email" value="{{ old('email') }}" required>
                 </div>
 
                 <div class="form-group">

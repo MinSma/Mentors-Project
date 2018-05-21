@@ -1,7 +1,7 @@
 @extends('layouts.main')
 @section('title', 'Login Panel')
 @section('menu')
-    @include('layouts.studentNavPanel')
+    @include('layouts.NavPanel')
 @endsection
 @section('content')
 studento dashboard

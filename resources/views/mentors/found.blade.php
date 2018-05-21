@@ -1,4 +1,7 @@
 @extends('layouts.main')
+@section('menu')
+    @include('layouts.NavPanel')
+@endsection
 
 @section('content')
     <table class="table table-striped table-bordered">
