@@ -1,5 +1,5 @@
 <div class="container">
-    <h1 class="mb-2 text-center">Choose Registration</h1>
+    <h1 class="mb-2 text-center">Pasirinkite Registracijos Tipą</h1>
 
     <div class="row">
         <div class="panel-footer text-center">
