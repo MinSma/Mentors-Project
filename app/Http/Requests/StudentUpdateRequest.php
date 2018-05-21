@@ -41,14 +41,6 @@ class StudentUpdateRequest extends FormRequest
     }
 
     /**
-     * @return array|null|string
-     */
-    public function getPassword()
-    {
-        return $this->input('password');
-    }
-
-    /**
      * @return array|string
      */
     public function getLastName()
