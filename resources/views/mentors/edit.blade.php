@@ -4,7 +4,6 @@
     @include('layouts.NavPanel')
 @endsection
 
-
 @section('content')
     {{ Form::model($mentor, array('route' => array('mentors.update', $mentor), 'method' => 'PUT')) }}
 

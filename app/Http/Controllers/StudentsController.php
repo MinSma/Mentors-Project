@@ -3,8 +3,8 @@ declare(strict_types = 1);
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StudentUpdateRequest;
 use App\Services\PasswordChangeService;
-use Illuminate\Http\Request;
 use App\Http\Requests\StudentCreateRequest;
 use App\Http\Requests\PasswordChangeRequest;
 use App\Repositories\StudentsRepository;

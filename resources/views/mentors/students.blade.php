@@ -1,7 +1,7 @@
 @extends('layouts.main')
 @section('title', 'Login Panel')
 @section('menu')
-    @include('layouts.mentorNavPanel')
+    @include('layouts.NavPanel')
 @endsection
 @section('content')
     <h2>Students with belongs to you:</h2>

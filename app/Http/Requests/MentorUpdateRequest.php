@@ -24,7 +24,6 @@ class MentorUpdateRequest extends FormRequest
     public function rules()
     {
         return [
-            'password'              => 'required|min:6|max:255|confirmed',
             'first_name'            => 'required|max:255|regex:/[a-zA-Z]+/',
             'last_name'             => 'required|max:255|regex:/[a-zA-Z]+/',
             'gender'                => 'required',
@@ -42,15 +41,6 @@ class MentorUpdateRequest extends FormRequest
     {
         return $this->input('first_name');
     }
-
-    /**
-     * @return array|null|string
-     */
-    public function getPassword()
-    {
-        return $this->input('password');
-    }
-
 
     /**
      * @return array|string
