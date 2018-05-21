@@ -10,27 +10,30 @@
 
     <div class="form-group">
         {!! Form::label('first_name', 'First Name', ['class' => 'control-label']) !!}
-        {!! Form::text('first_name', null, ['class' => 'form-control']) !!}
+        {!! Form::text('first_name', old('first_name'), ['class' => 'form-control']) !!}
     </div>
 
     <div class="form-group">
         {!! Form::label('last_name', 'Last Name', ['class' => 'control-label']) !!}
-        {!! Form::text('last_name', null, ['class' => 'form-control']) !!}
+        {!! Form::text('last_name', old('last_name'), ['class' => 'form-control']) !!}
     </div>
 
     <div class="form-group">
         {!! Form::label('gender', 'Gender:', ['class' => 'control-label']) !!}
-        {!! Form::text('gender', null, ['class' => 'form-control']) !!}
+        {!! Form::select('gender', [
+            'man' => 'Man',
+            'woman' => 'Woman'
+        ], old('topic'), ['class' => 'form-control']) !!}
     </div>
 
     <div class="form-group">
         {!! Form::label('age', 'Age:', ['class' => 'control-label']) !!}
-        {!! Form::text('age', null, ['class' => 'form-control']) !!}
+        {!! Form::text('age', old('age'), ['class' => 'form-control']) !!}
     </div>
 
     <div class="form-group">
         {!! Form::label('city', 'City:', ['class' => 'control-label']) !!}
-        {!! Form::text('city', null, ['class' => 'form-control']) !!}
+        {!! Form::text('city', old('city'), ['class' => 'form-control']) !!}
     </div>
 
     {!! Form::hidden('id', $student->id) !!}

@@ -4,8 +4,6 @@
 @endsection
 
 @section('content')
-
-@section('content')
     <div class="row">
         <div class="col-md-4"></div>
 
@@ -19,17 +17,17 @@
 
                 <div class="form-group">
                     <label for="first_name">First Name:</label>
-                    <input type="text" class="form-control" id="first_name"  name="first_name" required>
+                    <input type="text" class="form-control" id="first_name"  name="first_name" value="{{ old('first_name') }}" required>
                 </div>
 
                 <div class="form-group">
                     <label for="last_name">Last Name:</label>
-                    <input type="text" class="form-control" id="last_name"  name="last_name" required>
+                    <input type="text" class="form-control" id="last_name"  name="last_name" value="{{ old('last_name') }}" required>
                 </div>
 
                 <div class="form-group">
                     <label for="email">Email Address:</label>
-                    <input type="email" class="form-control" id="email"  name="email" required>
+                    <input type="email" class="form-control" id="email"  name="email" value="{{ old('email') }}" required>
                 </div>
 
                 <div class="form-group">
@@ -46,19 +44,19 @@
                     <label for="gender">Gender:</label>
 
                     <select name="gender" id="gender" class="form-control">
-                        <option value="man">Man</option>
-                        <option value="woman">Woman</option>
+                        <option value="man"     @if (old('gender') == "man") {{ 'selected' }}       @endif>Man</option>
+                        <option value="woman"   @if (old('gender') == "woman") {{ 'selected' }}     @endif>Woman</option>
                     </select>
                 </div>
 
                 <div class="form-group">
                     <label for="age">Age:</label>
-                    <input type="text" class="form-control" id="age"  name="age" required>
+                    <input type="text" class="form-control" id="age"  name="age" value="{{ old('age') }}" required>
                 </div>
 
                 <div class="form-group">
                     <label for="city">City:</label>
-                    <input type="text" class="form-control" id="city"  name="city" required>
+                    <input type="text" class="form-control" id="city"  name="city" value="{{ old('city') }}" required>
                 </div>
 
                 <div class="form-group">
