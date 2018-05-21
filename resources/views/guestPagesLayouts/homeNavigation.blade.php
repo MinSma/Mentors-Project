@@ -12,11 +12,10 @@
         </div>
         <div class="collapse navbar-collapse" id="myNavbar">
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="#about">APIE SVETAINĘ</a></li>
-                <li><a href="#services">TOPIC 2</a></li>
-                <li><a href="#portfolio">TOPIC 3</a></li>
-                <li><a href="#Registruotis">REGISTRUOTIS</a></li>
-                <li><a href="#Prisijungti">PRISIJUNGTI</a></li>
+                <li><a href="/">PAGRINDINIS</a></li>
+                <li><a href="/contactus">SUSISIEKITE</a></li>
+                <li><a href="/">REGISTRUOTIS</a></li>
+                <li><a href="/login">PRISIJUNGTI</a></li>
             </ul>
         </div>
     </div>
