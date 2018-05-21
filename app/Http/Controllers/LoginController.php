@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\LoginRequest;
 use App\Services\LoginService;
+use Illuminate\View\View;
 
 /**
  * Class LoginController
@@ -23,6 +24,14 @@ class LoginController extends Controller
     public function __construct(LoginService $loginService)
     {
         $this->loginService = $loginService;
+    }
+
+    /**
+     * @return View
+     */
+    public function registerSelection() : View
+    {
+        return view('guestPages.registerSelection.register');
     }
 
     /**
