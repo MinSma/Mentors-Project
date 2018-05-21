@@ -17,6 +17,15 @@
     <h3>Topic:</h3><?php echo $mentor->topic ?>
     <h3>Fixed hour price:</h3><?php echo $mentor->fixed_hour_price ?>
 
+    <br />
+    <br />
+
+    <div class="row">
+        <div class="col-xs-6 col-md-3">
+            <a class="btn btn-large btn-info" href="{{ route('reservation.store', $mentor) }}">Register</a>
+        </div>
+    </div>
+
     <h2>Comments:</h2>
     @foreach($mentor->comments as $comment)
         <h3>{{$comment->body}} {{$comment->created_at->diffForHumans()}}</h3>
