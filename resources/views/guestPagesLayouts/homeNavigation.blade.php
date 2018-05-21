@@ -14,7 +14,7 @@
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="/">PAGRINDINIS</a></li>
                 <li><a href="/contactus">SUSISIEKITE</a></li>
-                <li><a href="/">REGISTRUOTIS</a></li>
+                <li><a href="/registerSelection">REGISTRUOTIS</a></li>
                 <li><a href="/login">PRISIJUNGTI</a></li>
             </ul>
         </div>

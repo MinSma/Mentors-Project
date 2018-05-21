@@ -54,6 +54,7 @@ Route::delete('users/{user}/delete', 'UsersController@destroy')->name('users.del
 Route::get('login/', 'LoginController@index')->name('login');
 Route::get('login/disconnect', 'LoginController@disconnect')->name('login.disconnect');
 Route::post('login/connect', 'LoginController@connect')->name('login.connect');
+Route::get('/registerSelection', 'LoginController@registerSelection')->name('registerSelection');
 
 // Guest routing
 Route::get('/', 'AppearanceController@home')->name('guestPages.home');
