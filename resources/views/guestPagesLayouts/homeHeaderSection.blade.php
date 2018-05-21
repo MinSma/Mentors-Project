@@ -8,6 +8,7 @@
             <label for="topic">Pasirinkti temą</label>
 
             <select name="topic" id="topic" class="form-control">
+                <option value="all">Visus</option>
                 <option value="mathematics">Matematika</option>
                 <option value="english">Anglų Kalba</option>
                 <option value="it">Informacinės Technologijos</option>
