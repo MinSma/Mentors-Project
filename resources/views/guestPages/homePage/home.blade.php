@@ -13,13 +13,13 @@
 
     @include('guestPagesLayouts.homeAboutSection')
 
-    @include('guestPagesLayouts.homeServiceSection')
+    {{--@include('guestPagesLayouts.homeServiceSection')--}}
 
-    @include('guestPagesLayouts.homePortfolioSection')
+    {{--@include('guestPagesLayouts.homePortfolioSection')--}}
 
-    @include('guestPagesLayouts.homeRegistrationSection')
+    {{--@include('guestPagesLayouts.homeRegistrationSection')--}}
 
-    @include('guestPagesLayouts.homeLoginSection')
+    {{--@include('guestPagesLayouts.homeLoginSection')--}}
 </body>
 
 <footer class="container-fluid text-center">
