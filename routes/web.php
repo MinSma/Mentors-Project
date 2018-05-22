@@ -21,19 +21,20 @@ Route::get('mentors/dashboard/change', 'MentorsController@changePassword')->name
 Route::post('mentors/dashboard/change', 'MentorsController@storePassword')->name('mentors.storePassword')->middleware('auth:mentor');
 Route::get('mentors/create', 'MentorsController@create')->name('mentors.create');
 Route::get('mentors/{mentor}/', 'MentorsController@show')->name('mentors.show');
-Route::get('mentors/{mentor}/edit', 'MentorsController@edit')->name('mentors.edit')->middleware('auth:mentor');
+Route::get('mentors/{mentor}/edit', 'MentorsController@edit')->name('mentors.edit');
 Route::post('mentors/', 'MentorsController@store')->name('mentors.store');
 Route::put('mentors/{mentor}/update', 'MentorsController@update')->name('mentors.update');
 Route::delete('mentors/{mentor}/delete', 'MentorsController@destroy')->name('mentors.delete')->middleware('auth');
 
 // Students
 Route::get('students/', 'StudentsController@index')->name('students.index')->middleware('auth');
+Route::get('students/mentors', 'StudentsController@mentors')->name('students.mentors')->middleware('auth:student');
 Route::get('students/dashboard', 'StudentsController@dashboard')->name('students.dashboard')->middleware('auth:student');
 Route::get('students/dashboard/change', 'StudentsController@changePassword')->name('students.changePassword')->middleware('auth:student');
 Route::post('students/dashboard/change', 'StudentsController@storePassword')->name('students.storePassword')->middleware('auth:student');
 Route::get('students/create', 'StudentsController@create')->name('students.create');
 Route::get('students/{student}/', 'StudentsController@show')->name('students.show');
-Route::get('students/{student}/edit', 'StudentsController@edit')->name('students.edit')->middleware('auth:student');
+Route::get('students/{student}/edit', 'StudentsController@edit')->name('students.edit');
 Route::post('students/', 'StudentsController@store')->name('students.store');
 Route::put('students/{student}/update', 'StudentsController@update')->name('students.update');
 Route::delete('students/{student}/delete', 'StudentsController@destroy')->name('students.delete')->middleware('auth');
