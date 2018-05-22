@@ -69,3 +69,4 @@ Route::post('mentors/{mentor}/', 'CommentsController@store')->name('comments.sto
 
 // Reservation routing
 Route::get('mentors/{mentor}/reservation', 'ReservationsController@store')->name('reservation.store');
+Route::get('mentors/{mentor}/unreservation', 'ReservationsController@unstore')->name('reservation.unstore');
