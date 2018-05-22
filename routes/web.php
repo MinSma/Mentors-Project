@@ -28,6 +28,7 @@ Route::delete('mentors/{mentor}/delete', 'MentorsController@destroy')->name('men
 
 // Students
 Route::get('students/', 'StudentsController@index')->name('students.index')->middleware('auth');
+Route::get('students/mentors', 'StudentsController@mentors')->name('students.mentors')->middleware('auth:student');
 Route::get('students/dashboard', 'StudentsController@dashboard')->name('students.dashboard')->middleware('auth:student');
 Route::get('students/dashboard/change', 'StudentsController@changePassword')->name('students.changePassword')->middleware('auth:student');
 Route::post('students/dashboard/change', 'StudentsController@storePassword')->name('students.storePassword')->middleware('auth:student');
