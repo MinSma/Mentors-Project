@@ -97,7 +97,7 @@ class MentorsController extends Controller
         $this->mentorsRepository->create($data);
 
         return redirect()->back()
-                 ->withSuccess('Mentor has been created');
+                 ->withSuccess('Mentorius buvo sėkmingai sukurtas');
     }
 
     /**
@@ -148,7 +148,7 @@ class MentorsController extends Controller
             'fixed_hour_price' => $request->getFixedHourPrice()]);
 
         return redirect()->route('mentors.index')
-            ->withSuccess('Mentor has been updated');
+            ->withSuccess('Mentoriaus duomenys buvo sėkmingai atnaujinti');
     }
 
     /**
@@ -161,7 +161,7 @@ class MentorsController extends Controller
         $mentor->delete();
 
         return redirect()->back()
-            ->withSuccess('Mentor has been deleted');
+            ->withSuccess('Mentorius buvo sėkmingai pašalintas');
     }
 
 
@@ -200,8 +200,8 @@ class MentorsController extends Controller
 
         if($wasChanged)
             return redirect()->back()
-                ->withSuccess('Password has been changed');
+                ->withSuccess('Slaptažodis buvo sėkmingai pakeistas');
         else
-            return redirect()->back()->withErrors('Password has not been changed, wrong current password');
+            return redirect()->back()->withErrors('Slaptažodis nebuvo pakeistas, įvestas blogas dabartinis slaptažodis');
     }
 }

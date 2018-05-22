@@ -82,7 +82,7 @@ class StudentsController extends Controller
         $this->studentsRepository->create($data);
 
         return redirect()->back()
-            ->withSuccess('Student has been created');
+            ->withSuccess('Studentas buvo sėkmingai sukurtas');
     }
 
     /**
@@ -121,7 +121,7 @@ class StudentsController extends Controller
         ]);
 
         return redirect()->route('students.index')
-            ->withSuccess('Student has been updated');
+            ->withSuccess('Studento duomenys buvo sėkmingai atnaujinti');
     }
 
     /**
@@ -134,7 +134,7 @@ class StudentsController extends Controller
         $student->delete();
 
         return redirect()->back()
-            ->withSuccess('Student has been deleted');
+            ->withSuccess('Studentas buvo sėkmingai pašalintas');
     }
 
     /**
@@ -155,8 +155,8 @@ class StudentsController extends Controller
 
         if($wasChanged)
             return redirect()->back()
-            ->withSuccess('Password has been changed');
+            ->withSuccess('Slaptažodis buvo sėkmingai pakeistas');
         else
-            return redirect()->back()->withErrors('Password has not been changed, wrong current password');
+            return redirect()->back()->withErrors('Slaptažodis nebuvo pakeistas, įvestas blogas dabartinis slaptažodis');
     }
 }

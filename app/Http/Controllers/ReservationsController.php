@@ -45,8 +45,10 @@ class ReservationsController extends Controller
             ];
 
             $student->update($data);
+
+            return redirect()->back()->withSuccess('Sėkmingai užsiregistravote į mentoriaus užsiėmimus');
         }
 
-        return redirect()->back();
+        return redirect()->back()->withErrors('Nepavyko užsiregistruoti į mentoriaus užsiėmimus, jūs nesate studentas');
     }
 }

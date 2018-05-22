@@ -20,23 +20,19 @@
     <br />
     <br />
 
-    @if(Auth::check())
-        @if(Auth::guard('student')->user()['id'] != null)
+
             <div class="row">
                 <div class="col-xs-6 col-md-3">
                     <a class="btn btn-large btn-info" href="{{ route('reservation.store', $mentor) }}">Užsirašyti</a>
                 </div>
             </div>
-        @endif
-    @endif
+
 
     <h2>Komentarai:</h2>
     @foreach($mentor->comments as $comment)
         <h3>{{$comment->body}} {{$comment->created_at->diffForHumans()}}</h3>
     @endforeach
 
-    @if(Auth::check())
-        @if(Auth::guard('student')->user()['id'] != null)
             <div class="card">
                 <div class="card-block">
                     <form method="POST" action="/mentors/{{ $mentor->id }}">
@@ -52,7 +48,6 @@
                     </form>
                 </div>
             </div>
-        @endif
-    @endif
+
 
 @endsection
