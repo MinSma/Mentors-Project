@@ -37,7 +37,7 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="password_confirmation">Slaptažodžio Patvirtinimas:</label>
+                    <label for="password_confirmation">Slaptažodžio patvirtinimas:</label>
                     <input type="password" class="form-control" id="password_confirmation" name="password_confirmation" required>
                 </div>
 
@@ -45,8 +45,8 @@
                     <label for="gender">Lytis:</label>
 
                     <select name="gender" id="gender" class="form-control">
-                        <option value="man"     @if (old('gender') == "man") {{ 'selected' }}       @endif>Man</option>
-                        <option value="woman"   @if (old('gender') == "woman") {{ 'selected' }}     @endif>Woman</option>
+                        <option value="vyras"     @if (old('gender') == "Vyras") {{ 'selected' }}       @endif>Vyras</option>
+                        <option value="moteris"   @if (old('gender') == "Moteris") {{ 'selected' }}     @endif>Moteris</option>
                     </select>
                 </div>
 

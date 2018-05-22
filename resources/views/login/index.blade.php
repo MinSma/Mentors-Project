@@ -12,7 +12,7 @@
                         {{ csrf_field() }}
 
                         <div class="form-group">
-                            <label for="email">Elektroninio Pašto Adresas:</label>
+                            <label for="email">Elektroninio pašto adresas:</label>
                             <input type="email" class="form-control" id="email"  name="email" required>
                         </div>
 
@@ -22,10 +22,10 @@
                         </div>
 
                         <div class="row">
-                            <div class="col-xs-6 col-md-5">
+                            <div class="col-xs-6 col-md-4">
                                     <button type="submit" class="btn btn-primary">Prisijungti</button>
                             </div>
-                            <div class="col-xs-6 col-md-3">
+                            <div class="col-xs-6 col-md-4">
                                 <a class="btn btn-medium btn-info" href="{{ route('mentors.create') }}">Registruoti Mentorių</a>
                             </div>
                             <div class="col-xs-6 col-md-3">
