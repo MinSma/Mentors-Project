@@ -9,6 +9,7 @@ use App\Http\Requests\StudentCreateRequest;
 use App\Http\Requests\PasswordChangeRequest;
 use App\Repositories\StudentsRepository;
 use App\Models\Student;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
 
 /**
@@ -142,6 +143,18 @@ class StudentsController extends Controller
     public function changePassword() : View
     {
         return view('students.changePassword');
+    }
+
+    /**
+     * @return View
+     */
+    public function mentors() : View
+    {
+        $id = Auth::guard('student')->user()['id'];
+
+        $student = $this->studentsRepository->all()->find($id);
+
+        return view('students.mentors', compact('student'));
     }
 
     /**

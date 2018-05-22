@@ -41,7 +41,7 @@ class ReservationsController extends Controller
 
         if($id != null){
             $data = [
-                'mentor_id' => NULL
+                'mentor_id' => $id
             ];
 
             $student->update($data);
