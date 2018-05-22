@@ -12,14 +12,13 @@
         <thead>
         <tr>
             <td>ID</td>
-            <td>First Name</td>
-            <td>Last Name</td>
-            <td>Email</td>
-            <td>Gender</td>
-            <td>Age</td>
-            <td>City</td>
-            <td>Actions</td>
-
+            <td>Vardas</td>
+            <td>Pavardė</td>
+            <td>Elektroninio pašto adresas</td>
+            <td>Lytis</td>
+            <td>Amžius</td>
+            <td>Miestas</td>
+            <td>Veiksmai</td>
         </tr>
         </thead>
         <tbody>
@@ -34,11 +33,11 @@
                 <td>{{ $value->city }}</td>
 
                 <td>
-                    <a class="btn btn-small btn-info" href="{{ URL::to('students/' . $value->id . '/edit') }}">Edit this Student</a>
+                    <a class="btn btn-small btn-info" href="{{ URL::to('students/' . $value->id . '/edit') }}">Keisti Studento Duomenis</a>
 
                     {{ Form::open(array('url' => 'students/' . $value->id . '/delete', 'class' => 'pull-right')) }}
                     {{ Form::hidden('_method', 'DELETE') }}
-                    {{ Form::submit('Delete this Student', array('class' => 'btn btn-danger')) }}
+                    {{ Form::submit('Ištrinti Šį Studentą', array('class' => 'btn btn-danger')) }}
                     {{ Form::close() }}
                 </td>
             </tr>

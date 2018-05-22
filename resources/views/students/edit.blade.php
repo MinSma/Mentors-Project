@@ -9,36 +9,36 @@
     {{ Form::model($student, array('route' => array('students.update', $student), 'method' => 'PUT')) }}
 
     <div class="form-group">
-        {!! Form::label('first_name', 'First Name', ['class' => 'control-label']) !!}
+        {!! Form::label('first_name', 'Vardas', ['class' => 'control-label']) !!}
         {!! Form::text('first_name', old('first_name'), ['class' => 'form-control']) !!}
     </div>
 
     <div class="form-group">
-        {!! Form::label('last_name', 'Last Name', ['class' => 'control-label']) !!}
+        {!! Form::label('last_name', 'Pavardė', ['class' => 'control-label']) !!}
         {!! Form::text('last_name', old('last_name'), ['class' => 'form-control']) !!}
     </div>
 
     <div class="form-group">
-        {!! Form::label('gender', 'Gender:', ['class' => 'control-label']) !!}
+        {!! Form::label('gender', 'Lytis:', ['class' => 'control-label']) !!}
         {!! Form::select('gender', [
-            'man' => 'Man',
-            'woman' => 'Woman'
+            'vyras' => 'Vyras',
+            'moteris' => 'Moteris'
         ], old('topic'), ['class' => 'form-control']) !!}
     </div>
 
     <div class="form-group">
-        {!! Form::label('age', 'Age:', ['class' => 'control-label']) !!}
+        {!! Form::label('age', 'Amžius:', ['class' => 'control-label']) !!}
         {!! Form::text('age', old('age'), ['class' => 'form-control']) !!}
     </div>
 
     <div class="form-group">
-        {!! Form::label('city', 'City:', ['class' => 'control-label']) !!}
+        {!! Form::label('city', 'Miestas:', ['class' => 'control-label']) !!}
         {!! Form::text('city', old('city'), ['class' => 'form-control']) !!}
     </div>
 
     {!! Form::hidden('id', $student->id) !!}
 
-    {!! Form::submit('Edit Student', ['class' => 'btn btn-primary']) !!}
+    {!! Form::submit('Keisti Studento Duomenis', ['class' => 'btn btn-primary']) !!}
 
     {!! Form::close() !!}
 
