@@ -9,14 +9,14 @@
 
             <select name="topic" id="topic" class="form-control">
                 <option value="all">Visus</option>
-                <option value="mathematics">Matematika</option>
-                <option value="english">Anglų Kalba</option>
-                <option value="it">Informacinės Technologijos</option>
-                <option value="chemistry">Chemija</option>
-                <option value="physics">Fizika</option>
-                <option value="biology">Biologija</option>
-                <option value="geography">Geografija</option>
-                <option value="history">Istorija</option>
+                <option value="Matematika">Matematika</option>
+                <option value="Anglu kalba">Anglų Kalba</option>
+                <option value="Informacines Technologijos">Informacinės Technologijos</option>
+                <option value="Chemija">Chemija</option>
+                <option value="Fizika">Fizika</option>
+                <option value="Biologija">Biologija</option>
+                <option value="Geografija">Geografija</option>
+                <option value="Istorija">Istorija</option>
             </select>
         </div>
 
