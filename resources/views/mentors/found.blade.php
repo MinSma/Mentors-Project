@@ -8,16 +8,15 @@
         <thead>
         <tr>
             <td>ID</td>
-            <td>First Name</td>
-            <td>Last Name</td>
-            <td>Email</td>
-            <td>Gender</td>
-            <td>Age</td>
-            <td>City</td>
-            <td>Topic</td>
-            <td>Fixed Hour Price</td>
-            <td>Actions</td>
-
+            <td>Vardas</td>
+            <td>Pavardė</td>
+            <td>Elektroninio pašto adresas</td>
+            <td>Lytis</td>
+            <td>Amžius</td>
+            <td>Miestas</td>
+            <td>Tema</td>
+            <td>Valandinis įkainis</td>
+            <td>Veiksmai</td>
         </tr>
         </thead>
         <tbody>
@@ -32,6 +31,9 @@
                 <td>{{ $mentor->city }}</td>
                 <td>{{ $mentor->topic }}</td>
                 <td>{{ $mentor->fixed_hour_price }}</td>
+                <td>
+                    <a class="btn btn-small btn-info" href="{{ URL::to('mentors/' . $mentor->id ) }}">Profilis</a>
+                </td>
             </tr>
         @endforeach
         </tbody>
