@@ -4,18 +4,18 @@
     @include('layouts.NavPanel')
 @endsection
 @section('content')
-    <h2>Students with belongs to you:</h2>
+    <h2>Studentai, kurie priklauso Jums:</h2>
 
     <table class="table table-striped table-bordered">
         <thead>
         <tr>
             <td>ID</td>
-            <td>First Name</td>
-            <td>Last Name</td>
-            <td>Email</td>
-            <td>Gender</td>
-            <td>Age</td>
-            <td>City</td>
+            <td>Vardas</td>
+            <td>Pavardė</td>
+            <td>Elektroninio pašto adresas</td>
+            <td>Lytis</td>
+            <td>Amžius</td>
+            <td>Miestas</td>
         </tr>
         </thead>
         <tbody>

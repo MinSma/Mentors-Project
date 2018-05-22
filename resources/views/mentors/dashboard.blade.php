@@ -4,5 +4,5 @@
     @include('layouts.NavPanel')
 @endsection
 @section('content')
-    mentoriaus dashboard
+    mentoriaus erdvė
 @endsection

@@ -4,5 +4,5 @@
     @include('layouts.NavPanel')
 @endsection
 @section('content')
-studento dashboard
+studento erdvė
 @endsection
