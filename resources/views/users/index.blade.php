@@ -26,9 +26,9 @@
                 <td>{{ $value->email }}</td>
 
                 <td>
-                    <a class="btn btn-small btn-info" href="{{ URL::to('users/' . $value->id . '/edit') }}">Keisti Administratoriaus Duomenis</a>
+                    <a class="btn btn-small btn-info pull-left" href="{{ URL::to('users/' . $value->id . '/edit') }}">Keisti Administratoriaus Duomenis</a>
 
-                    {{ Form::open(array('url' => 'users/' . $value->id . '/delete', 'class' => 'pull-right')) }}
+                    {{ Form::open(array('url' => 'users/' . $value->id . '/delete', 'class' => 'pull-left')) }}
                     {{ Form::hidden('_method', 'DELETE') }}
                     {{ Form::submit('Trinti Šį Administratorių', array('class' => 'btn btn-danger')) }}
                     {{ Form::close() }}

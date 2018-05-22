@@ -37,9 +37,9 @@
                 <td>{{ $value->fixed_hour_price }}</td>
 
                 <td>
-                    <a class="btn btn-small btn-info" href="{{ URL::to('mentors/' . $value->id . '/edit') }}">Keisti Mentoriaus Duomenis</a>
+                    <a class="btn btn-small btn-info pull-left" href="{{ URL::to('mentors/' . $value->id . '/edit') }}">Keisti Mentoriaus Duomenis</a>
 
-                    {{ Form::open(array('url' => 'mentors/' . $value->id . '/delete', 'class' => 'pull-right')) }}
+                    {{ Form::open(array('url' => 'mentors/' . $value->id . '/delete', 'class' => 'pull-left')) }}
                     {{ Form::hidden('_method', 'DELETE') }}
                     {{ Form::submit('Ištrinti Mentorių', array('class' => 'btn btn-danger')) }}
                     {{ Form::close() }}
