@@ -8,33 +8,35 @@
 
     <h1>Mentoriaus Informacija</h1>
 
-    <h3>Vardas:</h3><?php echo $mentor->first_name ?>
-    <h3>Pavardė:</h3><?php echo $mentor->last_name ?>
-    <h3>Elektroninio pašto adresas:</h3><?php echo $mentor->email ?>
-    <h3>Lytis:</h3><?php echo $mentor->gender ?>
-    <h3>Amžius:</h3><?php echo $mentor->age ?>
-    <h3>Miestas:</h3><?php echo $mentor->city ?>
-    <h3>Tema:</h3><?php echo $mentor->topic ?>
-    <h3>Valandinis įkainis:</h3><?php echo $mentor->fixed_hour_price ?>
-
-    <br />
-    <br />
-
-
     <div class="row">
-        <div class="col-xs-6 col-md-3">
-            <a class="btn btn-large btn-info" href="{{ route('reservation.store', $mentor) }}">Užsirašyti</a>
+        <div class="col-xs-6 col-md-6">
+            <h3>Vardas:</h3><?php echo $mentor->first_name ?>
+            <h3>Pavardė:</h3><?php echo $mentor->last_name ?>
+            <h3>Elektroninio pašto adresas:</h3><?php echo $mentor->email ?>
+            <h3>Lytis:</h3><?php echo $mentor->gender ?>
+            <h3>Amžius:</h3><?php echo $mentor->age ?>
+            <h3>Miestas:</h3><?php echo $mentor->city ?>
+            <h3>Tema:</h3><?php echo $mentor->topic ?>
+            <h3>Valandinis įkainis:</h3><?php echo $mentor->fixed_hour_price ?>
+
+            <br />
+            <br />
         </div>
         <div class="col-xs-6 col-md-3">
-            <a class="btn btn-large btn-info" href="{{ route('reservation.unstore', $mentor) }}">Išsiregistruoti</a>
-        </div>
-    </div>
+            <div class="row">
+                <div class="col-xs-6 col-md-3">
+                    <a class="btn btn-large btn-info" href="{{ route('reservation.store', $mentor) }}">Užsirašyti</a>
+                </div>
+                <div class="col-xs-6 col-md-3">
+                    <a class="btn btn-large btn-info" href="{{ route('reservation.unstore', $mentor) }}">Išsiregistruoti</a>
+                </div>
+            </div>
 
 
-    <h2>Komentarai:</h2>
-    @foreach($mentor->comments as $comment)
-        <h3>{{$comment->body}} {{$comment->created_at->diffForHumans()}}</h3>
-    @endforeach
+            <h2>Komentarai:</h2>
+            @foreach($mentor->comments as $comment)
+                <h3>{{$comment->body}} {{$comment->created_at->diffForHumans()}}</h3>
+            @endforeach
 
             <div class="card">
                 <div class="card-block">
@@ -51,6 +53,6 @@
                     </form>
                 </div>
             </div>
-
-
+        </div>
+    </div>
 @endsection
