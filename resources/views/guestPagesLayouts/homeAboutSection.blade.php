@@ -1,8 +1,9 @@
 <!-- Container (About Section) -->
-<div id="about" class="container-fluid">
+<div id="about" class="container">
+    <h1 class="mb-2 text-center">Apie svetainę</h1>
+
     <div class="row">
-        <div class="col-sm-8">
-            <h2>Apie svetainę</h2>
+        <div class="col-md-6 text-center col-md-offset-3 panel-footer">
             <h3>Mentoriams</h3>
             <h4>Padėkite sau būti geriau matomais internete.</h4>
             <h3>Studentams</h3>
@@ -12,9 +13,6 @@
                 <a href="{{ route('mentors.create') }}" class="btn btn-lg">Registruotis Mentoriui</a>
                 <a href="{{ route('students.create') }}" class="btn btn-lg">Registruotis Studentui</a>
             </div>
-        </div>
-        <div class="col-sm-4">
-            <span class="glyphicon glyphicon-education logo"></span>
         </div>
     </div>
 </div>

@@ -10,7 +10,7 @@
     <br />
 
     <div class="row">
-        <div class="col-md-6 text-center col-md-offset-3">
+        <div class="col-md-6 text-center col-md-offset-3 panel-footer">
             <form class="form-horizontal" method="POST" action="/contactus">
                 {{ csrf_field() }}
                 <div class="form-group">
