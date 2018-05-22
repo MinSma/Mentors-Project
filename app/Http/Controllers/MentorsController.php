@@ -96,8 +96,7 @@ class MentorsController extends Controller
 
         $this->mentorsRepository->create($data);
 
-        return redirect()->back()
-                 ->withSuccess('Mentorius buvo sėkmingai sukurtas');
+        return redirect('/login')->withSuccess('Mentorius buvo sėkmingai sukurtas');
     }
 
     /**

@@ -81,8 +81,7 @@ class StudentsController extends Controller
 
         $this->studentsRepository->create($data);
 
-        return redirect()->back()
-            ->withSuccess('Studentas buvo sėkmingai sukurtas');
+        return redirect('/login')->withSuccess('Studentas buvo sėkmingai sukurtas');
     }
 
     /**
