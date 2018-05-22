@@ -18,9 +18,6 @@
             <h3>Miestas:</h3><?php echo $mentor->city ?>
             <h3>Tema:</h3><?php echo $mentor->topic ?>
             <h3>Valandinis įkainis:</h3><?php echo $mentor->fixed_hour_price ?>
-
-            <br />
-            <br />
         </div>
         <div class="col-xs-6 col-md-3">
             <div class="row">
