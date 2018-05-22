@@ -21,11 +21,14 @@
     <br />
 
 
-            <div class="row">
-                <div class="col-xs-6 col-md-3">
-                    <a class="btn btn-large btn-info" href="{{ route('reservation.store', $mentor) }}">Užsirašyti</a>
-                </div>
-            </div>
+    <div class="row">
+        <div class="col-xs-6 col-md-3">
+            <a class="btn btn-large btn-info" href="{{ route('reservation.store', $mentor) }}">Užsirašyti</a>
+        </div>
+        <div class="col-xs-6 col-md-3">
+            <a class="btn btn-large btn-info" href="{{ route('reservation.unstore', $mentor) }}">Išsiregistruoti</a>
+        </div>
+    </div>
 
 
     <h2>Komentarai:</h2>

@@ -51,4 +51,23 @@ class ReservationsController extends Controller
 
         return redirect()->back()->withErrors('Nepavyko užsiregistruoti į mentoriaus užsiėmimus, jūs nesate studentas');
     }
+
+    public function unstore(Mentor $mentor)
+    {
+        $id = Auth::guard('student')->user()['id'];
+
+        $student = $this->studentsRepository->all()->find($id);
+        
+        if($id != null && $student->mentor['id'] == $mentor['id']){
+            $data = [
+                'mentor_id' => NULL
+            ];
+
+            $student->update($data);
+
+            return redirect()->back()->withSuccess('Sėkmingai išsiregistravote iš mentoriaus užsiėmimų');
+        }
+
+        return redirect()->back()->withErrors('Nepavyko išsiregistruoti iš mentoriaus užsiėmimų, jūs nebuvote prisiregistravęs');
+    }
 }
