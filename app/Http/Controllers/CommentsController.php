@@ -34,7 +34,7 @@ class CommentsController extends Controller
      * @param CommentStoreRequest $request
      * @return View
      */
-    public function store(Mentor $mentor, CommentStoreRequest $request) : View {
+    public function store(Mentor $mentor, CommentStoreRequest $request) {
         $id = Auth::guard('student')->user()['id'];
 
         if($id != null){
@@ -45,8 +45,10 @@ class CommentsController extends Controller
             ];
 
             $this->commentsRepository->create($data);
+
+            return view('mentors.show', compact('mentor'));
         }
 
-        return view('mentors.show', compact('mentor'));
+        return redirect()->back()->withErrors('Nepavyko pakomentuoti, jūs nesate studentas');
     }
 }
