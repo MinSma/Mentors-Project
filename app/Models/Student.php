@@ -39,7 +39,7 @@ class Student extends Authenticatable
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
     public function mentor() {
-            return $this->belongsTo('App\\Models\\Mentor');
+            return $this->belongsTo(Mentor::class);
     }
 
     /**
