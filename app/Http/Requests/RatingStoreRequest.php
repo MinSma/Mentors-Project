@@ -24,7 +24,7 @@ class RatingStoreRequest extends FormRequest
     public function rules()
     {
         return [
-            'body' => 'required'
+            'rating' => 'required'
         ];
     }
 
