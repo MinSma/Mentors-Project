@@ -6,6 +6,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\MentorCreateRequest;
 use App\Http\Requests\MentorUpdateRequest;
 use App\Http\Requests\PasswordChangeRequest;
+use App\Repositories\CommentsRepository;
 use App\Repositories\ReservationsRepository;
 use App\Repositories\StudentsRepository;
 use App\Services\SearchService;
@@ -48,22 +49,29 @@ class MentorsController extends Controller
     private $studentsRepository;
 
     /**
+     * @var CommentsRepository
+     */
+    private $commentsRepository;
+
+    /**
      * MentorsController constructor.
      * @param MentorsRepository $mentorsRepository
      * @param SearchService $searchService
      * @param PasswordChangeService $passwordChangeService
      * @param ReservationsRepository $reservationsRepository
      * @param StudentsRepository $studentsRepository
+     * @param CommentsRepository $commentsRepository
      */
     public function __construct(MentorsRepository $mentorsRepository, SearchService $searchService,
                                 PasswordChangeService $passwordChangeService, ReservationsRepository $reservationsRepository,
-                                StudentsRepository $studentsRepository)
+                                StudentsRepository $studentsRepository, CommentsRepository $commentsRepository)
     {
         $this->mentorsRepository = $mentorsRepository;
         $this->searchService = $searchService;
         $this->passwordChangeService = $passwordChangeService;
         $this->reservationsRepository = $reservationsRepository;
         $this->studentsRepository = $studentsRepository;
+        $this->commentsRepository = $commentsRepository;
     }
 
     /**
@@ -181,6 +189,20 @@ class MentorsController extends Controller
      */
     public function destroy(Mentor $mentor)
     {
+        $reservations = $this->reservationsRepository->model()
+            ::where('mentor_id', $mentor['id'])->get();
+
+        foreach($reservations as $key){
+            $key->delete();
+        }
+
+        $comments = $this->commentsRepository->model()
+            ::where('mentor_id', $mentor['id'])->get();
+
+        foreach($comments as $key){
+            $key->delete();
+        }
+
         $mentor->delete();
 
         return redirect()->back()

@@ -4,6 +4,7 @@ declare(strict_types = 1);
 namespace App\Http\Controllers;
 
 use App\Http\Requests\StudentUpdateRequest;
+use App\Repositories\CommentsRepository;
 use App\Repositories\MentorsRepository;
 use App\Repositories\ReservationsRepository;
 use App\Services\PasswordChangeService;
@@ -41,19 +42,27 @@ class StudentsController extends Controller
     private $mentorsRepository;
 
     /**
+     * @var CommentsRepository
+     */
+    private $commentsRepository;
+
+    /**
      * StudentsController constructor.
      * @param StudentsRepository $studentsRepository
      * @param PasswordChangeService $passwordChangeService
      * @param ReservationsRepository $reservationsRepository
      * @param MentorsRepository $mentorsRepository
+     * @param CommentsRepository $commentsRepository
      */
     public function __construct(StudentsRepository $studentsRepository, PasswordChangeService $passwordChangeService,
-                                ReservationsRepository $reservationsRepository, MentorsRepository $mentorsRepository)
+                                ReservationsRepository $reservationsRepository, MentorsRepository $mentorsRepository,
+                                CommentsRepository $commentsRepository)
     {
         $this->studentsRepository = $studentsRepository;
         $this->passwordChangeService = $passwordChangeService;
         $this->reservationsRepository = $reservationsRepository;
         $this->mentorsRepository = $mentorsRepository;
+        $this->commentsRepository = $commentsRepository;
     }
 
     /**
@@ -149,6 +158,20 @@ class StudentsController extends Controller
      */
     public function destroy(Student $student)
     {
+        $reservations = $this->reservationsRepository->model()
+            ::where('student_id', $student['id'])->get();
+
+        foreach($reservations as $key){
+            $key->delete();
+        }
+
+        $comments = $this->commentsRepository->model()
+            ::where('student_id', $student['id'])->get();
+
+        foreach($comments as $key){
+            $key->delete();
+        }
+
         $student->delete();
 
         return redirect()->back()
