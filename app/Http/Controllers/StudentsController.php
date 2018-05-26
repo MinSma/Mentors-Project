@@ -3,12 +3,13 @@ declare(strict_types = 1);
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StudentUpdateRequest;
 use App\Services\PasswordChangeService;
-use Illuminate\Http\Request;
 use App\Http\Requests\StudentCreateRequest;
 use App\Http\Requests\PasswordChangeRequest;
 use App\Repositories\StudentsRepository;
 use App\Models\Student;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
 
 /**
@@ -42,7 +43,7 @@ class StudentsController extends Controller
      */
     public function index(): View
     {
-        $students = $this->studentsRepository->model()::paginate(5);
+        $students = $this->studentsRepository->model()::paginate(10);
 
         return view('students.index', ['students' => $students]);
     }
@@ -81,8 +82,7 @@ class StudentsController extends Controller
 
         $this->studentsRepository->create($data);
 
-        return redirect()->back()
-            ->withSuccess('Student has been created');
+        return redirect('/login')->withSuccess('Studentas buvo sėkmingai sukurtas');
     }
 
     /**
@@ -117,10 +117,11 @@ class StudentsController extends Controller
             'last_name' => $request->getLastName(),
             'gender' => $request->getGender(),
             'age' => $request->getAge(),
-            'city' => $request->getCity()]);
+            'city' => $request->getCity()
+        ]);
 
         return redirect()->route('students.index')
-            ->withSuccess('Student has been updated');
+            ->withSuccess('Studento duomenys buvo sėkmingai atnaujinti');
     }
 
     /**
@@ -133,7 +134,7 @@ class StudentsController extends Controller
         $student->delete();
 
         return redirect()->back()
-            ->withSuccess('Student has been deleted');
+            ->withSuccess('Studentas buvo sėkmingai pašalintas');
     }
 
     /**
@@ -142,6 +143,18 @@ class StudentsController extends Controller
     public function changePassword() : View
     {
         return view('students.changePassword');
+    }
+
+    /**
+     * @return View
+     */
+    public function mentors() : View
+    {
+        $id = Auth::guard('student')->user()['id'];
+
+        $student = $this->studentsRepository->all()->find($id);
+
+        return view('students.mentors', compact('student'));
     }
 
     /**
@@ -154,8 +167,8 @@ class StudentsController extends Controller
 
         if($wasChanged)
             return redirect()->back()
-            ->withSuccess('Password has been changed');
+            ->withSuccess('Slaptažodis buvo sėkmingai pakeistas');
         else
-            return redirect()->back()->withErrors('Password has not been changed, wrong current password');
+            return redirect()->back()->withErrors('Slaptažodis nebuvo pakeistas, įvestas blogas dabartinis slaptažodis');
     }
 }

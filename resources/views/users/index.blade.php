@@ -1,7 +1,7 @@
 @extends('layouts.main')
 @section('title', 'Users')
 @section('menu')
-    @include('layouts.userNavPanel')
+    @include('layouts.NavPanel')
 @endsection
 
 @section('content')
@@ -12,9 +12,9 @@
         <thead>
         <tr>
             <td>ID</td>
-            <td>Name</td>
-            <td>Email</td>
-            <td>Actions</td>
+            <td>Vardas</td>
+            <td>Elektorinio Pašto Adresas</td>
+            <td>Veiksmai</td>
 
         </tr>
         </thead>
@@ -26,11 +26,11 @@
                 <td>{{ $value->email }}</td>
 
                 <td>
-                    <a class="btn btn-small btn-info" href="{{ URL::to('users/' . $value->id . '/edit') }}">Edit this User</a>
+                    <a class="btn btn-small btn-info pull-left" href="{{ URL::to('users/' . $value->id . '/edit') }}">Keisti Administratoriaus Duomenis</a>
 
-                    {{ Form::open(array('url' => 'users/' . $value->id . '/delete', 'class' => 'pull-right')) }}
+                    {{ Form::open(array('url' => 'users/' . $value->id . '/delete', 'class' => 'pull-left')) }}
                     {{ Form::hidden('_method', 'DELETE') }}
-                    {{ Form::submit('Delete this User', array('class' => 'btn btn-danger')) }}
+                    {{ Form::submit('Trinti Šį Administratorių', array('class' => 'btn btn-danger')) }}
                     {{ Form::close() }}
                 </td>
             </tr>

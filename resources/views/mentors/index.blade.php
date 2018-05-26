@@ -1,27 +1,26 @@
 @extends('layouts.main')
 @section('title', 'Users')
 @section('menu')
-    @include('layouts.userNavPanel')
+    @include('layouts.NavPanel')
 @endsection
 
 @section('content')
 
-    <h1>All the mentors</h1>
+    <h1>Visi Mentoriai</h1>
 
     <table class="table table-striped table-bordered">
         <thead>
         <tr>
             <td>ID</td>
-            <td>First Name</td>
-            <td>Last Name</td>
-            <td>Email</td>
-            <td>Gender</td>
-            <td>Age</td>
-            <td>City</td>
-            <td>Topic</td>
-            <td>Fixed Hour Price</td>
-            <td>Actions</td>
-
+            <td>Vardas</td>
+            <td>Pavardė</td>
+            <td>Elektroninio pašto adresas</td>
+            <td>Lytis</td>
+            <td>Amžius</td>
+            <td>Miestas</td>
+            <td>Tema</td>
+            <td>Valandinis įkainis</td>
+            <td>Veiksmai</td>
         </tr>
         </thead>
         <tbody>
@@ -38,11 +37,11 @@
                 <td>{{ $value->fixed_hour_price }}</td>
 
                 <td>
-                    <a class="btn btn-small btn-info" href="{{ URL::to('mentors/' . $value->id . '/edit') }}">Edit this Mentor</a>
+                    <a class="btn btn-small btn-info pull-left" href="{{ URL::to('mentors/' . $value->id . '/edit') }}">Keisti Mentoriaus Duomenis</a>
 
-                    {{ Form::open(array('url' => 'mentors/' . $value->id . '/delete', 'class' => 'pull-right')) }}
+                    {{ Form::open(array('url' => 'mentors/' . $value->id . '/delete', 'class' => 'pull-left')) }}
                     {{ Form::hidden('_method', 'DELETE') }}
-                    {{ Form::submit('Delete this Mentor', array('class' => 'btn btn-danger')) }}
+                    {{ Form::submit('Ištrinti Mentorių', array('class' => 'btn btn-danger')) }}
                     {{ Form::close() }}
                 </td>
             </tr>

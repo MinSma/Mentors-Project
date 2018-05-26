@@ -20,6 +20,7 @@ $factory->define(App\Models\Mentor::class, function (Faker $faker) {
             'Informacines technologijos',
             'Fizika',
             'Chemija',
+            'Geografija',
             'Biologija',
             'Istorija'
         )),

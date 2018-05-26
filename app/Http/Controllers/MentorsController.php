@@ -11,6 +11,7 @@ use App\Services\PasswordChangeService;
 use Illuminate\Http\Request;
 use App\Repositories\MentorsRepository;
 use App\Models\Mentor;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
 
 /**
@@ -53,7 +54,7 @@ class MentorsController extends Controller
      */
     public function index(): View
     {
-        $mentors = $this->mentorsRepository->model()::paginate(5);
+        $mentors = $this->mentorsRepository->model()::paginate(10);
 
         return view('mentors.index', ['mentors' => $mentors]);
     }
@@ -95,8 +96,7 @@ class MentorsController extends Controller
 
         $this->mentorsRepository->create($data);
 
-        return redirect()->back()
-                 ->withSuccess('Mentor has been created');
+        return redirect('/login')->withSuccess('Mentorius buvo sėkmingai sukurtas');
     }
 
     /**
@@ -106,6 +106,19 @@ class MentorsController extends Controller
     public function show(Mentor $mentor): View
     {
         return view('mentors.show', compact('mentor'));
+    }
+
+    /**
+     * @param Mentor $mentor
+     * @return View
+     */
+    public function students(): View
+    {
+        $id = Auth::guard('mentor')->user()['id'];
+
+        $mentor = $this->mentorsRepository->all()->find($id);
+
+        return view('mentors.students', compact('mentor'));
     }
 
     /**
@@ -125,7 +138,6 @@ class MentorsController extends Controller
     public function update(MentorUpdateRequest $request, Mentor $mentor)
     {
         $mentor->update([
-            'password' => bcrypt($request->getPassword()),
             'first_name' => $request->getFirstName(),
             'last_name' => $request->getLastName(),
             'gender' => $request->getGender(),
@@ -135,7 +147,7 @@ class MentorsController extends Controller
             'fixed_hour_price' => $request->getFixedHourPrice()]);
 
         return redirect()->route('mentors.index')
-            ->withSuccess('Mentor has been updated');
+            ->withSuccess('Mentoriaus duomenys buvo sėkmingai atnaujinti');
     }
 
     /**
@@ -148,7 +160,7 @@ class MentorsController extends Controller
         $mentor->delete();
 
         return redirect()->back()
-            ->withSuccess('Mentor has been deleted');
+            ->withSuccess('Mentorius buvo sėkmingai pašalintas');
     }
 
 
@@ -187,8 +199,8 @@ class MentorsController extends Controller
 
         if($wasChanged)
             return redirect()->back()
-                ->withSuccess('Password has been changed');
+                ->withSuccess('Slaptažodis buvo sėkmingai pakeistas');
         else
-            return redirect()->back()->withErrors('Password has not been changed, wrong current password');
+            return redirect()->back()->withErrors('Slaptažodis nebuvo pakeistas, įvestas blogas dabartinis slaptažodis');
     }
 }

@@ -41,7 +41,7 @@ class UsersController extends Controller
      */
     public function index(): View
     {
-        $users = $this->usersRepository->model()::paginate(5);
+        $users = $this->usersRepository->model()::paginate(10);
 
         return view('users.index', ['users' => $users]);
     }
@@ -77,7 +77,7 @@ class UsersController extends Controller
         $this->usersRepository->create($data);
 
         return redirect()->back()
-            ->withSuccess('User has been created');
+            ->withSuccess('Administratorius buvo sėkmingai sukurtas');
     }
 
     /**
@@ -112,7 +112,7 @@ class UsersController extends Controller
             'name' => $request->getName()]);
 
         return redirect()->route('users.index')
-            ->withSuccess('User has been updated');
+            ->withSuccess('Administratoriaus duomenys buvo sėkmingai atnaujinti');
     }
 
     /**
@@ -125,7 +125,7 @@ class UsersController extends Controller
         $user->delete();
 
         return redirect()->back()
-            ->withSuccess('User has been deleted');
+            ->withSuccess('Administratorius buvo sėkmingai pašalintas');
     }
 
     /**
@@ -146,8 +146,8 @@ class UsersController extends Controller
 
         if($wasChanged)
             return redirect()->back()
-                ->withSuccess('Password has been changed');
+                ->withSuccess('Slaptažodis buvo sėkmingai pakeistas');
         else
-            return redirect()->back()->withErrors('Password has not been changed, wrong current password');
+            return redirect()->back()->withErrors('Slaptažodis nebuvo pakeistas, įvestas blogas dabartinis slaptažodis');
     }
 }

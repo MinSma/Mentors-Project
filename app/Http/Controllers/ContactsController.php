@@ -16,8 +16,8 @@ class ContactsController extends Controller
     /**
      * @return View
      */
-    public function show(){
-        return view('contactus.index');
+    public function show() {
+        return view('guestPages.contactus.index');
     }
 
     /**
@@ -28,6 +28,6 @@ class ContactsController extends Controller
     public function mailToAdmin(ContactFormRequest $message, Admin $admin) {
         $admin->notify(new InboxMessage($message));
 
-        return redirect()->back()->with('message', 'Thanks for the message! We will get back to you soon!');
+        return redirect()->back()->with('message', 'Dėkojame už pranešimą! Greitai susisieksime!');
     }
 }

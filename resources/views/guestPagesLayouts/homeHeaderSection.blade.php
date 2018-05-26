@@ -8,14 +8,15 @@
             <label for="topic">Pasirinkti temą</label>
 
             <select name="topic" id="topic" class="form-control">
-                <option value="mathematics">Mathematics</option>
-                <option value="english">English language</option>
-                <option value="it">Information Technology</option>
-                <option value="chemistry">Chemistry</option>
-                <option value="physics">Physics</option>
-                <option value="biology">Biology</option>
-                <option value="geography">Geography</option>
-                <option value="history">History</option>
+                <option value="all">Visus</option>
+                <option value="Matematika">Matematika</option>
+                <option value="Anglu kalba">Anglų Kalba</option>
+                <option value="Informacines Technologijos">Informacinės Technologijos</option>
+                <option value="Chemija">Chemija</option>
+                <option value="Fizika">Fizika</option>
+                <option value="Biologija">Biologija</option>
+                <option value="Geografija">Geografija</option>
+                <option value="Istorija">Istorija</option>
             </select>
         </div>
 

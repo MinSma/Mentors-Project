@@ -1,7 +1,7 @@
 @extends('layouts.main')
 @section('title', 'Users Create')
 @section('menu')
-    @include('layouts.userNavPanel')
+    @include('layouts.NavPanel')
 @endsection
 
 @section('content')
@@ -9,7 +9,7 @@
         <div class="col-md-4"></div>
 
         <div class="col-md-4">
-            <h1>Admin Creation</h1>
+            <h1>Administratoriaus kūrimas</h1>
 
             <hr>
 
@@ -17,27 +17,27 @@
                 {{ csrf_field() }}
 
                 <div class="form-group">
-                    <label for="name">Name:</label>
-                    <input type="text" class="form-control" id="name"  name="name" required>
+                    <label for="name">Vardas:</label>
+                    <input type="text" class="form-control" id="name"  name="name" value="{{ old('name') }}" required>
                 </div>
 
                 <div class="form-group">
-                    <label for="email">Email Address:</label>
-                    <input type="email" class="form-control" id="email"  name="email" required>
+                    <label for="email">Elektroninio pašto adresas:</label>
+                    <input type="email" class="form-control" id="email"  name="email" value="{{ old('email') }}" required>
                 </div>
 
                 <div class="form-group">
-                    <label for="password">Password:</label>
+                    <label for="password">Slaptažodis:</label>
                     <input type="password" class="form-control" id="password" name="password" required>
                 </div>
 
                 <div class="form-group">
-                    <label for="password_confirmation">Password Confirmation:</label>
+                    <label for="password_confirmation">Slaptažodžio Patvirtinimas:</label>
                     <input type="password" class="form-control" id="password_confirmation" name="password_confirmation" required>
                 </div>
 
                 <div class="form-group">
-                    <button type="submit" class="btn btn-primary">Create</button>
+                    <button type="submit" class="btn btn-primary">Kurti</button>
                 </div>
             </form>
         </div>

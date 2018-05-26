@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\LoginRequest;
 use App\Services\LoginService;
+use Illuminate\View\View;
 
 /**
  * Class LoginController
@@ -23,6 +24,14 @@ class LoginController extends Controller
     public function __construct(LoginService $loginService)
     {
         $this->loginService = $loginService;
+    }
+
+    /**
+     * @return View
+     */
+    public function registerSelection() : View
+    {
+        return view('guestPages.registerSelection.register');
     }
 
     /**
@@ -49,15 +58,15 @@ class LoginController extends Controller
     public function connect(LoginRequest $request)
     {
         if ($this->loginService->tryStudent($request))
-            return redirect()->route('students.dashboard');
+            return redirect()->route('students.dashboard')->withSuccess('Sėkmingai prisijungėte');
 
         else if ($this->loginService->tryMentor($request))
-            return redirect()->route('mentors.dashboard');
+            return redirect()->route('mentors.dashboard')->withSuccess('Sėkmingai prisijungėte');
 
         else if ($this->loginService->tryUser($request))
-            return redirect()->route('users.dashboard');
+            return redirect()->route('users.dashboard')->withSuccess('Sėkmingai prisijungėte');
 
-        else return redirect()->back();
+        else return redirect()->back()->withErrors('Prisijungimas nepavyko, įvesti blogi prisijungimo duomenys');
     }
 
     /**
@@ -69,6 +78,6 @@ class LoginController extends Controller
         auth('student')->logout();
         auth('web')->logout();
 
-        return view('login.index');
+        return view('login.index')->withSuccess('Sėkmingai atsijungėte');
     }
 }

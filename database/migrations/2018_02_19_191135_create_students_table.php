@@ -24,6 +24,8 @@ class CreateStudentsTable extends Migration
             $table->string('gender');
             $table->integer('age');
             $table->string('city');
+            $table->integer('mentor_id')->nullable()->unsigned();
+            $table->foreign('mentor_id')->references('id')->on('mentors');
             $table->rememberToken();
             $table->timestamps();
         });
@@ -34,6 +36,7 @@ class CreateStudentsTable extends Migration
      */
     public function down()
     {
+        Schema::disableForeignKeyConstraints();
         Schema::dropIfExists('students');
     }
 }

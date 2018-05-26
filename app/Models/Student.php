@@ -25,6 +25,7 @@ class Student extends Authenticatable
         'gender',
         'age',
         'city',
+        'mentor_id'
     ];
 
     /**
@@ -33,4 +34,18 @@ class Student extends Authenticatable
     protected $hidden = [
         'remember_token'
     ];
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function mentor() {
+            return $this->belongsTo(Mentor::class);
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function comments() {
+        return $this->hasMany(Comment::class);
+    }
 }

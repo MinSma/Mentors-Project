@@ -14,6 +14,7 @@
 // Mentors
 Route::get('mentors/', 'MentorsController@index')->name('mentors.index')->middleware('auth');
 Route::get('mentors/search', 'MentorsController@search')->name('mentors.search');
+Route::get('mentors/students', 'MentorsController@students')->name('mentors.students')->middleware('auth:mentor');
 Route::get('mentors/found', 'MentorsController@found')->name('mentors.found');
 Route::get('mentors/dashboard', 'MentorsController@dashboard')->name('mentors.dashboard')->middleware('auth:mentor');
 Route::get('mentors/dashboard/change', 'MentorsController@changePassword')->name('mentors.changePassword')->middleware('auth:mentor');
@@ -27,6 +28,7 @@ Route::delete('mentors/{mentor}/delete', 'MentorsController@destroy')->name('men
 
 // Students
 Route::get('students/', 'StudentsController@index')->name('students.index')->middleware('auth');
+Route::get('students/mentors', 'StudentsController@mentors')->name('students.mentors')->middleware('auth:student');
 Route::get('students/dashboard', 'StudentsController@dashboard')->name('students.dashboard')->middleware('auth:student');
 Route::get('students/dashboard/change', 'StudentsController@changePassword')->name('students.changePassword')->middleware('auth:student');
 Route::post('students/dashboard/change', 'StudentsController@storePassword')->name('students.storePassword')->middleware('auth:student');
@@ -53,6 +55,7 @@ Route::delete('users/{user}/delete', 'UsersController@destroy')->name('users.del
 Route::get('login/', 'LoginController@index')->name('login');
 Route::get('login/disconnect', 'LoginController@disconnect')->name('login.disconnect');
 Route::post('login/connect', 'LoginController@connect')->name('login.connect');
+Route::get('/registerSelection', 'LoginController@registerSelection')->name('registerSelection');
 
 // Guest routing
 Route::get('/', 'AppearanceController@home')->name('guestPages.home');
@@ -60,3 +63,10 @@ Route::get('/', 'AppearanceController@home')->name('guestPages.home');
 // Conctact up routing
 Route::get('/contactus', 'ContactsController@show');
 Route::post('/contactus',  'ContactsController@mailToAdmin');
+
+// Comments routing
+Route::post('mentors/{mentor}/', 'CommentsController@store')->name('comments.store');
+
+// Reservation routing
+Route::get('mentors/{mentor}/reservation', 'ReservationsController@store')->name('reservation.store');
+Route::get('mentors/{mentor}/unreservation', 'ReservationsController@unstore')->name('reservation.unstore');

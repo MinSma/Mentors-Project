@@ -1,65 +1,62 @@
 @extends('layouts.main')
 @section('title', 'Students Panel Edit')
 @section('menu')
-    @include('layouts.userNavPanel')
+    @include('layouts.NavPanel')
 @endsection
-
 
 @section('content')
     {{ Form::model($mentor, array('route' => array('mentors.update', $mentor), 'method' => 'PUT')) }}
 
     <div class="form-group">
-        {!! Form::label('first_name', 'First Name', ['class' => 'control-label']) !!}
-        {!! Form::text('first_name', null, ['class' => 'form-control']) !!}
+        {!! Form::label('first_name', 'Vardas', ['class' => 'control-label']) !!}
+        {!! Form::text('first_name', old('first_name'), ['class' => 'form-control']) !!}
     </div>
 
     <div class="form-group">
-        {!! Form::label('last_name', 'Last Name', ['class' => 'control-label']) !!}
-        {!! Form::text('last_name', null, ['class' => 'form-control']) !!}
+        {!! Form::label('last_name', 'Pavardė', ['class' => 'control-label']) !!}
+        {!! Form::text('last_name', old('last_name'), ['class' => 'form-control']) !!}
     </div>
 
     <div class="form-group">
-        {!! Form::label('gender', 'Gender:', ['class' => 'control-label']) !!}
-        {!! Form::text('gender', null, ['class' => 'form-control']) !!}
+        {!! Form::label('gender', 'Lytis:', ['class' => 'control-label']) !!}
+        {!! Form::select('gender', [
+            'vyras' => 'Vyras',
+            'moteris' => 'Moteris'
+        ], old('topic'), ['class' => 'form-control']) !!}
     </div>
 
     <div class="form-group">
-        {!! Form::label('age', 'Age:', ['class' => 'control-label']) !!}
-        {!! Form::text('age', null, ['class' => 'form-control']) !!}
+        {!! Form::label('age', 'Amžius:', ['class' => 'control-label']) !!}
+        {!! Form::text('age', old('age'), ['class' => 'form-control']) !!}
     </div>
 
     <div class="form-group">
-        {!! Form::label('city', 'City:', ['class' => 'control-label']) !!}
-        {!! Form::text('city', null, ['class' => 'form-control']) !!}
+        {!! Form::label('city', 'Miestas:', ['class' => 'control-label']) !!}
+        {!! Form::text('city', old('city'), ['class' => 'form-control']) !!}
     </div>
 
     <div class="form-group">
-        {!! Form::label('topic', 'Topic:', ['class' => 'control-label']) !!}
+        {!! Form::label('topic', 'Tema:', ['class' => 'control-label']) !!}
         {!! Form::select('topic', [
-        'mathematics' => 'Mathematics',
-        'english' => 'English language',
-        'it' => 'Information Technology',
-        'chemistry' => 'Chemistry',
-        'physics' => 'Physics',
-        'biology' => 'Biology',
-        'geography' => 'Geography',
-        'history' => 'History',
-        ], null, ['class' => 'form-control']) !!}
+            'mathematics' => 'Mathematics',
+            'english' => 'English language',
+            'it' => 'Information Technology',
+            'chemistry' => 'Chemistry',
+            'physics' => 'Physics',
+            'biology' => 'Biology',
+            'geography' => 'Geography',
+            'history' => 'History'
+        ], old('topic'), ['class' => 'form-control']) !!}
     </div>
 
     <div class="form-group">
-        {!! Form::label('fixed_hour_price', 'Fixed Hour Price:', ['class' => 'control-label']) !!}
-        {!! Form::text('fixed_hour_price', null, ['class' => 'form-control']) !!}
-    </div>
-
-    <div class="form-group">
-        {!! Form::label('password', 'Password:', ['class' => 'control-label']) !!}
-        {!! Form::password('password',  null, ['class' => 'form-control']) !!}
+        {!! Form::label('fixed_hour_price', 'Valandinis Įkainis:', ['class' => 'control-label']) !!}
+        {!! Form::text('fixed_hour_price', old('fixed_hour_price'), ['class' => 'form-control']) !!}
     </div>
 
     {!! Form::hidden('id', $mentor->id) !!}
 
-    {!! Form::submit('Edit Mentor', ['class' => 'btn btn-primary']) !!}
+    {!! Form::submit('Keisti Mentoriaus Duomenis', ['class' => 'btn btn-primary']) !!}
 
     {!! Form::close() !!}
 
