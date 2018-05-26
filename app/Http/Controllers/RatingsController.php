@@ -6,6 +6,7 @@ use App\Http\Requests\RatingStoreRequest;
 use App\Models\Mentor;
 use App\Repositories\RatingsRepository;
 use App\Repositories\StudentsRepository;
+use Illuminate\Support\Facades\Auth;
 
 
 /**
