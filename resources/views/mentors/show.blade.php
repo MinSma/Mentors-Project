@@ -20,6 +20,27 @@
             <h3>Valandinis įkainis:</h3><?php echo $mentor->fixed_hour_price ?>
         </div>
         <div class="col-xs-6 col-md-3">
+            <h2>Įvertinimas:</h2>
+            <h3>Dabartinis įvertinimas:</h3><?php echo $mentor->rating ?>
+            <form method="POST" action="{{route('rating.store', $mentor)}}">
+                {{ csrf_field() }}
+                <select name="rating" id="rating" class="form-control">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                </select>
+
+                <br />
+
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary">Vertinti</button>
+                </div>
+            </form>
+
+            <br />
+
             <div class="row">
                 <div class="col-xs-6 col-md-3">
                     <a class="btn btn-large btn-info" href="{{ route('reservation.store', $mentor) }}">Užsirašyti</a>
@@ -29,7 +50,6 @@
                 </div>
             </div>
 
-
             <h2>Atsiliepimai:</h2>
             @foreach($mentor->comments as $comment)
                 <h3>{{$comment->body}} {{$comment->created_at->diffForHumans()}}</h3>
@@ -38,7 +58,7 @@
 
             <div class="card">
                 <div class="card-block">
-                    <form method="POST" action="/mentors/{{ $mentor->id }}">
+                    <form method="POST" action="{{route('comments.store', $mentor)}}">
                         {{ csrf_field() }}
 
                         <div class="form-group">
