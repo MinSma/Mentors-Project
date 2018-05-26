@@ -6,6 +6,8 @@ namespace App\Http\Controllers;
 use App\Http\Requests\MentorCreateRequest;
 use App\Http\Requests\MentorUpdateRequest;
 use App\Http\Requests\PasswordChangeRequest;
+use App\Repositories\ReservationsRepository;
+use App\Repositories\StudentsRepository;
 use App\Services\SearchService;
 use App\Services\PasswordChangeService;
 use Illuminate\Http\Request;
@@ -36,17 +38,32 @@ class MentorsController extends Controller
     private $passwordChangeService;
 
     /**
+     * @var ReservationsRepository
+     */
+    private $reservationsRepository;
+
+    /**
+     * @var StudentsRepository
+     */
+    private $studentsRepository;
+
+    /**
      * MentorsController constructor.
      * @param MentorsRepository $mentorsRepository
      * @param SearchService $searchService
      * @param PasswordChangeService $passwordChangeService
+     * @param ReservationsRepository $reservationsRepository
+     * @param StudentsRepository $studentsRepository
      */
     public function __construct(MentorsRepository $mentorsRepository, SearchService $searchService,
-                                PasswordChangeService $passwordChangeService)
+                                PasswordChangeService $passwordChangeService, ReservationsRepository $reservationsRepository,
+                                StudentsRepository $studentsRepository)
     {
         $this->mentorsRepository = $mentorsRepository;
         $this->searchService = $searchService;
         $this->passwordChangeService = $passwordChangeService;
+        $this->reservationsRepository = $reservationsRepository;
+        $this->studentsRepository = $studentsRepository;
     }
 
     /**
@@ -116,9 +133,16 @@ class MentorsController extends Controller
     {
         $id = Auth::guard('mentor')->user()['id'];
 
-        $mentor = $this->mentorsRepository->all()->find($id);
+        $reservations = $this->reservationsRepository->model()
+            ::where('mentor_id', $id)->get();
 
-        return view('mentors.students', compact('mentor'));
+        $students = array();
+
+        foreach($reservations as $key){
+            array_push($students, $this->studentsRepository->model()::find($key['student_id']));
+        }
+
+        return view('mentors.students', compact('students'));
     }
 
     /**
