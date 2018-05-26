@@ -4,6 +4,8 @@ declare(strict_types = 1);
 namespace App\Http\Controllers;
 
 use App\Http\Requests\StudentUpdateRequest;
+use App\Repositories\MentorsRepository;
+use App\Repositories\ReservationsRepository;
 use App\Services\PasswordChangeService;
 use App\Http\Requests\StudentCreateRequest;
 use App\Http\Requests\PasswordChangeRequest;
@@ -29,13 +31,29 @@ class StudentsController extends Controller
     private $passwordChangeService;
 
     /**
+     * @var ReservationsRepository
+     */
+    private $reservationsRepository;
+
+    /**
+     * @var MentorsRepository
+     */
+    private $mentorsRepository;
+
+    /**
      * StudentsController constructor.
      * @param StudentsRepository $studentsRepository
+     * @param PasswordChangeService $passwordChangeService
+     * @param ReservationsRepository $reservationsRepository
+     * @param MentorsRepository $mentorsRepository
      */
-    public function __construct(StudentsRepository $studentsRepository, PasswordChangeService $passwordChangeService)
+    public function __construct(StudentsRepository $studentsRepository, PasswordChangeService $passwordChangeService,
+                                ReservationsRepository $reservationsRepository, MentorsRepository $mentorsRepository)
     {
         $this->studentsRepository = $studentsRepository;
         $this->passwordChangeService = $passwordChangeService;
+        $this->reservationsRepository = $reservationsRepository;
+        $this->mentorsRepository = $mentorsRepository;
     }
 
     /**
@@ -152,9 +170,16 @@ class StudentsController extends Controller
     {
         $id = Auth::guard('student')->user()['id'];
 
-        $student = $this->studentsRepository->all()->find($id);
+        $reservations = $this->reservationsRepository->model()
+            ::where('student_id', $id)->get();
 
-        return view('students.mentors', compact('student'));
+        $mentors = array();
+
+        foreach($reservations as $key){
+            array_push($mentors, $this->mentorsRepository->model()::find($key['mentor_id']));
+        }
+
+        return view('students.mentors', compact('mentors'));
     }
 
     /**
