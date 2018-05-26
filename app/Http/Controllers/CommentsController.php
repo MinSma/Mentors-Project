@@ -54,7 +54,7 @@ class CommentsController extends Controller
 
                 $this->commentsRepository->create($data);
 
-                return view('mentors.show', compact('mentor'));
+                return redirect()->back()->withSuccess('Sėkmingai palikote atsiliepimą apie mentorių');
             }
 
             return redirect()->back()->withErrors('Nepavyko pakomentuoti, Jūs jau esate pakomentavęs šį mentorių');

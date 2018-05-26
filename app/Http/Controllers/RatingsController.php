@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\RatingStoreRequest;
-use App\Repositories\MentorsRepository;
+use App\Models\Mentor;
 use App\Repositories\RatingsRepository;
 use App\Repositories\StudentsRepository;
 
@@ -12,7 +12,7 @@ use App\Repositories\StudentsRepository;
  * Class RatingController
  * @package App\Http\Controllers
  */
-class RatingController extends Controller
+class RatingsController extends Controller
 {
     /**
      * @var RatingsRepository
@@ -25,22 +25,14 @@ class RatingController extends Controller
     private $studentsRepository;
 
     /**
-     * @var MentorsRepository
-     */
-    private $mentorsRepository;
-
-    /**
      * RatingController constructor.
      * @param RatingsRepository $ratingsRepository
      * @param StudentsRepository $studentsRepository
-     * @param MentorsRepository $mentorsRepository
      */
-    public function __construct(RatingsRepository $ratingsRepository, StudentsRepository $studentsRepository,
-                                MentorsRepository $mentorsRepository)
+    public function __construct(RatingsRepository $ratingsRepository, StudentsRepository $studentsRepository)
     {
         $this->ratingsRepository = $ratingsRepository;
         $this->studentsRepository = $studentsRepository;
-        $this->mentorsRepository = $mentorsRepository;
     }
 
     /**
@@ -66,18 +58,18 @@ class RatingController extends Controller
                     'student_id' => $id
                 ];
 
-                $this->ratingsRepository->create($data);
-
                 $howManyRatingsMentorHave = $this->ratingsRepository->model()
-                    ::where('mentor_id', $mentor['id']);
+                    ::where('mentor_id', $mentor['id'])->count();
 
-                $newRating = $mentor['rating'] + $request->getRating();
+                $newRating = ($mentor['rating'] + $request->getRating()) / ($howManyRatingsMentorHave + 1);
 
                 $mentor->update([
-                    'rating' => $newRating / $howManyRatingsMentorHave
+                    'rating' => $newRating
                 ]);
 
-                return view('mentors.show', compact('mentor'));
+                $this->ratingsRepository->create($data);
+
+                return redirect()->back()->withSuccess('Sėkmingai įvertinote mentorių');
             }
 
             return redirect()->back()->withErrors('Nepavyko įvertinti, Jūs jau esate įvertinęs šį mentorių');
