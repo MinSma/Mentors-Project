@@ -36,13 +36,6 @@ class Student extends Authenticatable
     ];
 
     /**
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-     */
-    public function mentor() {
-            return $this->belongsTo(Mentor::class);
-    }
-
-    /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
     public function comments() {
