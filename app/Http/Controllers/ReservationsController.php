@@ -4,7 +4,7 @@ declare(strict_types = 1);
 namespace App\Http\Controllers;
 
 use App\Models\Student;
-use App\Repositories\StudentsRepository;
+use App\Repositories\ReservationsRepository;
 use App\Models\Mentor;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
@@ -16,54 +16,60 @@ use Illuminate\View\View;
 class ReservationsController extends Controller
 {
     /**
-     * @var StudentsRepository
+     * @var ReservationsRepository
      */
-    private $studentsRepository;
+    private $reservationsRepository;
 
     /**
      * ReservationsController constructor.
-     * @param StudentsRepository $studentsRepository
+     * @param ReservationsRepository $reservationsRepository
      */
-    public function __construct(StudentsRepository $studentsRepository)
+    public function __construct(ReservationsRepository $reservationsRepository)
     {
-        $this->studentsRepository = $studentsRepository;
+        $this->reservationsRepository = $reservationsRepository;
     }
 
     /**
      * @param Mentor $mentor
-     * @param CommentStoreRequest $request
-     * @return View
+     * @return $this
      */
     public function store(Mentor $mentor) {
         $id = Auth::guard('student')->user()['id'];
 
-        $student = $this->studentsRepository->all()->find($id);
-
         if($id != null){
-            $data = [
-                'mentor_id' => $mentor['id']
-            ];
+            $doesHaveReservation = $this->reservationsRepository->model()
+                ::where('mentor_id', $mentor['id'])
+                ->where('student_id', $id)
+                ->first();
 
-            $student->update($data);
+            if($doesHaveReservation == NULL) {
+                $data = [
+                    'mentor_id' => $mentor['id'],
+                    'student_id' => $id
+                ];
+
+                $this->reservationsRepository->create($data);
+            } else {
+                return redirect()->back()->withErrors('Nepavyko užsiregistruoti į mentoriaus užsiėmimus, Jūs jau esate užsiregistravę pas šį mentorių');
+            }
 
             return redirect()->back()->withSuccess('Sėkmingai užsiregistravote į mentoriaus užsiėmimus');
         }
 
-        return redirect()->back()->withErrors('Nepavyko užsiregistruoti į mentoriaus užsiėmimus, jūs nesate studentas');
+        return redirect()->back()->withErrors('Nepavyko užsiregistruoti į mentoriaus užsiėmimus, Jūs nesate studentas');
     }
 
     public function unstore(Mentor $mentor)
     {
         $id = Auth::guard('student')->user()['id'];
 
-        $student = $this->studentsRepository->all()->find($id);
-        
-        if($id != null && $student->mentor['id'] == $mentor['id']){
-            $data = [
-                'mentor_id' => NULL
-            ];
+        $doesHaveReservation = $this->reservationsRepository->model()
+            ::where('mentor_id', $mentor['id'])
+            ->where('student_id', $id)
+            ->first();
 
-            $student->update($data);
+        if($id != null && $doesHaveReservation != NULL){
+            $doesHaveReservation->delete();
 
             return redirect()->back()->withSuccess('Sėkmingai išsiregistravote iš mentoriaus užsiėmimų');
         }
