@@ -16,19 +16,25 @@
             <td>Lytis</td>
             <td>Amžius</td>
             <td>Miestas</td>
+            <td>Tema</td>
+            <td>Valandinis įkainis</td>
         </tr>
         </thead>
-        @if($student->mentor != NULL)
+        @if($mentors != NULL)
             <tbody>
-                <tr>
-                    <td>{{ $student->mentor->id }}</td>
-                    <td>{{ $student->mentor->first_name }}</td>
-                    <td>{{ $student->mentor->last_name }}</td>
-                    <td>{{ $student->mentor->email }}</td>
-                    <td>{{ $student->mentor->gender }}</td>
-                    <td>{{ $student->mentor->age }}</td>
-                    <td>{{ $student->mentor->city }}</td>
-                </tr>
+                @foreach($mentors as $key => $value)
+                    <tr>
+                        <td>{{ $value->id }}</td>
+                        <td>{{ $value->first_name }}</td>
+                        <td>{{ $value->last_name }}</td>
+                        <td>{{ $value->email }}</td>
+                        <td>{{ $value->gender }}</td>
+                        <td>{{ $value->age }}</td>
+                        <td>{{ $value->city }}</td>
+                        <td>{{ $value->topic }}</td>
+                        <td>{{ $value->fixed_hour_price }}</td>
+                    </tr>
+                @endforeach
             </tbody>
         @endif
     </table>
