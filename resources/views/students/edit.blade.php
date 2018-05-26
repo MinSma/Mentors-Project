@@ -1,7 +1,6 @@
 
 @section('title', 'Students Panel Edit')
 @include('guestPagesLayouts.homeHeaderIncludes')
-
 @include('layouts.NavPanel')
 @include('guestPagesLayouts.homeHeaderSection')
 
