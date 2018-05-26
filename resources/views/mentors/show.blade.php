@@ -26,7 +26,7 @@
                             <i class="glyphicon glyphicon-user"></i>Amžius: {{ $mentor->age }}</p>
                         <div class="btn-group">
                         <div class=""> 
-                            @if(!Auth::guest())
+                            @if(Auth::guard('student')->check() || !Auth::guest())
                             <a class="btn btn-small btn-info orange-bg" href="{{ route('reservation.store', $mentor) }}">Užsirašyti</a>
                             <a class="btn btn-small btn-info orange-bg" href="{{ route('reservation.unstore', $mentor) }}">Išsiregistruoti</a>
                             @endif                        
@@ -40,7 +40,7 @@
                                 <div>{{$comment->body}} {{$comment->created_at->diffForHumans()}}</div>
                             @endforeach
                         @endif
-                         @if(!Auth::guest())
+                         @if(Auth::guard('student')->check() || !Auth::guest())
                              <form method="POST" action="/mentors/{{ $mentor->id }}">
                                 {{ csrf_field() }}
                                 <div class="form-group">

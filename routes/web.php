@@ -21,7 +21,9 @@ Route::get('mentors/dashboard/change', 'MentorsController@changePassword')->name
 Route::post('mentors/dashboard/change', 'MentorsController@storePassword')->name('mentors.storePassword')->middleware('auth:mentor');
 Route::get('mentors/create', 'MentorsController@create')->name('mentors.create');
 Route::get('mentors/{mentor}/', 'MentorsController@show')->name('mentors.show');
-Route::get('mentors/{mentor}/edit', 'MentorsController@edit')->name('mentors.edit');
+Route::group(['middleware' => ['auth' || 'auth:mentor']], function(){
+	Route::get('mentors/{mentor}/edit', 'MentorsController@edit')->name('mentors.edit');
+});
 Route::post('mentors/', 'MentorsController@store')->name('mentors.store');
 Route::put('mentors/{mentor}/update', 'MentorsController@update')->name('mentors.update');
 Route::delete('mentors/{mentor}/delete', 'MentorsController@destroy')->name('mentors.delete')->middleware('auth');
@@ -34,7 +36,9 @@ Route::get('students/dashboard/change', 'StudentsController@changePassword')->na
 Route::post('students/dashboard/change', 'StudentsController@storePassword')->name('students.storePassword')->middleware('auth:student');
 Route::get('students/create', 'StudentsController@create')->name('students.create');
 Route::get('students/{student}/', 'StudentsController@show')->name('students.show');
-Route::get('students/{student}/edit', 'StudentsController@edit')->name('students.edit');
+Route::group(['middleware' => ['auth' || 'auth:student']], function(){
+	Route::get('students/{student}/edit', 'StudentsController@edit')->name('students.edit');
+});
 Route::post('students/', 'StudentsController@store')->name('students.store');
 Route::put('students/{student}/update', 'StudentsController@update')->name('students.update');
 Route::delete('students/{student}/delete', 'StudentsController@destroy')->name('students.delete')->middleware('auth');

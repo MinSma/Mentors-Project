@@ -40,10 +40,10 @@
                     </div>
                     <div class="col-lg-4 col-sm-6">
                         <div class="circle-tile">
-                                <div class="circle-tile-heading orange">
+                                <div class="circle-tile-heading orange-bg">
                                     <i class="fa fa-users fa-fw fa-3x"></i>
                                 </div>
-                            <div class="circle-tile-content orange">
+                            <div class="circle-tile-content orange-bg">
                                 <div class="circle-tile-description text-faded">
                                     Visi
                                 </div>
