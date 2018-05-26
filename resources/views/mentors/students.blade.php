@@ -19,7 +19,7 @@
         </tr>
         </thead>
         <tbody>
-        @foreach($mentor->students as $key => $value)
+        @foreach($students as $key => $value)
             <tr>
                 <td>{{ $value->id }}</td>
                 <td>{{ $value->first_name }}</td>

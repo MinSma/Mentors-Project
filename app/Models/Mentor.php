@@ -41,13 +41,6 @@ class Mentor extends Authenticatable
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function students() {
-        return $this->hasMany(Student::class);
-    }
-
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
-     */
     public function comments() {
         return $this->hasMany(Comment::class);
     }

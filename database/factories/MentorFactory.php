@@ -26,7 +26,7 @@ $factory->define(App\Models\Mentor::class, function (Faker $faker) {
         )),
 
         'fixed_hour_price' => $faker->randomFloat(4, 4.0, 50.0),
-        'rating' => $faker->randomFloat(4,0.0, 10.0),
+        'rating' => $faker->numberBetween(0, 0),
         'email' => $faker->unique()->safeEmail,
         'password' => '$2y$10$TKh8H1.PfQx37YgCzwiKb.KjNyWgaHb9cbcoQgdIVFlYg7B77UdFm', // secret
         'remember_token' => str_random(10),
