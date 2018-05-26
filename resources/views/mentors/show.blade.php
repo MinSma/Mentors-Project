@@ -34,14 +34,8 @@
                         </div>
                     </div>
                      <div class="col-xs-12 col-sm-4 col-md-4">
-                        @if($mentor->comments == null)
-                            Komentarai
-                            @foreach($mentor->comments as $comment)
-                                <div>{{$comment->body}} {{$comment->created_at->diffForHumans()}}</div>
-                            @endforeach
-                        @endif
                          @if(Auth::guard('student')->check() || !Auth::guest())
-                             <form method="POST" action="/mentors/{{ $mentor->id }}">
+                             <form method="POST" action="{{ route('comments.store', $mentor) }}">
                                 {{ csrf_field() }}
                                 <div class="form-group">
                                     <textarea name="body" placeholder="Jūsų komentaras." class="form-control"></textarea>
@@ -50,7 +44,13 @@
                                     <button type="submit" class="btn btn-small btn-info orange-bg">Komentuoti</button>
                                 </div>
                             </form> 
-                         @endif                        
+                         @endif
+                         @if($mentor->comments != null)
+                             Komentarai
+                             @foreach($mentor->comments as $comment)
+                                 <div>{{$comment->body}} {{$comment->created_at->diffForHumans()}}</div>
+                             @endforeach
+                         @endif
                     </div>
                 </div>
             </div>
