@@ -36,6 +36,9 @@
                                     <i class="glyphicon glyphicon-fire"></i>{{ $value['fixed_hour_price'] }} EU
                                     <br />
                                 </p>
+                                <div class="btn-group">
+                                    <a class="btn btn-small btn-info orange-bg" href="{{ URL::to('mentors/' . $value['id'] ) }}">Profilis</a>
+                                </div>
                             </div>
                         </div>
                     </div>
