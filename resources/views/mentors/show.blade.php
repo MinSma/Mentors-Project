@@ -30,9 +30,10 @@
             </div>
 
 
-            <h2>Komentarai:</h2>
+            <h2>Atsiliepimai:</h2>
             @foreach($mentor->comments as $comment)
                 <h3>{{$comment->body}} {{$comment->created_at->diffForHumans()}}</h3>
+                <h4>Parašė: {{$mentor['first_name']}}</h4>
             @endforeach
 
             <div class="card">
