@@ -21,7 +21,7 @@
         </div>
 
         <div class="form-group">
-            <button type="submit" class="btn btn-primary">Ieškoti</button>
+            <button type="submit" class="btn btn-small btn-info orange-bg">Ieškoti</button>
         </div>
     </form>
     </div>

@@ -1,11 +1,19 @@
-@extends('layouts.main')
+
 @section('title', 'Admin Panel Edit')
-@section('menu')
-    @include('layouts.NavPanel')
-@endsection
+@include('guestPagesLayouts.homeHeaderIncludes')
 
+@include('layouts.NavPanel')
+@include('guestPagesLayouts.homeHeaderSection')
 
-@section('content')
+<div class="container lower">
+    <div class="row centered-form">
+        <div class="col-xs-12 col-sm-12 col-md-12">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <p class="panel-title">Redaguokite</p>
+                </div>
+                <div class="panel-body">
+
     {{ Form::model($user, array('route' => array('users.update', $user), 'method' => 'PUT')) }}
 
     <div class="form-group">
@@ -20,8 +28,10 @@
 
     {!! Form::hidden('id', $user->id) !!}
 
-    {!! Form::submit('Keisti', ['class' => 'btn btn-primary']) !!}
+    {!! Form::submit('Keisti', ['class' => 'btn btn-small btn-info orange-bg']) !!}
 
     {!! Form::close() !!}
-
-@endsection
+            </div>
+        </div>
+    </div>
+</div>

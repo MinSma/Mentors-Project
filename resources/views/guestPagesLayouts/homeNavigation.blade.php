@@ -12,10 +12,10 @@
         </div>
         <div class="collapse navbar-collapse" id="myNavbar">
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="/">PAGRINDINIS</a></li>
-                <li><a href="/contactus">SUSISIEKITE</a></li>
-                <li><a href="/registerSelection">REGISTRUOTIS</a></li>
-                <li><a href="/login">PRISIJUNGTI</a></li>
+                <li><a href="/">Pagrindinis</a></li>
+                <li><a href="/contactus">Susisiekite</a></li>
+                <li><a href="/registerSelection">Registruotis</a></li>
+                <li><a href="/login">Prisijungti</a></li>
             </ul>
         </div>
     </div>

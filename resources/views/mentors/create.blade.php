@@ -1,18 +1,23 @@
-@extends('layouts.main')
-@section('title', 'Mentors Create')
-@section('menu')
-    @include('layouts.NavPanel')
-@endsection
+@include('guestPagesLayouts.homeHeaderIncludes')
+@include('guestPagesLayouts.homeNavigation')
+@include('guestPagesLayouts.homeHeaderSection')
+<h1 class="mb-2 text-center">Mentoriaus registracija</h1>
 
-@section('content')
-    <div class="row">
-        <div class="col-md-4"></div>
+    @if(session('message'))
+        <div class='alert alert-success'>
+            {{ session('message') }}
+        </div>
+    @endif
 
-        <div class="col-md-4">
-            <h1>Mentoriaus Registracija</h1>
-
-            <hr>
-
+    <br />
+<div class="container lower">
+    <div class="row centered-form">
+        <div class="col-xs-12 col-sm-12 col-md-12">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <p class="panel-title">Mentoriaus registracija</p>
+                </div>
+                <div class="panel-body">
             <form action="{{route('mentors.store')}}" method="post">
                 {{ csrf_field() }}
 
@@ -81,9 +86,11 @@
                 </div>
 
                 <div class="form-group">
-                    <button type="submit" class="btn btn-primary">Registruotis</button>
+                    <button type="submit" class="btn btn-small btn-info orange-bg">Registruotis</button>
                 </div>
             </form>
+            </div>
         </div>
     </div>
-@endsection
+</div>
+

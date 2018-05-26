@@ -1,9 +1,18 @@
-@extends('layouts.main')
+
 @section('title', 'Login Panel')
-@section('menu')
-    @include('layouts.NavPanel')
-@endsection
-@section('content')
+@include('guestPagesLayouts.homeHeaderIncludes')
+
+@include('layouts.NavPanel')
+@include('guestPagesLayouts.homeHeaderSection')
+<div class="container lower">
+    <div class="row centered-form">
+        <div class="col-xs-12 col-sm-12 col-md-12">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <p class="panel-title">Keiskite slaptažodį</p>
+                </div>
+                <div class="panel-body">
+
     <form id="form-change-password" role="form" method="POST" action="{{ url('/users/dashboard/change') }}" novalidate class="form-horizontal">
         <div class="col-md-9">
             <label for="current-password" class="col-sm-4 control-label">Esamas Slaptažodis</label>
@@ -28,8 +37,11 @@
         </div>
         <div class="form-group">
             <div class="col-sm-offset-5 col-sm-6">
-                <button type="submit" class="btn btn-danger">Keisti</button>
+                <button type="submit" class="btn btn-small btn-info orange-bg">Keisti</button>
             </div>
         </div>
     </form>
-@endsection
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,11 +1,12 @@
-@extends('layouts.main')
-@section('title', 'Login Panel')
-@section('content')
+@include('guestPagesLayouts.homeHeaderIncludes')
+@include('guestPagesLayouts.homeNavigation')
+@include('guestPagesLayouts.homeHeaderSection')
+<div class="container lower">
     <div class="row centered-form">
-        <div class="col-xs-12 col-sm-8 col-md-4 col-sm-offset-2 col-md-offset-4">
+        <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    <h3 class="panel-title">Prašome Prisijungti</h3>
+                    <p class="panel-title">Prašome prisijungti</p>
                 </div>
                 <div class="panel-body">
                     <form action="{{route('login.connect')}}" method="post">
@@ -23,20 +24,17 @@
 
                         <div class="row">
                             <div class="col-xs-6 col-md-4">
-                                    <button type="submit" class="btn btn-primary">Prisijungti</button>
+                                    <button type="submit" class="btn btn-small btn-info orange-bg">Prisijungti</button>
                             </div>
-                            <div class="col-xs-6 col-md-4">
-                                <a class="btn btn-medium btn-info" href="{{ route('mentors.create') }}">Registruoti Mentorių</a>
-                            </div>
-                            <div class="col-xs-6 col-md-3">
-                                <a class="btn btn-large btn-info" href="{{ route('students.create') }}">Registruoti Studentą</a>
-                            </div>
+                            <div class="col-xs-6 col-md-8">
+                                <a class="btn btn-small btn-info orange-bg" href="{{ route('mentors.create') }}">Registruoti Mentorių</a>
+                                <a class="btn btn-small btn-info orange-bg" href="{{ route('students.create') }}">Registruoti Studentą</a>
+                                </div>
                         </div>
                     </form>
 
             </div>
         </div>
     </div>
+</div>
 
-
-@endsection
