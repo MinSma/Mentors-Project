@@ -1,58 +1,60 @@
-@extends('layouts.main')
-@section('title', 'Users')
-@section('menu')
-    @include('layouts.NavPanel')
-@endsection
+    @include('guestPagesLayouts.homeHeaderIncludes')
+    @include('guestPagesLayouts.homeNavigation')
+    @include('guestPagesLayouts.homeHeaderSection')
 
-@section('content')
-
-    <h1>Mentoriaus Informacija</h1>
-
+<div class="container lower">
     <div class="row">
-        <div class="col-xs-6 col-md-6">
-            <h3>Vardas:</h3><?php echo $mentor->first_name ?>
-            <h3>Pavardė:</h3><?php echo $mentor->last_name ?>
-            <h3>Elektroninio pašto adresas:</h3><?php echo $mentor->email ?>
-            <h3>Lytis:</h3><?php echo $mentor->gender ?>
-            <h3>Amžius:</h3><?php echo $mentor->age ?>
-            <h3>Miestas:</h3><?php echo $mentor->city ?>
-            <h3>Tema:</h3><?php echo $mentor->topic ?>
-            <h3>Valandinis įkainis:</h3><?php echo $mentor->fixed_hour_price ?>
-
-            <br />
-            <br />
-        </div>
-        <div class="col-xs-6 col-md-3">
-            <div class="row">
-                <div class="col-xs-6 col-md-3">
-                    <a class="btn btn-large btn-info" href="{{ route('reservation.store', $mentor) }}">Užsirašyti</a>
-                </div>
-                <div class="col-xs-6 col-md-3">
-                    <a class="btn btn-large btn-info" href="{{ route('reservation.unstore', $mentor) }}">Išsiregistruoti</a>
-                </div>
-            </div>
-
-
-            <h2>Komentarai:</h2>
-            @foreach($mentor->comments as $comment)
-                <h3>{{$comment->body}} {{$comment->created_at->diffForHumans()}}</h3>
-            @endforeach
-
-            <div class="card">
-                <div class="card-block">
-                    <form method="POST" action="/mentors/{{ $mentor->id }}">
-                        {{ csrf_field() }}
-
-                        <div class="form-group">
-                            <textarea name="body" placeholder="Jūsų komentaras." class="form-control"></textarea>
+         <div class="col-xs-12 col-sm-12 col-md-12">
+            <div class="well well-sm">
+                <div class="row">
+                    <div class="col-xs-6 col-sm-3 col-md-3">
+                        <img src="http://placehold.it/380x500" alt="" class="img-rounded img-responsive" />
+                    </div>
+                    <div class="col-xs-6 col-sm-5 col-md-5">
+                    Mentoriaus Informacija
+                        <h4 class="found-title">
+                            {{ $mentor->first_name }} {{ $mentor->last_name }}</h4>
+                        <small><cite title="{{ $mentor->city }}">{{ $mentor->city }} <i class="glyphicon glyphicon-map-marker">
+                        </i></cite></small>
+                        <p>
+                            <i class="glyphicon glyphicon-envelope"></i>{{ $mentor->email }}
+                            <br />
+                            <i class="glyphicon glyphicon-globe"></i><span class="orange">{{ $mentor->topic }}</span>
+                            <br />
+                            <i class="glyphicon glyphicon-gift"></i>{{ $mentor->fixed_hour_price }} 
+                            <br />
+                            <i class="glyphicon glyphicon-user"></i>Amžius: {{ $mentor->age }}</p>
+                        <div class="btn-group">
+                        <div class=""> 
+                            @if(!Auth::guest())
+                            <a class="btn btn-small btn-info orange-bg" href="{{ route('reservation.store', $mentor) }}">Užsirašyti</a>
+                            <a class="btn btn-small btn-info orange-bg" href="{{ route('reservation.unstore', $mentor) }}">Išsiregistruoti</a>
+                            @endif                        
+                            </div>              
                         </div>
-
-                        <div class="form-group">
-                            <button type="submit" class="btn btn-primary">Komentuoti</button>
-                        </div>
-                    </form>
+                    </div>
+                     <div class="col-xs-12 col-sm-4 col-md-4">
+                        @if($mentor->comments == null)
+                            Komentarai
+                            @foreach($mentor->comments as $comment)
+                                <div>{{$comment->body}} {{$comment->created_at->diffForHumans()}}</div>
+                            @endforeach
+                        @endif
+                         @if(!Auth::guest())
+                             <form method="POST" action="/mentors/{{ $mentor->id }}">
+                                {{ csrf_field() }}
+                                <div class="form-group">
+                                    <textarea name="body" placeholder="Jūsų komentaras." class="form-control"></textarea>
+                                </div>
+                                <div class="form-group">
+                                    <button type="submit" class="btn btn-small btn-info orange-bg">Komentuoti</button>
+                                </div>
+                            </form> 
+                         @endif                        
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-@endsection
+</div>
+    

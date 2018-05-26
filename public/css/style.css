@@ -33,7 +33,7 @@ h5 {
     background-repeat: no-repeat;
     height: 500px;
     padding: 120px 100px;
-    opacity: 0.5;
+    opacity: 1;
     font-family: Montserrat, sans-serif;
 }
 .jumbotron-back .img{
@@ -44,7 +44,7 @@ h5 {
     background-repeat: no-repeat;
     height: 500px;
     padding: 120px 100px;
-    opacity: 0.5;
+    opacity: 1;
     font-family: Montserrat, sans-serif;
 }
 .container-fluid {
@@ -195,3 +195,25 @@ footer .glyphicon {
         font-size: 150px;
     }
 }
+
+
+.lower {
+    padding-top:20px;
+}
+.orange {
+   color: #f4511e;
+}
+
+.orange-bg{
+   background-color:#f4511e;
+   border-color:#F4451F;
+
+}
+.found-title{margin-bottom:10!important;}
+
+.glyphicon {  margin-bottom: 10px;margin-right: 10px;}
+
+small {
+display: block;
+line-height: 1.428571429;
+color: #999;

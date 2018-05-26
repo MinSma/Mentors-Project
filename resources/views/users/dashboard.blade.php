@@ -1,8 +1,5 @@
-@extends('layouts.main')
 @section('title', 'Login Panel')
-@section('menu')
-    @include('layouts.NavPanel')
-@endsection
-@section('content')
-    administratoriaus erdvė
-@endsection
+        @include('guestPagesLayouts.homeHeaderIncludes')
+
+@include('layouts.NavPanel')
+@include('guestPagesLayouts.homeHeaderSection')

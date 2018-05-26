@@ -1,10 +1,11 @@
-@extends('layouts.main')
-@section('title', 'Users')
-@section('menu')
-    @include('layouts.NavPanel')
-@endsection
 
-@section('content')
+@section('title', 'Users')
+@include('guestPagesLayouts.homeHeaderIncludes')
+
+@include('layouts.NavPanel')
+@include('guestPagesLayouts.homeHeaderSection')
+
+
 
     <h1>All the users</h1>
 
@@ -38,4 +39,3 @@
         </tbody>
     </table>
     {{ $users->links() }}
-@endsection

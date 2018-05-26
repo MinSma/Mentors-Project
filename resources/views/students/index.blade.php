@@ -1,10 +1,8 @@
-@extends('layouts.main')
 @section('title', 'Users')
-@section('menu')
-    @include('layouts.NavPanel')
-@endsection
+@include('guestPagesLayouts.homeHeaderIncludes')
 
-@section('content')
+@include('layouts.NavPanel')
+@include('guestPagesLayouts.homeHeaderSection')
 
     <h1>All the students</h1>
 
@@ -45,4 +43,3 @@
         </tbody>
     </table>
     {{ $students->links() }}
-@endsection
