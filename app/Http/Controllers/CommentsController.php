@@ -37,16 +37,27 @@ class CommentsController extends Controller
     public function store(Mentor $mentor, CommentStoreRequest $request) {
         $id = Auth::guard('student')->user()['id'];
 
-        if($id != null){
-            $data = [
-                'body'          => $request->getBody(),
-                'mentor_id'     => $mentor['id'],
-                'student_id'    => $id
-            ];
+        if($id != null)
+        {
+            $doesHaveComment = $this->commentsRepository->model()
+                ::where('mentor_id', $mentor['id'])
+                ->where('student_id', $id)
+                ->first();
 
-            $this->commentsRepository->create($data);
+            if($doesHaveComment == NULL)
+            {
+                $data = [
+                    'body' => $request->getBody(),
+                    'mentor_id' => $mentor['id'],
+                    'student_id' => $id
+                ];
 
-            return view('mentors.show', compact('mentor'));
+                $this->commentsRepository->create($data);
+
+                return redirect()->back()->withSuccess('Sėkmingai palikote atsiliepimą apie mentorių');
+            }
+
+            return redirect()->back()->withErrors('Nepavyko pakomentuoti, Jūs jau esate pakomentavęs šį mentorių');
         }
 
         return redirect()->back()->withErrors('Nepavyko pakomentuoti, jūs nesate studentas');

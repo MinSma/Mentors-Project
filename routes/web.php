@@ -69,8 +69,11 @@ Route::get('/contactus', 'ContactsController@show');
 Route::post('/contactus',  'ContactsController@mailToAdmin');
 
 // Comments routing
-Route::post('mentors/{mentor}/', 'CommentsController@store')->name('comments.store');
+Route::post('mentors/{mentor}/comment', 'CommentsController@store')->name('comments.store');
 
 // Reservation routing
 Route::get('mentors/{mentor}/reservation', 'ReservationsController@store')->name('reservation.store');
 Route::get('mentors/{mentor}/unreservation', 'ReservationsController@unstore')->name('reservation.unstore');
+
+// Rating routing
+Route::post('mentors/{mentor}/rating', 'RatingsController@store')->name('rating.store');
