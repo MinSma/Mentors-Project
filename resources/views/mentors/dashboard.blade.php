@@ -5,9 +5,7 @@
 @include('guestPagesLayouts.homeHeaderSection')
 <div class="container lower">
     <div class="row">
-        <div class="col-lg-4 col-sm-6">
-        </div>
-        <div class="col-lg-4 col-sm-6">
+        <div class="col-lg-12 col-sm-6">
             <div class="circle-tile">
                 <div class="circle-tile-heading orange-bg">
                     <i class="fa fa-users fa-fw fa-3x"></i>
@@ -22,8 +20,6 @@
                     <a href="{{ route('mentors.students') }}" class="circle-tile-footer">Daugiau informacijos <i class="fa fa-chevron-circle-right"></i></a>
                 </div>
             </div>
-        </div>
-        <div class="col-lg-4 col-sm-6">
         </div>
         <div class="col-lg-6 col-sm-6">
             <div class="circle-tile">

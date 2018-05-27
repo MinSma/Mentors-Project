@@ -34,6 +34,8 @@
                             <br />
                             <i class="glyphicon glyphicon-fire"></i>{{ $value->fixed_hour_price }} EU
                             <br />
+                            <i class="glyphicon glyphicon-pencil"></i>Įvertinimas: {{ $mentor->rating }}
+                            <br />
                         </p>
                         <div class="btn-group">
                             <div class="lower-button">

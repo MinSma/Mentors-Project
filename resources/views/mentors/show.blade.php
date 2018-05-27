@@ -23,7 +23,10 @@
                             <br />
                             <i class="glyphicon glyphicon-gift"></i>{{ $mentor->fixed_hour_price }} 
                             <br />
-                            <i class="glyphicon glyphicon-user"></i>Amžius: {{ $mentor->age }}</p>
+                            <i class="glyphicon glyphicon-user"></i>Amžius: {{ $mentor->age }}
+                            <br />
+                            <i class="glyphicon glyphicon-pencil"></i>Įvertinimas: {{ $mentor->rating }}
+                        </p>
                         <div class="btn-group">
                         <div class=""> 
                             @if(Auth::guard('student')->check() || !Auth::guest())
@@ -35,6 +38,21 @@
                     </div>
                      <div class="col-xs-12 col-sm-4 col-md-4">
                          @if(Auth::guard('student')->check() || !Auth::guest())
+                             <form method="POST" action="{{route('rating.store', $mentor)}}">
+                                 {{ csrf_field() }}
+                                 <select name="rating" id="rating" class="form-control">
+                                     <option value="1">1</option>
+                                     <option value="2">2</option>
+                                     <option value="3">3</option>
+                                     <option value="4">4</option>
+                                     <option value="5">5</option>
+                                 </select>
+                                 <br />
+                                 <div class="form-group">
+                                     <button type="submit" class="btn btn-small btn-info orange-bg">Vertinti</button>
+                                 </div>
+                             </form>
+
                              <form method="POST" action="{{ route('comments.store', $mentor) }}">
                                 {{ csrf_field() }}
                                 <div class="form-group">

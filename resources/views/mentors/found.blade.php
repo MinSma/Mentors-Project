@@ -22,7 +22,11 @@
                             <br />
                             <i class="glyphicon glyphicon-gift"></i>{{ $mentor->fixed_hour_price }}
                             <br />
-                            <i class="glyphicon glyphicon-user"></i>Amžius: {{ $mentor->age }}</p>
+                            <i class="glyphicon glyphicon-user"></i>Amžius: {{ $mentor->age }}
+                            <br />
+                            <i class="glyphicon glyphicon-pencil"></i>Įvertinimas: {{ $mentor->rating }}
+                            <br />
+                        </p>
                         <div class="btn-group">
                             <a class="btn btn-small btn-info orange-bg" href="{{ URL::to('mentors/' . $mentor->id ) }}">Profilis</a>                          
                         </div>
